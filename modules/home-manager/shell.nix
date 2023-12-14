@@ -48,7 +48,6 @@
       # delete generations ( add days as variable )
       delete-generations = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 30d";
 
-
       # Neovim
       nvim-lazy = "NVIM_APPNAME=LazyVim nvim";
       nvim-kick = "NVIM_APPNAME=kickstart nvim";
@@ -99,11 +98,8 @@
 
       # Exta commands added to .zshrc
       initExtra = ''
-        # Powerlevel10k
-        #source $HOME/.config/zsh/.p10k.zsh
-
         # OpenAI KEY (ChatGPT etc)
-        # source $HOME/.config/chatgpt.env
+        source $HOME/.config/chatgpt.env
 
         # Add ssh key from .config
         ssh-add $HOME/.config/.ssh/id_ed25519 2> /dev/null
@@ -113,7 +109,7 @@
 
         # set options
         # setopt sharehistory
-        # setopt histignorealldups
+        setopt histignorealldups
         # setopt sh_nullcmd
         # setopt extendedglob
         # setopt interactivecomments
