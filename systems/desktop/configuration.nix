@@ -281,6 +281,9 @@ in
   # Flatpak
   services.flatpak.enable = true;
 
+  # Caching service (should speedup some things)
+  services.nscd.enable = true;
+
   # Postgresql
   # config.services.postgresql = {
     # enable = true;
