@@ -10,6 +10,7 @@ in
       ./hardware-configuration.nix
       # Impermanence
       # "${impermanence}/nixos.nix"
+      # outputs.nixosModule.users
     ];
 
   # Enable Flakes
@@ -119,11 +120,20 @@ in
   # Exclude GNOME Packages
   environment.gnome.excludePackages = ( with pkgs; [
     gnome-tour 
+    gnome-photos
   ]) ++ ( with pkgs.gnome; [
     geary
     hitori
     atomix
     epiphany
+    cheese
+    gnome-music
+    gnome-terminal
+    gnome-characters
+    tali
+    totem
+    iagno
+
   ]);
 
   # BSPWM
