@@ -44,6 +44,7 @@ sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-tha
 * mini as home-server
 * configure impermanence
 * disable system going to sleep
+* SOPS nix for secrets
 
 # Overview
 | Program                              | Name                                                                                                                           |
@@ -54,9 +55,27 @@ sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-tha
 
 # Installation
 
+## NixOS
+Install NixOS on your system. After booting for the first time change to a new tty
+and login as your user. If your user does not have a password yet you have to login
+as root and run:
+```
+sudo passwd <user>
+```
+Then, run:
+```
+nix run --experimental-features 'nix-command flakes' nixpkgs#git clone https://github.com/FabianMoertter/NixOS
+```
+to bootstrap flakes and to clone the repo.
+
+## Home Manager
 Start home-manager
 ```
 nix shell nixpkgs#home-manager
+```
+Then run home-manager with:
+```
+home-manager switch --flake .
 ```
 
 # Systems
