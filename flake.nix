@@ -1,0 +1,103 @@
+{
+  description = "NixOS config for multiple devices";
+
+  inputs = {
+
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+  };
+
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+
+    let
+      inherit (self) outputs;
+      system = "x86_64-linux";
+      user = "fabian";
+      pkgs = import nixpkgs {
+        inherit system;
+        config = { allowUnfree = true; };
+      };
+      lib = nixpkgs.lib;
+
+    in
+    rec {
+
+      # Your custom packages and modifications, exported as overlays
+      # overlays = import ./overlays { inherit inputs; };
+      # Reusable nixos modules you might want to export
+      # These are usually stuff you would upstream into nixpkgs
+      nixosModules = import ./modules/system;
+      # Reusable home-manager modules you might want to export
+      # These are usually stuff you would upstream into home-manager
+      homeManagerModules = import ./modules/home-manager;
+
+      nixosConfigurations = {
+
+        # mini
+        mantodea = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./systems/mini/configuration.nix
+          ];
+        };
+
+        # fabian-laptop-2
+        hymenoptera = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./systems/laptop-2/configuration.nix
+                ];
+        };
+
+        # fabian-laptop
+        coleoptera = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./systems/laptop/configuration.nix
+          ];
+        };
+	
+        # fabian-desktop ( lepidoptera )
+        lepidoptera = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./systems/desktop/configuration.nix
+          ];
+        };
+
+      };
+
+      homeConfigurations = {
+
+        "fabian@hymenoptera" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [
+            ./home-manager/fabian/home.nix
+          ];
+        };
+
+        "fabian@lepidoptera" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [
+            ./home-manager/fabian/home.nix
+          ];
+        };
+
+        "fabian@coleoptera" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [
+            ./home-manager/fabian/home.nix
+          ];
+        };
+
+      };
+  };
+}

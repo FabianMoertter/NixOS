@@ -1,0 +1,23 @@
+{ pkgs, config, ... }:
+{
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font = {
+        size = 14.0;
+        # normal = {
+          # family = "FiraCode";
+          # style = "Regular";
+        # };
+      };
+      window = {
+        padding = {
+          x = 12;
+          y = 12;
+        };
+      };
+      selection.save_to_clipboard = true;
+      # env = "alacritty"; 256 color in tmux
+    };
+  };
+}
