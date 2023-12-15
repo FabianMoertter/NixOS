@@ -69,6 +69,7 @@
     julia
     kitty
     lazygit
+    # lazydocker
     libreoffice
     lua
     # mendeley
