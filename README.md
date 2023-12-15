@@ -56,29 +56,29 @@ sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-tha
 # Installation
 
 ## NixOS
-Install NixOS on your system. After booting for the first time change to a new tty
-and login as your user. If your user does not have a password yet you have to login
-as root and run:
-```
-sudo passwd <user>
-```
-Then, run:
-```
-nix run --experimental-features 'nix-command flakes' nixpkgs#git clone https://github.com/FabianMoertter/NixOS
-```
-to bootstrap flakes and to clone the repo.
+**Warning: Do not follow this blindly, it will probably not work for you!**
 
+After installing NixOS on your system, run:
+```
 nix --extra-experimental-features nix-command --extra-experimental-features flakes run nixpkgs#git clone https://github.com/FabianMoertter/NixOS
 cd NixOS
 nix-shell
-
-cp hardware config
-nixos-rebuild
-
-
+```
+to clone this repo and bootstrap flakes and home-manager. **Note**: The shell provdies neovim so you can
+edit configuration files.
+**Copy hardware-configuration.nix**: Depending on what you do you need to copy your `hardware-configuration.nix`
+from `/etc/nixos/` to the desired location. Do not just copy this command!
+```
+cp /etc/nixos/hardware-configuration.nix system/<system>/hardware-configuration.nix
+```
+Now you can build the system:
+```
+sudo nixos-rebuild switch --flake .#<hostname>
+```
 
 ## Home Manager
-Start home-manager
+Proceed with this steps after you installed NixOS and after you rebuild the system. You should
+still be in the dev shell from above. Otherwise, try:
 ```
 nix shell nixpkgs#home-manager
 ```
@@ -86,12 +86,13 @@ Then run home-manager with:
 ```
 home-manager switch --flake .
 ```
-
-If error:
+If you get an error like this:
 "Could not find suitable profile directory, tried .../profiles and .../user"
-run
+run:
+```
 nix profile list
-and then run home-manager again
+```
+to fix the issue and then run home-manager again.
 
 # Systems
 

@@ -88,7 +88,8 @@
     thunderbird
     unzip
     vial
-    wezterm
+    vscode
+    # wezterm
     xclip
     # xh
     youtube-dl
