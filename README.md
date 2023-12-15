@@ -54,9 +54,9 @@ sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-tha
 | Terminal Emulator                    | alacritty |
 
 # Installation
+**Warning: Do not follow this blindly, it will probably not work for you!**
 
 ## NixOS
-**Warning: Do not follow this blindly, it will probably not work for you!**
 
 After installing NixOS on your system, run:
 ```
@@ -64,7 +64,7 @@ nix --extra-experimental-features nix-command --extra-experimental-features flak
 cd NixOS
 nix-shell
 ```
-to clone this repo and bootstrap flakes and home-manager. **Note**: The shell provdies neovim so you can
+to clone this repo and bootstrap flakes and home-manager. **Note**: The shell provides neovim so you can
 edit configuration files.
 **Copy hardware-configuration.nix**: Depending on what you do you need to copy your `hardware-configuration.nix`
 from `/etc/nixos/` to the desired location. Do not just copy this command!
