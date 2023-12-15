@@ -9,17 +9,17 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.auto-optimise-store = true;
 
-  nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-    };
+  # nix.settings = {
+    # substituters = ["https://hyprland.cachix.org"];
+    # trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    # };
 
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "Hack"]; })
   ];
 
@@ -55,8 +55,8 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+  # virtualisation.virtualbox.host.enable = true;
+  # users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
   #virtualisation.virtualbox.guest.enable = true;
   #virtualisation.virtualbox.guest.x11 = true;
 
@@ -67,13 +67,13 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  virtualisation = {
-    podman = {
-      enable = true;
+  # virtualisation = {
+    # podman = {
+      # enable = true;
       # Create a 'docker' alias for podman
-      dockerCompat = true;
-    };
-  };
+      # dockerCompat = true;
+    # };
+  # };
 
   # Configure keymap in X11
   services.xserver = {
@@ -115,45 +115,43 @@
     extraGroups = [ "networkmanager" "wheel" "vboxusers" ];
     packages = with pkgs; [
       #dust
-      R
+      # R
       alacritty
-      anki-bin
+      # anki-bin
       bat
-      cargo
-      slack
+      # cargo
+      # slack
       # mendeley
-      discord
-      dog
-      duf
-      # eza
-      exa
-      fd
-      figlet
-      clang
+      # discord
+      # dog
+      # duf
+      eza
+      # fd
+      # figlet
+      # clang
       firefox
       fzf
-      google-chrome
-      julia
+      # google-chrome
+      # julia
       lazygit
       lf
       libreoffice
-      nodejs
+      # nodejs
       nvtop
       ripgrep
-      rofi
-      rustc
-      sd
+      # rofi
+      # rustc
+      # sd
       skypeforlinux
-      stow
-      terminator
+      # stow
+      # terminator
       thunderbird
-      xclip
-      xh
-      zathura
-      zellij
-      zoxide
+      # xclip
+      # xh
+      # zathura
+      # zellij
+      # zoxide
       zsh
-   #   lutris
     ];
   };
 
@@ -190,24 +188,9 @@
     tmux
     vim
     wget
-    (lutris.override {
-       extraPkgs = pkgs: [
-         # List package dependencies here
-       ];
-       extraLibraries = pkgs: [
-         wine
-         # List library dependencies here
-       ];
-    })
   ];
 
   environment.shells = with pkgs; [ zsh ];
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
 
   programs.zsh.enable = true;
 

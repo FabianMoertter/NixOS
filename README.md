@@ -68,6 +68,15 @@ nix run --experimental-features 'nix-command flakes' nixpkgs#git clone https://g
 ```
 to bootstrap flakes and to clone the repo.
 
+nix --extra-experimental-features nix-command --extra-experimental-features flakes run nixpkgs#git clone https://github.com/FabianMoertter/NixOS
+cd NixOS
+nix-shell
+
+cp hardware config
+nixos-rebuild
+
+
+
 ## Home Manager
 Start home-manager
 ```
@@ -77,6 +86,12 @@ Then run home-manager with:
 ```
 home-manager switch --flake .
 ```
+
+If error:
+"Could not find suitable profile directory, tried .../profiles and .../user"
+run
+nix profile list
+and then run home-manager again
 
 # Systems
 
