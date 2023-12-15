@@ -114,6 +114,7 @@
     description = "Fabian";
     extraGroups = [ "networkmanager" "wheel" "vboxusers" ];
     packages = with pkgs; [
+      dunst
       #dust
       # R
       alacritty
