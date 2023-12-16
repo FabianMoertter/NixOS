@@ -137,7 +137,6 @@ in
     tali
     totem
     iagno
-
   ]);
 
   # BSPWM
@@ -238,12 +237,12 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
    git
+   gparted
    htop
    nvtop
    tmux
    vim
    wget
-   zsh
    zsh
   ];
 

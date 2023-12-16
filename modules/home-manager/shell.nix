@@ -77,6 +77,7 @@
         "docs" = "$HOME/Documents";
         "vids" = "$HOME/Videos";
         "dl" = "$HOME/Downloads";
+	"proj" = "$HOME/Projects";
       };
 
       history = {
