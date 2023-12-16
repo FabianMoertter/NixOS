@@ -117,6 +117,9 @@ in
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # Enable BSPWM
+  services.xserver.windowManager.bspwm.enable = true;
+
   # Exclude GNOME Packages
   environment.gnome.excludePackages = ( with pkgs; [
     gnome-tour 
