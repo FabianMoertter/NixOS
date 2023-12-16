@@ -3,7 +3,7 @@
   git = import ./git.nix;
   shell = import ./shell.nix;
   lf = import ./lf.nix;
-  neovim = import ./neovim.nix;
+  neovim = import .nvim/neovim.nix;
   steam = import ./steam.nix;
   tmux = import ./tmux.nix;
   vim = import ./vim.nix;

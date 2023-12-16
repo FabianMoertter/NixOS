@@ -23,12 +23,8 @@
      }
 
      {
-       plugin = nvim-lspconfig;
+       plugin = neorg;
      }
-
-     # {
-       # plugin = neorg;
-     # }
 
      {
        plugin = comment-nvim;
