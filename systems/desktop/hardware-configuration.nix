@@ -25,7 +25,14 @@
 
   # SSD
   fileSystems."/data" =
-    { device = "/dev/disk/by-uuid/bb4fecb4-a4d6-4bfc-9af6-62b2cd144024";
+    { device = "/dev/disk/by-uuid/07d11d19-4ffe-4a60-9eaf-40a0428d2b5c";
+      fsType = "ext4";
+    };
+
+
+  # NVME-2
+  fileSystems."/data2" =
+    { device = "/dev/disk/by-uuid/9efba5c3-46c5-4fd7-bdb4-1ad56e629a66";
       fsType = "ext4";
     };
 

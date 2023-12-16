@@ -90,14 +90,14 @@
     unzip
     vial
     vscode
-    # wezterm
+    wezterm
     xclip
     # xh
     youtube-dl
     zathura
-    # zellij
+    zellij
     zig
-    # zoxide
+    zoxide
   ];
 
   # Default Applications
