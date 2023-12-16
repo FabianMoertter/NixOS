@@ -24,6 +24,8 @@
 
      {
        plugin = neorg;
+       type = "lua";
+       config = "require('neorg').setup({ load = { [ 'core.defaults' ] = {} } })";
      }
 
      {

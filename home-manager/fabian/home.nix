@@ -100,4 +100,13 @@
     # zoxide
   ];
 
+  # Default Applications
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "firefox.desktop";
+      #"image/pdf" = "firefox.desktop";
+    };
+  };
+
 }
