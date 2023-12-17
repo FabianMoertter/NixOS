@@ -82,24 +82,25 @@ The config is located under `modules/home-manager/nvim/`
 
 Here is an incomplete list of great Nix/NixOS resources:
 
-Documentation:
+**Documentation:**
 * https://nix.dev
 * https://nixos.org/manual/nix/stable/introduction
 
-NixOS repositories:
+**NixOS repositories:**
 * https://github.com/jakehamilton/config
+* https://github.com/sioodmy/dotfiles/tree/main
 
-Videos:
+**Videos:**
 
-Neovim repositories:
+**Neovim repositories:**
 * https://github.com/jakehamilton/neovim
 * https://github.com/jordanisaacs/neovim-flake
 * https://github.com/mrcjkb/kickstart-nix.nvim
 
-sops-nix:
+**sops-nix:**
 * https://github.com/Mic92/sops-nix
 
-Blogs and articles:
+**Blogs and articles:**
 * https://primamateria.github.io/blog/neovim-nix
 
 # Credits
