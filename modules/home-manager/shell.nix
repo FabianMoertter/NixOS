@@ -34,6 +34,7 @@
       dev = "nix-shell /home/fabian/Projects/NixOS/nixos-config/shells/python.nix";
       nixconfig = "cd /home/fabian/Projects/NixOS/nixos-config";
       config = "cd /home/fabian/Projects/NixOS/nixos-config";
+      vimconfig = "cd /home/fabian/Projects/NixOS/nixos-config/modules/home-manager/nvim/";
       wiki = "cd /home/fabian/Projects/Neovim/vimwiki";
       perso = "cd /home/fabian/Projects/personal_repo";
       learn = "cd /home/fabian/Projects/learning";

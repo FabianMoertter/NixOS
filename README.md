@@ -16,7 +16,7 @@ Repo under construction!
 | Program                              | Name                                                                                                                           |
 | :---                                 | :---                                                                                                                           |
 | Code Editor                          | Neovim|
-| Shell                                | zsh|
+| Shell                                | zsh/bash |
 | Terminal Emulator                    | alacritty |
 
 # Installation
@@ -87,4 +87,5 @@ Flake based on standard template: https://github.com/Misterio77/nix-starter-conf
 Here is an incomplete list of great Nix/NixOS resources:
 
 * https://nix.dev
+* https://nixos.org/manual/nix/stable/introduction
 
