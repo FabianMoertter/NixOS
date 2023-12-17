@@ -70,7 +70,7 @@ The config is located under `modules/home-manager/nvim/`.
 * move shells to flakes
 * modularize flake
 * install: virtualbox ... 
-* docs
+* docs (and links to them)
 * nix flake for neovim
 * mini as home-server
 * configure impermanence
@@ -90,8 +90,13 @@ Documentation:
 * https://nix.dev
 * https://nixos.org/manual/nix/stable/introduction
 
-Great Nixos Repositories:
+NixOS repositories:
 * https://github.com/jakehamilton/config
 
 Videos:
 
+Neovim repositories:
+* https://github.com/jakehamilton/neovim
+
+sops-nix:
+* https://github.com/Mic92/sops-nix
