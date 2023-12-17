@@ -162,11 +162,8 @@ in
   services.xserver = {
     layout = "us,de";
     xkbVariant = "";
-    xkbOptions = "caps:none";
+    xkbOptions = "caps:escape";
   };
-
-  # keyboard settings still not how I want them
-  # xkbOptions = "ctrl:nocaps";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

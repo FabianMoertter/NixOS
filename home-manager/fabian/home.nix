@@ -9,7 +9,11 @@
       test:
         test: test
       '';
+      ".config/nvim" = {
+        source = config.lib.file.mkOutOfStoreSymlink ../../modules/home-manager/nvim;
+      };
     };
+
   };
 
   imports = [
@@ -53,13 +57,12 @@
     bat
     brave
     btop
-    # cargo
+    cargo
     clang
     conda
     discord
     eza
-    # fd
-    # figlet
+    fd
     firefox
     fzf
     glances
@@ -69,18 +72,18 @@
     julia
     kitty
     lazygit
-    # lazydocker
+    lazydocker
     libreoffice
     lua
-    # mendeley
-    # nodejs
+    mendeley
+    nodejs
     # poetry
     # pyright
     # python3
     ripgrep
     # rofi
     rstudio
-    # rustc
+    rustc
     # sd
     skypeforlinux
     slack
