@@ -85,6 +85,7 @@
     rstudio
     rustc
     # sd
+    sxhkd
     skypeforlinux
     slack
     # stow
