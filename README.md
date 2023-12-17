@@ -60,6 +60,12 @@ nix profile list
 ```
 to fix the issue and then run home-manager again.
 
+# Neovim
+
+Neovim config is based on kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim
+
+The config is located under `modules/home-manager/nvim/`.
+
 # TODO/Projects
 * move shells to flakes
 * modularize flake
@@ -76,4 +82,10 @@ to fix the issue and then run home-manager again.
 # Credits
 
 Flake based on standard template: https://github.com/Misterio77/nix-starter-configs.
+
+# Nix Resources
+
+Here is an incomplete list of great Nix/NixOS resources:
+
+* https://nix.dev
 
