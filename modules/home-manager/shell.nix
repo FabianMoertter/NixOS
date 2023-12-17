@@ -79,6 +79,8 @@
         "vids" = "$HOME/Videos";
         "dl" = "$HOME/Downloads";
 	"proj" = "$HOME/Projects";
+        "conf" = "$HOME/Projects/NixOS/nixos-config";
+        "vim" = "$HOME/Projects/NixOS/nixos-config/modules/home-manager/nvim";
       };
 
       history = {

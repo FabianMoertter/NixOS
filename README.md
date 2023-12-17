@@ -91,6 +91,7 @@ Here is an incomplete list of great Nix/NixOS resources:
 * https://github.com/sioodmy/dotfiles/tree/main
 
 **Videos:**
+* https://www.youtube.com/@vimjoyer
 
 **Neovim repositories:**
 * https://github.com/jakehamilton/neovim
