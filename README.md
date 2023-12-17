@@ -69,7 +69,6 @@ The config is located under `modules/home-manager/nvim/`.
 # TODO/Projects
 * move shells to flakes
 * modularize flake
-* neovim config with home-manager
 * install: virtualbox ... 
 * docs
 * nix flake for neovim
