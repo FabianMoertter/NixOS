@@ -89,3 +89,5 @@ Here is an incomplete list of great Nix/NixOS resources:
 * https://nix.dev
 * https://nixos.org/manual/nix/stable/introduction
 
+*Great Nixos Repositories*
+* https://github.com/jakehamilton
