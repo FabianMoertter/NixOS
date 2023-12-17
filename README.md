@@ -64,7 +64,7 @@ to fix the issue and then run home-manager again.
 
 Neovim config is based on kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim
 
-The config is located under `modules/home-manager/nvim/`.
+The config is located under `modules/home-manager/nvim/`
 
 # TODO/Projects
 * move shells to flakes
@@ -97,6 +97,11 @@ Videos:
 
 Neovim repositories:
 * https://github.com/jakehamilton/neovim
+* https://github.com/jordanisaacs/neovim-flake
+* https://github.com/mrcjkb/kickstart-nix.nvim
 
 sops-nix:
 * https://github.com/Mic92/sops-nix
+
+Blogs and articles:
+* https://primamateria.github.io/blog/neovim-nix
