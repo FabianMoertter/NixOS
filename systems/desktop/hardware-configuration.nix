@@ -14,30 +14,31 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a23b3efd-b880-474f-b5a4-1876ccce8578";
+    { device = "/dev/disk/by-uuid/e5fd1e56-92db-4e59-95b1-f5a2d1e348f0";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C248-BD18";
+    { device = "/dev/disk/by-uuid/7451-FE45";
       fsType = "vfat";
     };
 
   # SSD
   fileSystems."/data" =
-    { device = "/dev/disk/by-uuid/07d11d19-4ffe-4a60-9eaf-40a0428d2b5c";
+    {
+      device = "/dev/disk/by-uuid/bb4fecb4-a4d6-4bfc-9af6-62b2cd144024";
       fsType = "ext4";
     };
 
-
   # NVME-2
-  fileSystems."/data2" =
-    { device = "/dev/disk/by-uuid/9efba5c3-46c5-4fd7-bdb4-1ad56e629a66";
+  fileSystems."/data-2" =
+    {
+      device = "/dev/disk/by-uuid/9efba5c3-46c5-4fd7-bdb4-1ad56e629a66";
       fsType = "ext4";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/020d308f-22da-4229-99fe-8788a90c7fd4"; }
+    [ { device = "/dev/disk/by-uuid/61821028-c9ca-4329-9f72-6f59b5993951"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -45,9 +46,9 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp83s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp86s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp84s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp85s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp88s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp86s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
