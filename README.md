@@ -78,10 +78,6 @@ The config is located under `modules/home-manager/nvim/`
 * SOPS nix for secrets
 * add a windowmanager
 
-# Credits
-
-Flake based on standard template: https://github.com/Misterio77/nix-starter-configs.
-
 # Nix Resources
 
 Here is an incomplete list of great Nix/NixOS resources:
@@ -105,3 +101,7 @@ sops-nix:
 
 Blogs and articles:
 * https://primamateria.github.io/blog/neovim-nix
+
+# Credits
+
+Flake based on standard template: https://github.com/Misterio77/nix-starter-configs.
