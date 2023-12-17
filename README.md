@@ -86,8 +86,12 @@ Flake based on standard template: https://github.com/Misterio77/nix-starter-conf
 
 Here is an incomplete list of great Nix/NixOS resources:
 
+Documentation:
 * https://nix.dev
 * https://nixos.org/manual/nix/stable/introduction
 
-*Great Nixos Repositories*
+Great Nixos Repositories:
 * https://github.com/jakehamilton
+
+Videos:
+
