@@ -1,9 +1,10 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, outputs, config, pkgs, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
+      outputs.nixosModules.users
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -22,7 +23,6 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "Hack"]; })
   ];
-
 
   networking.hostName = "hymenoptera";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -156,30 +156,30 @@
     ];
   };
 
-  users.users.eva = {
-    isNormalUser = true;
-    description = "Eva";
-    extraGroups = [ "networkmanager" ];
-    packages = with pkgs; [
-      discord
-      firefox
-      google-chrome
-      libreoffice
-      skypeforlinux
-    ];
-  };
-
-  users.users.guest = {
-    isNormalUser = true;
-    description = "Guest";
-    extraGroups = [ "networkmanager" ];
-    packages = with pkgs; [
-      discord
-      firefox
-      google-chrome
-      skypeforlinux
-    ];
-  };
+  # users.users.eva = {
+  #   isNormalUser = true;
+  #   description = "Eva";
+  #   extraGroups = [ "networkmanager" ];
+  #   packages = with pkgs; [
+  #     discord
+  #     firefox
+  #     google-chrome
+  #     libreoffice
+  #     skypeforlinux
+  #   ];
+  # };
+  #
+  # users.users.guest = {
+  #   isNormalUser = true;
+  #   description = "Guest";
+  #   extraGroups = [ "networkmanager" ];
+  #   packages = with pkgs; [
+  #     discord
+  #     firefox
+  #     google-chrome
+  #     skypeforlinux
+  #   ];
+  # };
 
   nixpkgs.config.allowUnfree = true;
 
