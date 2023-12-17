@@ -91,7 +91,7 @@ Documentation:
 * https://nixos.org/manual/nix/stable/introduction
 
 Great Nixos Repositories:
-* https://github.com/jakehamilton
+* https://github.com/jakehamilton/config
 
 Videos:
 
