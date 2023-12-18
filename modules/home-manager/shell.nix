@@ -75,12 +75,13 @@
       enableCompletion = true;
       enableAutosuggestions = true;
       dirHashes = {
-        "docs" = "$HOME/Documents";
-        "videos" = "$HOME/Videos";
+        "Docs" = "$HOME/Documents";
+        "Videos" = "$HOME/Videos";
         "dl" = "$HOME/Downloads";
-	"projects" = "$HOME/Projects";
+	"Projects" = "$HOME/Projects";
         "config" = "$HOME/Projects/NixOS/nixos-config";
         "vim" = "$HOME/Projects/NixOS/nixos-config/modules/home-manager/nvim";
+        "perso" = "$HOME/Projects/personal_repo/";
       };
 
       history = {

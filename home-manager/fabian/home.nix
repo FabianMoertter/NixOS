@@ -25,6 +25,22 @@
           };
       };
 
+      # # Copy NvChad from Github ( does not work because read-only )
+      # ".config/NvChad/" =  {
+      #     source = builtins.fetchGit {
+      #       url = "https://github.com/NvChad/Nvchad";
+      #       rev = "bb87d70fd6dedce65c67a4390c9faecc55b0ed72";
+      #     };
+      # };
+
+      # # Copy LazyVim from Github ( does not work because read-only )
+      # ".config/LazyVim/" =  {
+      #     source = builtins.fetchGit {
+      #       url = "https://github.com/LazyVim/starter";
+      #       rev = "92b2689e6f11004e65376e84912e61b9e6c58827";
+      #     };
+      # };
+
     };
   };
 
@@ -100,10 +116,9 @@
     ripgrep
     rstudio
     rustc
-    # sd
-    sxhkd
     skypeforlinux
     slack
+    sxhkd
     terminator
     thunderbird
     unzip

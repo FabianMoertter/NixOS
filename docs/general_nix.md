@@ -38,3 +38,7 @@ nix run nixpkgs#cowsay 'use package without creating a shell or installing it'
 nix run --impure nixpkgs#spotify
 ```
 
+Run a nix file
+```
+nix eval --file ./nix.nix
+```

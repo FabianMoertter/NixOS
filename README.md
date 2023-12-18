@@ -95,6 +95,7 @@ Here is an incomplete list of great Nix/NixOS resources:
 * https://github.com/sioodmy/dotfiles/tree/main
 * https://github.com/tars0x9752/home
 * https://github.com/misterio77/nix-config
+* https://github.com/librephoenix/nixos-config
 
 **Videos:**
 * https://www.youtube.com/@vimjoyer
