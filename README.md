@@ -19,6 +19,10 @@ Repo under construction!
 | Shell                                | zsh/bash |
 | Terminal Emulator                    | alacritty |
 
+# Project Structure
+
+TODO
+
 # Installation
 **Warning: Do not follow this blindly, it will probably not work for you!**
 
