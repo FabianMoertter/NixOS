@@ -89,6 +89,7 @@ Here is an incomplete list of great Nix/NixOS resources:
 **NixOS repositories:**
 * https://github.com/jakehamilton/config
 * https://github.com/sioodmy/dotfiles/tree/main
+* https://github.com/tars0x9752/home
 
 **Videos:**
 * https://www.youtube.com/@vimjoyer

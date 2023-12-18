@@ -50,10 +50,18 @@
 
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
-    R
-    alacritty
     # amberol
     # anki-bin
+    # helix
+    # poetry
+    # pyright
+    # python3
+    # rofi
+    # sd
+    # stow
+    # xh
+    R
+    alacritty
     bat
     brave
     btop
@@ -66,28 +74,22 @@
     firefox
     fzf
     glances
-    # gnumake
+    gnumake
     google-chrome
-    # helix
     julia
     kitty
-    lazygit
     lazydocker
+    lazygit
     libreoffice
     lua
     mendeley
+    ncdu
     nodejs
-    # poetry
-    # pyright
-    # python3
     ripgrep
-    # rofi
     rstudio
     rustc
-    # sd
     skypeforlinux
     slack
-    # stow
     terminator
     thunderbird
     unzip
@@ -95,7 +97,6 @@
     vscode
     wezterm
     xclip
-    # xh
     youtube-dl
     zathura
     zellij
