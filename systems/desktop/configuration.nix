@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, outputs, config, pkgs, ... }:
 
 # Impermanence
 let
@@ -10,7 +10,10 @@ in
       ./hardware-configuration.nix
       # Impermanence
       # "${impermanence}/nixos.nix"
-      # outputs.nixosModule.users
+
+      # Modules
+      outputs.nixosModules.users
+      # outputs.nixosModules.nvidia
     ];
 
   # Enable Flakes
@@ -201,31 +204,31 @@ in
   };
   programs.zsh.enable = true; # maybe necessary if zsh default shell
 
-  users.users.eva = {
-    isNormalUser = true;
-    description = "Eva";
-    extraGroups = [ "networkmanager" ];
-    packages = with pkgs; [
-      discord
-      firefox
-      google-chrome
-      libreoffice
-      skypeforlinux
-    ];
-  };
+  # users.users.eva = {
+  #   isNormalUser = true;
+  #   description = "Eva";
+  #   extraGroups = [ "networkmanager" ];
+  #   packages = with pkgs; [
+  #     discord
+  #     firefox
+  #     google-chrome
+  #     libreoffice
+  #     skypeforlinux
+  #   ];
+  # };
 
-  users.users.guest = {
-    isNormalUser = true;
-    description = "Guest";
-    extraGroups = [ "networkmanager" ];
-    packages = with pkgs; [
-      discord
-      firefox
-      google-chrome
-      libreoffice
-      skypeforlinux
-    ];
-  };
+  # users.users.guest = {
+  #   isNormalUser = true;
+  #   description = "Guest";
+  #   extraGroups = [ "networkmanager" ];
+  #   packages = with pkgs; [
+  #     discord
+  #     firefox
+  #     google-chrome
+  #     libreoffice
+  #     skypeforlinux
+  #   ];
+  # };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
