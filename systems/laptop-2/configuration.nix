@@ -164,6 +164,7 @@
     tmux
     vim
     wget
+    gnumake
   ];
 
   environment.shells = with pkgs; [ zsh ];
