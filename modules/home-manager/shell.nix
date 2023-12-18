@@ -31,7 +31,7 @@
       cal = "cal -3";
 
       # custom aliases for paths
-      dev = "nix-shell /home/fabian/Projects/NixOS/nixos-config/shells/python.nix";
+      dev = "nix-shell /home/fabian/Projects/NixOS/nixos-config/shells/python/python.nix";
       nixconfig = "cd /home/fabian/Projects/NixOS/nixos-config";
       config = "cd /home/fabian/Projects/NixOS/nixos-config";
       vimconfig = "cd /home/fabian/Projects/NixOS/nixos-config/modules/home-manager/nvim/";
