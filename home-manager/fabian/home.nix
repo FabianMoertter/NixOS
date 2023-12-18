@@ -5,15 +5,27 @@
     homeDirectory = "/home/fabian";
     stateVersion = "23.11";
     file = {
+
+      # Test file
       ".config/test/test.yml".text = ''
       test:
         test: test
       '';
+
+      # My neovim config
       ".config/nvim" = {
         source = config.lib.file.mkOutOfStoreSymlink ../../modules/home-manager/nvim;
       };
-    };
 
+      # Copy kickstart-nvim from Github
+      ".config/kickstart/" =  {
+          source = builtins.fetchGit {
+            url = "https://github.com/nvim-lua/kickstart.nvim";
+            rev = "76c5b1ec57f40d17ac787feb018817a802e24bb6";
+          };
+      };
+
+    };
   };
 
   imports = [
