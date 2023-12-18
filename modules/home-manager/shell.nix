@@ -146,8 +146,9 @@
         zstyle ':completions:*' rehash true
         zstyle ':completions:*' group-name ""
         zstyle ':completions:*' menu select=2
-        eval "$(dircolors -b)"
+        # eval "$(dircolors -b)"
         # zstyle ':completions:*default' list-colors %{(s.:.)LS_COLORS}
+        zstyle ':completion:*:*:kill:*' list-colors '=(#b) #([0-9]#)*( *[a-z])*=34=31=33'
         zstyle ':completions:*' list-colors ""
         zstyle ':completions:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
         zstyle ':completions:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'm:{a-zA-Z}={A-Za-z} l:|=* r:|*'
