@@ -45,6 +45,7 @@
         # mini
         mantodea = lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit inputs outputs; };
           modules = [
             ./systems/mini/configuration.nix
           ];
@@ -53,6 +54,7 @@
         # fabian-laptop-2
         hymenoptera = lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit inputs outputs; };
           modules = [
             ./systems/laptop-2/configuration.nix
                 ];
@@ -61,6 +63,7 @@
         # fabian-laptop
         coleoptera = lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit inputs outputs; };
           modules = [
             ./systems/laptop/configuration.nix
           ];
@@ -69,6 +72,7 @@
         # fabian-desktop ( lepidoptera )
         lepidoptera = lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit inputs outputs; };
           modules = [
             ./systems/desktop/configuration.nix
           ];

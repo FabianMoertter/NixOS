@@ -19,6 +19,10 @@ Repo under construction!
 | Shell                                | zsh/bash |
 | Terminal Emulator                    | alacritty |
 
+# Project Structure
+
+TODO
+
 # Installation
 **Warning: Do not follow this blindly, it will probably not work for you!**
 
@@ -90,6 +94,7 @@ Here is an incomplete list of great Nix/NixOS resources:
 * https://github.com/jakehamilton/config
 * https://github.com/sioodmy/dotfiles/tree/main
 * https://github.com/tars0x9752/home
+* https://github.com/misterio77/nix-config
 
 **Videos:**
 * https://www.youtube.com/@vimjoyer
