@@ -117,7 +117,6 @@
         setopt sh_nullcmd
         setopt extendedglob
         setopt interactivecomments
-        setopt magicequalsubset
         setopt notify
         setopt nocaseglob
         setopt rcexpandparam
@@ -125,7 +124,7 @@
         setopt promptsubst
         setopt numericglobsort
         setopt nobeep
-        setpot appendhistory
+        setopt appendhistory
         setopt auto_pushd
         setopt pushd_ignore_dups
         setopt pushdminus
@@ -148,7 +147,7 @@
         zstyle ':completions:*' group-name ""
         zstyle ':completions:*' menu select=2
         eval "$(dircolors -b)"
-        zstyle ':completions:*default' list-colors %{(s.:.)LS_COLORS}
+        # zstyle ':completions:*default' list-colors %{(s.:.)LS_COLORS}
         zstyle ':completions:*' list-colors ""
         zstyle ':completions:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
         zstyle ':completions:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'm:{a-zA-Z}={A-Za-z} l:|=* r:|*'
