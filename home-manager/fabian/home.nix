@@ -83,7 +83,6 @@
     # helix
     # poetry
     # pyright
-    # python3
     # rofi
     # sd
     # stow
@@ -110,6 +109,11 @@
     lazygit
     libreoffice
     lua
+    luarocks
+    perl
+    ruby
+    python3
+    tree-sitter
     mendeley
     ncdu
     nodejs

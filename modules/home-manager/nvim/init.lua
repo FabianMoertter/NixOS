@@ -207,7 +207,6 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-
   {
     -- Neorg
     'nvim-neorg/neorg',
