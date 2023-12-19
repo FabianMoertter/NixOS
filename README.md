@@ -7,7 +7,7 @@ Repo under construction!
 | Hostname | Machine | Status
 | :--- | :--- | :---
 | lepidoptera | Desktop          | WIP
-| mantodea    | Mini Desktop     | WIP
+| mantodea    | Mini Homelab     | WIP
 | coleoptera  | Laptop 1         | not started
 | hymenoptera | Laptop 2         | WIP
 |             | Raspberry Pi     | not started
