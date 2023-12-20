@@ -83,6 +83,7 @@
     # helix
     # poetry
     # pyright
+    conda
     # rofi
     # sd
     # stow
@@ -134,6 +135,7 @@
     zathura
     zellij
     zig
+    fdupes
     zoxide
   ];
 
