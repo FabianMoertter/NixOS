@@ -1,4 +1,3 @@
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -17,17 +16,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure plugins ]]
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
-
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  'tpope/vim-fugitive', -- Git related plugins
+  'tpope/vim-rhubarb', -- Git related plugins
+  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -210,6 +202,23 @@ require('lazy').setup({
   {
     -- Neorg
     'nvim-neorg/neorg',
+    -- build = ":Neorg sync-parsers",
+    -- dependencies = { "nvim-lua/plenary.nvim" },
+    -- config = function()
+      -- require("neorg").setup {
+        -- load = {
+          -- ["core.defaults"] = {}, -- Loads default behaviour
+          -- ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          -- ["core.dirman"] = { -- Manages Neorg workspaces
+            -- config = {
+              -- workspaces = {
+                -- notes = "~/notes",
+              -- },
+            -- },
+          -- },
+        -- },
+      -- },
+    -- end,
   },
 
   {
@@ -227,10 +236,10 @@ require('lazy').setup({
     'vimwiki/vimwiki',
   },
 
-  {
+  -- {
     -- nvim-neo-tree
-    'nvim-neo-tree/nvim-tree.nvim',
-  },
+    -- 'nvim-neo-tree/nvim-tree.nvim',
+  -- },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -298,6 +307,21 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Remap to escape with 'jj' in insert mode
+vim.keymap.set('i', 'jj', '<ESC>', { silent = true })
+
+-- ESC to undo highlighting
+vim.keymap.set('n', '<ESC>', '<cmd> noh <CR>', { silent = true })
+
+-- save with CTRL+s
+vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { silent = true, desc = 'save file' })
+
+-- navigate within insert mode
+vim.keymap.set('i', '<C-h>', '<Left>', { silent = true, desc = 'move left in insert mode' })
+vim.keymap.set('i', '<C-l>', '<Right>', { silent = true, desc = 'move right in insert mode' })
+vim.keymap.set('i', '<C-j>', '<Down>', { silent = true, desc = 'move down in insert mode' })
+vim.keymap.set('i', '<C-k>', '<Up>', { silent = true, desc = 'move up in insert mode' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
@@ -637,7 +661,6 @@ cmp.setup {
 }
 
 require('colorizer').setup()
-require('nvim-tree').setup({})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
