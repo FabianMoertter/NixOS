@@ -109,9 +109,14 @@ Here is an incomplete list of great Nix/NixOS resources:
 **sops-nix:**
 * https://github.com/Mic92/sops-nix
 
+**deploy-rs:**
+* https://github.com/serokell/deploy-rs
+
 **Blogs and articles:**
 * https://primamateria.github.io/blog/neovim-nix
 
 # Credits
 
 Flake based on standard template: https://github.com/Misterio77/nix-starter-configs.
+
+Neovim config based on kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim.

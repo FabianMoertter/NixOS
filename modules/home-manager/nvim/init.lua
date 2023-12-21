@@ -222,6 +222,16 @@ require('lazy').setup({
     'christoomey/vim-tmux-navigator',
   },
 
+  {
+    -- vimwiki
+    'vimwiki/vimwiki',
+  },
+
+  {
+    -- nvim-neo-tree
+    'nvim-neo-tree/nvim-tree.nvim',
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -627,6 +637,7 @@ cmp.setup {
 }
 
 require('colorizer').setup()
+require('nvim-tree').setup({})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
