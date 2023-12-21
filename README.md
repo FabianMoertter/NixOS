@@ -108,6 +108,9 @@ Here is an incomplete list of great Nix/NixOS resources:
 **sops-nix:**
 * https://github.com/Mic92/sops-nix
 
+**deploy-rs:**
+* https://github.com/serokell/deploy-rs
+
 **Blogs and articles:**
 * https://primamateria.github.io/blog/neovim-nix
 
