@@ -116,6 +116,7 @@
     python3
     tree-sitter
     mendeley
+    ueberzug
     ncdu
     nodejs
     ripgrep

@@ -213,8 +213,13 @@ require('lazy').setup({
   },
 
   {
-    -- Neorg
+    -- Colorizer
     'norcalli/nvim-colorizer.lua',
+  },
+
+  {
+    -- Tmux Navigator
+    'christoomey/vim-tmux-navigator',
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
