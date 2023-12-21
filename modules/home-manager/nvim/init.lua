@@ -223,8 +223,8 @@ require('lazy').setup({
   },
 
   {
-    -- nvim-tree
-    'nvim-tree/nvim-tree.lua',
+    -- nvim-neo-tree
+    'nvim-neo-tree/nvim-tree.nvim',
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
