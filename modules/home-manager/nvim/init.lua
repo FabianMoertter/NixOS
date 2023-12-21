@@ -167,7 +167,11 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim', 
+    opts = {
+      ignore = '^$',
+    },
+  },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -240,6 +244,19 @@ require('lazy').setup({
     -- nvim-neo-tree
     -- 'nvim-neo-tree/nvim-tree.nvim',
   -- },
+
+  {
+    'jackMort/ChatGPT.nvim',
+    lazy = false,
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    config = function()
+      require('chatgpt').setup()
+    end
+  },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
