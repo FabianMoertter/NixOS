@@ -53,6 +53,7 @@
     outputs.homeManagerModules.vim
     outputs.homeManagerModules.lf
     outputs.homeManagerModules.neovim
+    outputs.homeManagerModules.hyprland
   ];
 
   nixpkgs = {
@@ -155,5 +156,8 @@
   #   name = "Bibata-Modern-Ice";
   #   size = 24;
   # };
+
+  # Hyprland
+  wayland.windowManager.hyprland.enable = true;
 
 }

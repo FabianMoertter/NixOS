@@ -14,6 +14,7 @@ in
       # Modules
       outputs.nixosModules.users
       # outputs.nixosModules.nvidia
+      # outputs.nixsoModules.steam
     ];
 
   # Enable Flakes

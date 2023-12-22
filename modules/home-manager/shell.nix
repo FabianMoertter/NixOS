@@ -43,7 +43,7 @@
       #NixOS functions
       update = "sudo nixos-rebuild switch --flake /home/fabian/Projects/NixOS/nixos-config/ .#";
       # update home-manager
-      update-hm = "home-manager switch --flake /home/fabian/Projects/NixOS/nixos-config/";
+      hm-update = "home-manager switch --flake /home/fabian/Projects/NixOS/nixos-config/";
       # list generations
       list-generations = "nix profile history --profile /nix/var/nix/profiles/system";
       # delete generations ( add days as variable )
