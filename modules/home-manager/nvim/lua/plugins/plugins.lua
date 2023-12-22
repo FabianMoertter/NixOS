@@ -1,11 +1,4 @@
 return {
-  'tpope/vim-fugitive', -- Git related plugins
-  'tpope/vim-rhubarb', -- Git related plugins
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  -- TODO check date formats
-  'tpope/vim-speeddating', -- clever incrementing dates
-  'tpope/vim-surround', -- all time favourite plugin
-
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -156,13 +149,6 @@ return {
     opts = {},
   },
 
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', 
-    opts = {
-      ignore = '^$',
-    },
-  },
-
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -215,16 +201,8 @@ return {
     end,
   },
 
-  -- Colorizer
-  'norcalli/nvim-colorizer.lua',
-
   -- TODO comments
   'folke/todo-comments.nvim',
-
-  {
-    -- Tmux Navigator
-    'christoomey/vim-tmux-navigator',
-  },
 
   {
     -- vimwiki
