@@ -1,7 +1,7 @@
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 return {
-  "nvim-telescope/telescope.nvim"
+  "nvim-telescope/telescope.nvim",
   config = function()
     require('telescope').setup({
       defaults = {
@@ -13,4 +13,5 @@ return {
         },
       },
     })
+  end,
 }
