@@ -17,14 +17,14 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure plugins ]]
-require('lazy').setup('plugins')
 -- [[ Setting options ]]
 require 'custom.options'
--- [[ Basic Keymaps ]]
-require 'custom.keymaps'
 -- [[ Utils ]]
 require 'custom.utils'
+-- [[ Configure plugins ]]
+require('lazy').setup('plugins')
+-- [[ Basic Keymaps ]]
+require 'custom.keymaps'
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
