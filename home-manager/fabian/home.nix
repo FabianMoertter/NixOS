@@ -100,6 +100,8 @@
     discord
     eza
     fd
+    ansible
+    terraform
     ctags
     firefox
     fzf
