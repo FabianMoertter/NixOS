@@ -20,6 +20,8 @@ require('lazy').setup({
   'tpope/vim-fugitive', -- Git related plugins
   'tpope/vim-rhubarb', -- Git related plugins
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-speeddating', -- clever incrementing dates
+  'tpope/vim-surround', -- all time favourite plugin
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -206,8 +208,8 @@ require('lazy').setup({
   {
     -- Neorg
     'nvim-neorg/neorg',
-    -- build = ":Neorg sync-parsers",
-    -- dependencies = { "nvim-lua/plenary.nvim" },
+    build = ":Neorg sync-parsers",
+    dependencies = { "nvim-lua/plenary.nvim" },
     -- config = function()
       -- require("neorg").setup {
         -- load = {
@@ -258,6 +260,13 @@ require('lazy').setup({
     end
   },
 
+  {
+    -- harpoon
+    'ThePrimeagen/harpoon',
+  },
+
+  { 'lukas-reineke/indent-blankline.nvim' },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -283,6 +292,7 @@ vim.o.hlsearch = true
 -- Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber= true
+vim.opt.numberwidth = 2
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -291,6 +301,7 @@ vim.o.mouse = 'a'
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
+vim.opt.cursorline = true
 
 -- Enable break indent
 vim.o.breakindent = true

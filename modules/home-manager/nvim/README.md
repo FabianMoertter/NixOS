@@ -1,4 +1,4 @@
-# kickstart.nvim
+# kickstart.nvim (my version)
 
 https://github.com/kdheepak/kickstart.nvim/assets/1813121/f3ff9a2b-c31f-44df-a4fa-8a0d7b17cf7b
 
@@ -177,3 +177,6 @@ Each PR, especially those which increase the line count, should have a descripti
     * [Restructure the configuration](https://github.com/nvim-lua/kickstart.nvim/issues/218)
     * [Reorganize init.lua into a multi-file setup](https://github.com/nvim-lua/kickstart.nvim/pull/473)
 
+### Keymappings
+
+*Telescope*

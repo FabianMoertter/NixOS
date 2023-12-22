@@ -71,16 +71,20 @@ Neovim config is based on kickstart.nvim: https://github.com/nvim-lua/kickstart.
 The config is located under `modules/home-manager/nvim/`
 
 # TODO/Projects
-* move shells to flakes
-* modularize flake
-* install: virtualbox ... 
+* change dev shells to dev flakes
+* modularize system flake more
+* configure virtualization and podman
 * docs (and links to them)
-* nix flake for neovim
-* mini as home-server
+* configure neovim with init.lua
+* nix flake to bootstrap my neovim config
+* setup mini desktop as home-server
 * configure impermanence
-* disable system going to sleep
+* configure deploy-rs
+* disable system going to sleep (don't know why my system does that)
 * SOPS nix for secrets
 * add a windowmanager
+* improve zsh completion
+* automatically backup github repos
 
 # Nix Resources
 
