@@ -1,3 +1,5 @@
+-- [[ Leader Key ]]
+-- Note: Must happen before plugins arte required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -291,22 +293,10 @@ require('lazy').setup({
 
 -- [[ Setting options ]]
 require 'custom.options'
-
 -- [[ Basic Keymaps ]]
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- Remap to escape with 'jj' in insert mode
-vim.keymap.set('i', 'jj', '<ESC>', { silent = true })
-
--- ESC to undo highlighting
-vim.keymap.set('n', '<ESC>', '<cmd> noh <CR>', { silent = true })
+require 'custom.keymaps'
+-- [[ Utils ]]
+-- require 'custom.utils'
 
 -- save with CTRL+s
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { silent = true, desc = 'save file' })
