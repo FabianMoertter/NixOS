@@ -223,6 +223,16 @@ in
    nvtop
    tmux
    vim
+   waybar
+   # (pkgs.waybar.overrideAttrs (oldAttrs: {
+      # mesonFlags = oldAttrs.mesonFlags ++ [ "Dexperimental=true" ];
+   # }))
+   dunst
+   swww
+   wofi
+   # rofi-wayland
+   libnotify
+   mako
    wget
    zsh
   ];
@@ -242,7 +252,7 @@ in
   };
 
   # Still do not know what xdg Portals are
-  # xdg.portal.enable = true;
+  xdg.portal.enable = true;
   # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Steam
@@ -258,7 +268,7 @@ in
     enableNvidiaPatches = true;
     xwayland.enable = true;
   };
-
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
