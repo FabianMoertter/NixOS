@@ -34,6 +34,12 @@ in
     options = "--delete-older-than 30d";
   };
 
+  # Automatic Updates (check how it works first)
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   channel = "https://nixos.org/channels/nixos-23.11";
+  # };
+
   # keep some stuff in the store after gc
   nix.extraOptions = ''
     keep-outputs = true
