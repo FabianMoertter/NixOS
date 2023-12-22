@@ -20,6 +20,7 @@ require('lazy').setup({
   'tpope/vim-fugitive', -- Git related plugins
   'tpope/vim-rhubarb', -- Git related plugins
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  -- TODO check date formats
   'tpope/vim-speeddating', -- clever incrementing dates
   'tpope/vim-surround', -- all time favourite plugin
 
@@ -159,6 +160,11 @@ require('lazy').setup({
     },
   },
 
+  -- {
+  --   -- bufferline
+  --   'bufferline',
+  -- },
+
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -210,27 +216,28 @@ require('lazy').setup({
     'nvim-neorg/neorg',
     build = ":Neorg sync-parsers",
     dependencies = { "nvim-lua/plenary.nvim" },
-    -- config = function()
-      -- require("neorg").setup {
-        -- load = {
-          -- ["core.defaults"] = {}, -- Loads default behaviour
-          -- ["core.concealer"] = {}, -- Adds pretty icons to your documents
-          -- ["core.dirman"] = { -- Manages Neorg workspaces
-            -- config = {
-              -- workspaces = {
-                -- notes = "~/notes",
-              -- },
-            -- },
-          -- },
-        -- },
-      -- },
-    -- end,
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/notes",
+              },
+            },
+          },
+        },
+      }
+    end,
   },
 
-  {
-    -- Colorizer
-    'norcalli/nvim-colorizer.lua',
-  },
+  -- Colorizer
+  'norcalli/nvim-colorizer.lua',
+
+  -- TODO comments
+  'folke/todo-comments.nvim',
 
   {
     -- Tmux Navigator
@@ -283,48 +290,7 @@ require('lazy').setup({
 }, {})
 
 -- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
-
--- Set highlight on search
-vim.o.hlsearch = true
-
--- Make line numbers default
-vim.wo.number = true
-vim.wo.relativenumber= true
-vim.opt.numberwidth = 2
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
-vim.opt.cursorline = true
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+require 'custom.options'
 
 -- [[ Basic Keymaps ]]
 
