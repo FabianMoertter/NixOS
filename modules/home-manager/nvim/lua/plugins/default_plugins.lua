@@ -6,6 +6,5 @@ return {
   -- TODO check date formats
   'tpope/vim-speeddating', -- clever incrementing dates
   'tpope/vim-surround', -- all time favourite plugin
-  'norcalli/nvim-colorizer.lua', -- colorizer
   'christoomey/vim-tmux-navigator', -- Tmux Navigator
 }
