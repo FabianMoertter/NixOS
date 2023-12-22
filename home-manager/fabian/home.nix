@@ -100,6 +100,7 @@
     discord
     eza
     fd
+    ctags
     firefox
     fzf
     glances
