@@ -18,6 +18,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure plugins ]]
+-- require('lazy').setup('plugins')
 require('lazy').setup({
   'tpope/vim-fugitive', -- Git related plugins
   'tpope/vim-rhubarb', -- Git related plugins
@@ -297,17 +298,6 @@ require 'custom.options'
 require 'custom.keymaps'
 -- [[ Utils ]]
 -- require 'custom.utils'
-
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
