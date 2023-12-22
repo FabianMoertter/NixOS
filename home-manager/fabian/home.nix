@@ -84,25 +84,25 @@
     # helix
     # poetry
     # pyright
-    conda
     # rofi
     # sd
     # stow
     # xh
     R
     alacritty
+    ansible
     bat
     brave
     btop
     cargo
     clang
     conda
+    conda
+    ctags
     discord
     eza
     fd
-    ansible
-    terraform
-    ctags
+    fdupes
     firefox
     fzf
     glances
@@ -115,22 +115,23 @@
     libreoffice
     lua
     luarocks
-    perl
-    ruby
-    python3
-    tree-sitter
     mendeley
-    ueberzug
     ncdu
     nodejs
+    perl
+    python3
     ripgrep
     rstudio
+    ruby
     rustc
     skypeforlinux
     slack
     sxhkd
     terminator
+    terraform
     thunderbird
+    tree-sitter
+    ueberzug
     unzip
     vial
     vscode
@@ -140,7 +141,6 @@
     zathura
     zellij
     zig
-    fdupes
     zoxide
   ];
 
