@@ -42,3 +42,12 @@ Run a nix file
 ```
 nix eval --file ./nix.nix
 ```
+
+## Functions
+
+Create a shell binary
+```
+{pkgs}:
+pkgs.writeShellScriptBin "shellScript" ''
+''
+```

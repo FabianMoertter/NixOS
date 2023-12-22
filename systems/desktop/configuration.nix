@@ -110,7 +110,7 @@ in
   };
 
   fonts.packages = with pkgs; [
-    ( nerdfonts.override { fonts = [ "Hack" "FiraCode" ]; })
+    ( nerdfonts.override { fonts = [ "Hack" "FiraCode" "JetBrainsMono" ]; })
   ];
 
   # Enable the X11 windowing system.
