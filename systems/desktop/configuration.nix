@@ -230,8 +230,8 @@ in
     EDITOR = "nvim";
     VISUAL = "nvim";
     # Hyprland
-    # WLR_NO_HARDWARE_CURSORS = "1";
-    # NIXOS_OZONE_WL = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
   };
 
   # Still do not know what xdg Portals are
@@ -246,11 +246,11 @@ in
   };
 
   # Hyprland
-  # programs.hyprland = {
-    # enable = true;
-    # enableNvidiaPatches = true;
-    # xwayland.enable = true;
-  # };
+  programs.hyprland = {
+    enable = true;
+    enableNvidiaPatches = true;
+    xwayland.enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

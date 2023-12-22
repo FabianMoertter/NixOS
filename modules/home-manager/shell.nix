@@ -116,14 +116,14 @@
         setopt sharehistory
         setopt histignorealldups
         setopt sh_nullcmd
-        setopt extendedglob
+        # setopt extendedglob
         setopt interactivecomments
         setopt notify
-        setopt nocaseglob
+        # setopt nocaseglob
         setopt rcexpandparam
         setopt nocheckjobs
         setopt promptsubst
-        setopt numericglobsort
+        # setopt numericglobsort
         setopt nobeep
         setopt appendhistory
         setopt auto_pushd
@@ -141,24 +141,24 @@
         # autoload -Uz compinit
         # compinit
 
-        zstyle ':completions:*' auto-description 'specify: %d'
-        zstyle ':completions:*' completer_expand_complete_correct_approximate
-        zstyle ':completions:*' format 'Completing %d'
-        zstyle ':completions:*' rehash true
-        zstyle ':completions:*' group-name ""
-        zstyle ':completions:*' menu select=2
+        # zstyle ':completions:*' auto-description 'specify: %d'
+        # zstyle ':completions:*' completer_expand_complete_correct_approximate
+        # zstyle ':completions:*' format 'Completing %d'
+        # zstyle ':completions:*' rehash true
+        # zstyle ':completions:*' group-name ""
+        # zstyle ':completions:*' menu select=2
         # eval "$(dircolors -b)"
         # zstyle ':completions:*default' list-colors %{(s.:.)LS_COLORS}
-        zstyle ':completion:*:*:kill:*' list-colors '=(#b) #([0-9]#)*( *[a-z])*=34=31=33'
-        zstyle ':completions:*' list-colors ""
-        zstyle ':completions:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-        zstyle ':completions:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'm:{a-zA-Z}={A-Za-z} l:|=* r:|*'
-        zstyle ':completions*:descriptions' format '%U%F{cyan}%d%f%u'
-        zstyle ':completions:*' select-prompt '%SScrolling active: current selection at %p%s'
-        zstyle ':completions:*' use-comptctl false
-        zstyle ':completions:*' verbose true
-        zstyle ':completions:*:*kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-        zstyle ':completions:*:*kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+        # zstyle ':completion:*:*:kill:*' list-colors '=(#b) #([0-9]#)*( *[a-z])*=34=31=33'
+        # zstyle ':completions:*' list-colors ""
+        # zstyle ':completions:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+        # zstyle ':completions:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'm:{a-zA-Z}={A-Za-z} l:|=* r:|*'
+        # zstyle ':completions*:descriptions' format '%U%F{cyan}%d%f%u'
+        # zstyle ':completions:*' select-prompt '%SScrolling active: current selection at %p%s'
+        # zstyle ':completions:*' use-comptctl false
+        # zstyle ':completions:*' verbose true
+        # zstyle ':completions:*:*kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+        # zstyle ':completions:*:*kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
         # speed up completion
         zstyle ':completion:*' accept-exact '*(N)'
