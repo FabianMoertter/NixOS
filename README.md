@@ -101,6 +101,7 @@ Here is an incomplete list of great Nix/NixOS resources:
 * https://github.com/misterio77/nix-config
 * https://github.com/librephoenix/nixos-config
 * https://github.com/HeinzDev/Hyprland-dotfiles 
+* https://gitlab.com/Zaney/zaneyos
 
 **Videos:**
 * https://www.youtube.com/@vimjoyer
@@ -123,4 +124,4 @@ Here is an incomplete list of great Nix/NixOS resources:
 
 Flake based on standard template: https://github.com/Misterio77/nix-starter-configs.
 
-Neovim config based on kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim.
+[Neovim](Neovim) config based on kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim.
