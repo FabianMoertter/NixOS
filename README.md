@@ -8,16 +8,16 @@ Repo under construction!
 | :--- | :--- | :---
 | lepidoptera | Desktop          | WIP
 | mantodea    | Mini Homelab     | WIP
-| coleoptera  | Laptop 1         | not started
+| coleoptera  | Laptop 1	 | not started
 | hymenoptera | Laptop 2         | WIP
 |             | Raspberry Pi     | not started
 
 # Overview
-| Program                              | Name                                                                                                                           |
-| :---                                 | :---                                                                                                                           |
-| Code Editor                          | Neovim|
-| Shell                                | zsh/bash |
-| Terminal Emulator                    | alacritty |
+| Program           | Name      |
+| :---              | :---      |
+| Code Editor       | Neovim    |
+| Shell             | zsh/bash  |
+| Terminal Emulator | alacritty |
 
 # Project Structure
 
@@ -85,6 +85,8 @@ The config is located under `modules/home-manager/nvim/`
 - [] add a windowmanager
 - [] improve zsh completion
 - [] automatically backup github repos
+- [] use links in README
+- [] add TOC
 
 # Nix Resources
 
@@ -105,6 +107,8 @@ Here is an incomplete list of great Nix/NixOS resources:
 * https://github.com/librephoenix/nixos-config
 * https://github.com/HeinzDev/Hyprland-dotfiles 
 * https://gitlab.com/Zaney/zaneyos
+* https://github.com/sweenu/nixfiles
+* https://github.com/Raagh/dotfiles
 
 **Videos:**
 * https://www.youtube.com/@vimjoyer
