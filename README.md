@@ -81,10 +81,10 @@ The config is located under `modules/home-manager/nvim/`
 * configure impermanence
 * configure deploy-rs
 * disable system going to sleep (don't know why my system does that)
-* SOPS nix for secrets
-* add a windowmanager
-* improve zsh completion
-* automatically backup github repos
+- [] SOPS nix for secrets
+- [] add a windowmanager
+- [] improve zsh completion
+- [] automatically backup github repos
 
 # Nix Resources
 
@@ -94,7 +94,10 @@ Here is an incomplete list of great Nix/NixOS resources:
 * https://nix.dev
 * https://nixos.org/manual/nix/stable/introduction
 
-**NixOS repositories:**
+**Tutorials:**
+* https://zero-to-nix.com/
+
+**NixOS example repositories:**
 * https://github.com/jakehamilton/config
 * https://github.com/sioodmy/dotfiles/tree/main
 * https://github.com/tars0x9752/home
@@ -119,6 +122,12 @@ Here is an incomplete list of great Nix/NixOS resources:
 
 **Blogs and articles:**
 * https://primamateria.github.io/blog/neovim-nix
+
+**Companies:**
+* https://determinate.systems 
+
+**Other:**
+* https://flakehub.com/flakes
 
 # Credits
 

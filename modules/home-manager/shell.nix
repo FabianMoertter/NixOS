@@ -37,6 +37,7 @@
       vimconfig = "cd /home/fabian/Projects/NixOS/nixos-config/modules/home-manager/nvim/";
       wiki = "cd /home/fabian/Projects/Neovim/vimwiki";
       perso = "cd /home/fabian/Projects/personal_repo";
+      ops = "cd /home/fabian/Projects/dev-repo";
       learn = "cd /home/fabian/Projects/learning";
       data = "cd /data/home/fabian/";
 
