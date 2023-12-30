@@ -87,6 +87,7 @@ The config is located under `modules/home-manager/nvim/`
 - [] automatically backup github repos
 - [] use links in README
 - [] add TOC
+- [] change modules to be imported in flake
 
 # Nix Resources
 
@@ -109,6 +110,9 @@ Here is an incomplete list of great Nix/NixOS resources:
 * https://gitlab.com/Zaney/zaneyos
 * https://github.com/sweenu/nixfiles
 * https://github.com/Raagh/dotfiles
+
+**Homelab examples:**
+* https://github.com/badele/nix-homelab
 
 **Videos:**
 * https://www.youtube.com/@vimjoyer
