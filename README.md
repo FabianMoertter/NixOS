@@ -81,13 +81,13 @@ The config is located under `modules/home-manager/nvim/`
 * configure impermanence
 * configure deploy-rs
 * disable system going to sleep (don't know why my system does that)
-- [] SOPS nix for secrets
-- [] add a windowmanager
-- [] improve zsh completion
-- [] automatically backup github repos
-- [] use links in README
-- [] add TOC
-- [] change modules to be imported in flake
+* SOPS nix for secrets
+* add a windowmanager
+* improve zsh completion
+* automatically backup github repos
+* use links in README
+* add TOC
+* change modules to be imported in flake
 
 # Nix Resources
 
@@ -110,6 +110,7 @@ Here is an incomplete list of great Nix/NixOS resources:
 * https://gitlab.com/Zaney/zaneyos
 * https://github.com/sweenu/nixfiles
 * https://github.com/Raagh/dotfiles
+* https://github.com/terlar/nix-config
 
 **Homelab examples:**
 * https://github.com/badele/nix-homelab
