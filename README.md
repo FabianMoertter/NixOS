@@ -91,7 +91,7 @@ The config is located under `modules/home-manager/nvim/`
 
 # Documentation
 
-## [General-nix](./docs/general_nix.md#Nix Commands)
+## [General-nix](<./docs/general_nix.md#Nix Commands>)
 ## [Functions](./docs/general_nix.md#Functions)
 
 # Nix Resources
