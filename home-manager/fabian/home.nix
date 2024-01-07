@@ -97,7 +97,6 @@
     cargo
     clang
     conda
-    conda
     ctags
     discord
     eza
@@ -115,9 +114,10 @@
     libreoffice
     lua
     luarocks
-    mendeley
+    # mendeley
     ncdu
     nodejs
+    nushell
     perl
     python3
     ripgrep

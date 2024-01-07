@@ -89,6 +89,11 @@ The config is located under `modules/home-manager/nvim/`
 * add TOC
 * change modules to be imported in flake
 
+# Documentation
+
+## [General-nix](./docs/general_nix.md#Nix Commands)
+## [Functions](./docs/general_nix.md#Functions)
+
 # Nix Resources
 
 Here is an incomplete list of great Nix/NixOS resources:
