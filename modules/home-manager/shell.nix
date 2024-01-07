@@ -57,6 +57,9 @@
       nvim-astro = "NVIM_APPNAME=AstroNvim nvim";
       nvim-lunar = "NVIM_APPNAME=LunarVim nvim";
       nvim-fabi = "NVIM_APPNAME=FabiVim nvim";
+
+      # lazygit
+      lg = "lazygit";
     };
   in
   {
