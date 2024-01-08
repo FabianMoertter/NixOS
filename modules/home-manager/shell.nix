@@ -70,6 +70,19 @@
       shellAliases = myAliases;
     };
 
+    programs.nushell = {
+      enable = true;
+      configFile.source = ./nushell/config.nu;
+      extraConfig = ''
+      '';
+      shellAliases = myAliases;
+    };
+
+    # check https://nixos.wiki/wiki/nushell
+    # programs.carapace.enable = true; # autocompletion?
+    # programs.carapace.enableNushellIntegration = true;
+
+
     programs.zsh = {
       enable = true;
       autocd = true;
