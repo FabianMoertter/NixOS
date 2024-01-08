@@ -81,13 +81,13 @@
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
     # amberol
     # anki-bin
-    # helix
     # poetry
     # pyright
     # rofi
     # sd
     # stow
     # xh
+    # mendeley
     R
     alacritty
     ansible
@@ -107,6 +107,7 @@
     glances
     gnumake
     google-chrome
+    helix
     julia
     kitty
     lazydocker
@@ -114,7 +115,6 @@
     libreoffice
     lua
     luarocks
-    # mendeley
     ncdu
     nodejs
     nushell

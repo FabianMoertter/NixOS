@@ -72,7 +72,7 @@
 
     programs.nushell = {
       enable = true;
-      configFile.source = ./nushell/config.nu;
+      # configFile.source = ./nushell/config.nu;
       extraConfig = ''
       '';
       shellAliases = myAliases;
