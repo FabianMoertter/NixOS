@@ -99,6 +99,7 @@ Here is an incomplete list of great Nix/NixOS resources:
 * https://github.com/sweenu/nixfiles
 * https://github.com/Raagh/dotfiles
 * https://github.com/terlar/nix-config
+* https://github.com/colemickens/nixcfg
 
 **Homelab examples:**
 * https://github.com/badele/nix-homelab
