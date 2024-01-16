@@ -23,6 +23,8 @@ require 'custom.options'
 require 'custom.utils'
 -- [[ Configure plugins ]]
 require('lazy').setup('plugins')
+-- [[ Additional plugin setup ]]
+-- require(...)
 -- [[ Basic Keymaps ]]
 require 'custom.keymaps'
 

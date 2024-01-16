@@ -229,12 +229,14 @@ in
    # }))
    dunst
    swww
+   waypaper
    wofi
    # rofi-wayland
    libnotify
    mako
    wget
    zsh
+   haruna
   ];
 
   environment.sessionVariables = {
@@ -243,12 +245,25 @@ in
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
-    #
+
+    # XDG_CURRENT_DESKTOP = "Hyprland";
+    # XDG_SESSION_TYPE = "wayland";
+    # XDG_SESSION_DESKTOP = "Hyprland";
+    # GDK_BACKEND = "wayland";
+
+    # Editor
     EDITOR = "nvim";
     VISUAL = "nvim";
+
     # Hyprland
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
+
+    # GO
+    GOPATH = "$HOME/.config/";
+
+    # Allow unfree packages
+    NIXPKGS_ALLOW_UNFREE = "1";
   };
 
   # Still do not know what xdg Portals are

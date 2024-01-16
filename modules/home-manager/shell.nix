@@ -154,6 +154,7 @@
         alias -s csv=nvim
         alias -s py=nvim
         alias -s nix=nvim
+        alias -s pdf=zathura
 
         # autoload -Uz compinit
         # compinit

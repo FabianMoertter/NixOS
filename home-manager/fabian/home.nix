@@ -80,9 +80,11 @@
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
     # amberol
+    # vlc
     # anki-bin
     # poetry
     # pyright
+    # haruna
     # rofi
     # sd
     # stow

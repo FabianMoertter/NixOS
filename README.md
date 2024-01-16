@@ -79,14 +79,16 @@ The config is located under `modules/home-manager/nvim/`
 
 # Nix Resources
 
-Here is an incomplete list of great Nix/NixOS resources:
+Here is an incomplete list of great Nix/Nixpkgs/NixOS resources:
 
 **Documentation:**
 * https://nix.dev
 * https://nixos.org/manual/nix/stable/introduction
+* https://nixos.wiki/wiki/Flakes
 
 **Tutorials:**
 * https://zero-to-nix.com/
+* https://github.com/brainrake/nixos-tutorial
 
 **NixOS example repositories:**
 * https://github.com/jakehamilton/config
@@ -132,3 +134,4 @@ Here is an incomplete list of great Nix/NixOS resources:
 Flake based on standard template: https://github.com/Misterio77/nix-starter-configs.
 
 [Neovim](Neovim) config based on kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim.
+
