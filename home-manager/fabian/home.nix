@@ -53,7 +53,7 @@
     outputs.homeManagerModules.vim
     outputs.homeManagerModules.lf
     outputs.homeManagerModules.neovim
-    # outputs.homeManagerModules.hyprland
+    outputs.homeManagerModules.hyprland
   ];
 
   nixpkgs = {

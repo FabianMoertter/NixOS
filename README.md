@@ -124,6 +124,7 @@ Here is an incomplete list of great Nix/Nixpkgs/NixOS resources:
 
 **Blogs and articles:**
 * https://primamateria.github.io/blog/neovim-nix
+* https://nixos-and-flakes.thiscute.world/nixos-with-flakes/introduction-to-flakes#nix-flakes-and-classic-nix
 
 **Companies:**
 * https://determinate.systems 

@@ -200,8 +200,6 @@ in
     description = "Fabian";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" "docker" "vboxuser" ];
-    # moved to home-manager
-    # only add packages related to desktop environment
     packages = with pkgs; [
       # wofi
     ];
