@@ -54,7 +54,7 @@ nix shell nixpkgs#home-manager
 ```
 Then run home-manager with:
 ```
-home-manager switch --flake .#<user>@<system>
+home-manager switch --flake .#<user>@<hostname>
 ```
 If you get an error like this:
 "Could not find suitable profile directory, tried .../profiles and .../user"
