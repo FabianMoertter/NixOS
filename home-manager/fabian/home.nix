@@ -105,7 +105,6 @@
     fd
     fdupes
     firefox
-    fzf
     glances
     gnumake
     google-chrome

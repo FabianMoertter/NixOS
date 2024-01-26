@@ -2,11 +2,11 @@
 {
   home = {
 
-    sessionVariables = {
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "Hyprland";
-    };
+    # sessionVariables = {
+    #   XDG_CURRENT_DESKTOP = "Hyprland";
+    #   XDG_SESSION_DESKTOP = "Hyprland";
+    #   XDG_SESSION_TYPE = "Hyprland";
+    # };
 
     packages = with pkgs; [
       waybar
@@ -19,7 +19,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     # systemdIntegration = true;
-    enableNvidiaPatches = true;
+    # enableNvidiaPatches = true;
 
     extraConfig = ''
     '';
