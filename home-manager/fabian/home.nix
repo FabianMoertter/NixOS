@@ -93,6 +93,8 @@
     R
     alacritty
     ansible
+    mpv
+    mpvpaper
     bat
     brave
     btop
