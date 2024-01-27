@@ -10,6 +10,7 @@
 
     packages = with pkgs; [
       waybar
+      wofi
       swww
       networkmanagerapplet
     ];
@@ -42,6 +43,7 @@
 
       bind =
         [
+	  "$mod, M, exit,"
           "$mod, A, exec, alacritty"
           "$mod, F, exec, firefox"
           "$mod, S, exec, wofi -show drun -show-icons"

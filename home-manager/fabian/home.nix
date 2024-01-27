@@ -93,8 +93,6 @@
     R
     alacritty
     ansible
-    mpv
-    mpvpaper
     bat
     brave
     btop
@@ -118,6 +116,9 @@
     libreoffice
     lua
     luarocks
+    mpd
+    mpv
+    mpvpaper
     ncdu
     nodejs
     nushell
