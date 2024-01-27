@@ -15,7 +15,7 @@
           x = 12;
           y = 12;
         };
-        opacity = 0.0;
+        opacity = 1.0;
       };
       env = {
         TERM = "xterm-256color";

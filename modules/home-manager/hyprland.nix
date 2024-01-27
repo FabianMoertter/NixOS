@@ -17,6 +17,7 @@
       libnotify
       swww
       networkmanagerapplet
+      grim
     ];
 
   };

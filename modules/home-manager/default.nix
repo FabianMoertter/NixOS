@@ -4,6 +4,7 @@
   hyprland = import ./hyprland.nix;
   lf = import ./lf.nix;
   neovim = import ./nvim/neovim.nix;
+  qt = import ./qt.nix;
   shell = import ./shell.nix;
   steam = import ./steam.nix;
   tmux = import ./tmux.nix;

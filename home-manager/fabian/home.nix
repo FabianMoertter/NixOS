@@ -45,15 +45,16 @@
   };
 
   imports = [
-    outputs.homeManagerModules.zathura
-    outputs.homeManagerModules.shell
     outputs.homeManagerModules.alacritty
     outputs.homeManagerModules.git
-    outputs.homeManagerModules.tmux
-    outputs.homeManagerModules.vim
+    outputs.homeManagerModules.hyprland
     outputs.homeManagerModules.lf
     outputs.homeManagerModules.neovim
-    outputs.homeManagerModules.hyprland
+    outputs.homeManagerModules.qt
+    outputs.homeManagerModules.shell
+    outputs.homeManagerModules.tmux
+    outputs.homeManagerModules.vim
+    outputs.homeManagerModules.zathura
   ];
 
   nixpkgs = {
@@ -160,17 +161,11 @@
     };
   };
 
-  # home.pointerCursor = {
-  #   gtk.enable = true;
-  #   package = pkgs.bibata-cursors;
-  #   name = "Bibata-Modern-Ice";
-  #   size = 24;
-  # };
-
-  # Hyprland
-  # wayland.windowManager.hyprland = {
-    # enable = true;
-    # xwayland.enable = true;
-  # };
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
+    size = 24;
+  };
 
 }
