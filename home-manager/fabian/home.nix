@@ -91,6 +91,7 @@
     # xh
     # mendeley
     R
+    gifsicle
     alacritty
     ansible
     bat
@@ -139,6 +140,7 @@
     unzip
     vial
     vscode
+    ffmpeg
     wezterm
     xclip
     youtube-dl
@@ -146,6 +148,7 @@
     zellij
     zig
     zoxide
+    wlroots
   ];
 
   # Default Applications
@@ -162,6 +165,12 @@
   #   package = pkgs.bibata-cursors;
   #   name = "Bibata-Modern-Ice";
   #   size = 24;
+  # };
+
+  # Hyprland
+  # wayland.windowManager.hyprland = {
+    # enable = true;
+    # xwayland.enable = true;
   # };
 
 }

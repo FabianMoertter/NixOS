@@ -15,11 +15,13 @@
           x = 12;
           y = 12;
         };
+        opacity = 0.0;
       };
       env = {
         TERM = "xterm-256color";
       };
       selection.save_to_clipboard = true;
+
       # env = "alacritty"; 256 color in tmux
     };
   };

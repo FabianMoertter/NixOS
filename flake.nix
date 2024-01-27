@@ -74,7 +74,7 @@
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [
-            outputs.nixosModules.bspwm
+            # outputs.nixosModules.bspwm
             ./systems/desktop/configuration.nix
           ];
         };

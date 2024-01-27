@@ -10,7 +10,11 @@
 
     packages = with pkgs; [
       waybar
-      wofi
+      # wofi
+      rofi-wayland
+      mako
+      # swaync
+      libnotify
       swww
       networkmanagerapplet
     ];
@@ -46,7 +50,7 @@
 	  "$mod, M, exit,"
           "$mod, A, exec, alacritty"
           "$mod, F, exec, firefox"
-          "$mod, S, exec, wofi -show drun -show-icons"
+          "$mod, S, exec, rofi -show drun -show-icons"
         ]
         ++ (
           # workspaces
