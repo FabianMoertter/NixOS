@@ -4,7 +4,6 @@
   imports =
     [
       ./hardware-configuration.nix
-      outputs.nixosModules.users
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -90,7 +89,6 @@
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
-  hardware.bluetooth.enable = true;
   security.rtkit.enable = true;
   # services.pipewire = {
     # enable = true;

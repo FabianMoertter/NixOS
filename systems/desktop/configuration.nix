@@ -42,13 +42,6 @@ in
     keep-derivations = true
   '';
 
-  # Bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-  services.blueman.enable = true;
-
   # QMK
   hardware.keyboard.qmk.enable = true;
 
@@ -145,7 +138,6 @@ in
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" "docker" "vboxuser" ];
     packages = with pkgs; [
-      # wofi
     ];
     # add keys here
     openssh.authorizedKeys.keys = [

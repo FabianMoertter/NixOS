@@ -42,7 +42,7 @@
 
       nixosConfigurations = {
 
-        # mini
+        # mini (home server)
         mantodea = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs outputs; };
@@ -56,6 +56,8 @@
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [
+            outputs.nixosModules.bluetooth
+            outputs.nixosModules.gnome
             outputs.nixosModules.users
             ./systems/laptop-2/configuration.nix
                 ];
@@ -75,6 +77,7 @@
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [
+            outputs.nixosModules.bluetooth
             outputs.nixosModules.gnome
             outputs.nixosModules.nvidia
             outputs.nixosModules.steam
