@@ -10,11 +10,6 @@ in
       ./hardware-configuration.nix
       # Impermanence
       # "${impermanence}/nixos.nix"
-
-      # Modules
-      outputs.nixosModules.users
-      # outputs.nixosModules.nvidia
-      # outputs.nixsoModules.steam
     ];
 
   # Enable Flakes
@@ -46,25 +41,6 @@ in
     keep-outputs = true
     keep-derivations = true
   '';
-
-  # Nvidia settings
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-
-  # Nvidia settings
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  # Nvidia settings
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-  };
 
   # Bluetooth
   hardware.bluetooth = {
@@ -119,32 +95,6 @@ in
   fonts.packages = with pkgs; [
     ( nerdfonts.override { fonts = [ "Hack" "FiraCode" "JetBrainsMono" ]; })
   ];
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.xautolock.time = 30;
-
-  # Exclude GNOME Packages
-  environment.gnome.excludePackages = ( with pkgs; [
-    gnome-tour
-    gnome-photos
-  ]) ++ ( with pkgs.gnome; [
-    geary
-    hitori
-    atomix
-    epiphany
-    cheese
-    gnome-music
-    gnome-terminal
-    gnome-characters
-    tali
-    totem
-    iagno
-  ]);
 
   # Docker & Podman
   virtualisation = {
@@ -261,13 +211,6 @@ in
   # Still do not know what xdg Portals are
   xdg.portal.enable = true;
   # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
-  # Steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
 
   # Hyprland
   programs.hyprland = {

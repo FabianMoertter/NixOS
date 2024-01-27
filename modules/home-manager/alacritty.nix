@@ -21,8 +21,6 @@
         TERM = "xterm-256color";
       };
       selection.save_to_clipboard = true;
-
-      # env = "alacritty"; 256 color in tmux
     };
   };
 }

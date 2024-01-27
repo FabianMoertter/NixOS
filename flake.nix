@@ -56,6 +56,7 @@
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [
+            outputs.nixosModules.users
             ./systems/laptop-2/configuration.nix
                 ];
         };
@@ -74,7 +75,10 @@
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [
-            # outputs.nixosModules.bspwm
+            outputs.nixosModules.gnome
+            outputs.nixosModules.nvidia
+            outputs.nixosModules.steam
+            outputs.nixosModules.users
             ./systems/desktop/configuration.nix
           ];
         };
