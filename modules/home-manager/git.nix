@@ -13,6 +13,7 @@
     };
     ignores = [
       "*.swp"
+      "*.direnv"
     ];
     extraConfig = {
       init.defaultBranch = "main";
