@@ -47,7 +47,6 @@
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [
-            outputs.nixosModules.bspwm
             ./systems/mini/configuration.nix
           ];
         };
@@ -69,12 +68,13 @@
             ./systems/laptop/configuration.nix
           ];
         };
-	
+
         # fabian-desktop ( lepidoptera )
         lepidoptera = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [
+            outputs.nixosModules.bspwm
             ./systems/desktop/configuration.nix
           ];
         };
