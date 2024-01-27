@@ -104,6 +104,7 @@ Here is an incomplete list of great Nix/Nixpkgs/NixOS resources:
 * https://github.com/colemickens/nixcfg
 * https://github.com/IogaMaster/dotfiles
 * https://github.com/hlissner/dotfiles
+* https://github.com/redyf/nixdots
 
 **Homelab examples:**
 * https://github.com/badele/nix-homelab

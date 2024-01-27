@@ -76,7 +76,7 @@ in
   # QMK
   hardware.keyboard.qmk.enable = true;
 
-  # Bootloader.
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -128,12 +128,9 @@ in
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.xautolock.time = 30;
 
-  # Enable BSPWM
-  services.xserver.windowManager.bspwm.enable = true;
-
   # Exclude GNOME Packages
   environment.gnome.excludePackages = ( with pkgs; [
-    gnome-tour 
+    gnome-tour
     gnome-photos
   ]) ++ ( with pkgs.gnome; [
     geary
@@ -148,9 +145,6 @@ in
     totem
     iagno
   ]);
-
-  # BSPWM
-  # services.xserver.windowManager.bspwm.enable = true;
 
   # Docker & Podman
   virtualisation = {
