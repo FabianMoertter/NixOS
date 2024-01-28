@@ -133,6 +133,7 @@
     skypeforlinux
     slack
     sxhkd
+    swaylock-effects
     terminator
     terraform
     thunderbird
