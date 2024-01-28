@@ -15,6 +15,8 @@
 
     packages = with pkgs; [
       waybar
+      pywal
+      hyprpicker
       # wofi
       rofi-wayland
       mako
