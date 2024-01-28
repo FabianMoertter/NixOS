@@ -14,9 +14,10 @@
       pywal
       hyprpicker
       # wofi
+      font-awesome
       rofi-wayland
       mako
-      # swaync
+      swaynotificationcenter
       libnotify
       swww
       networkmanagerapplet
