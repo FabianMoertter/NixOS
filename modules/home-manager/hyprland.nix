@@ -1,10 +1,6 @@
 { config, lib, pkgs, ... }:
 {
 
-  # pkgs.hyprland.enable = true;
-  # nvidiaPatches = true;
-  # xwayland.enable = true;
-
   home = {
 
     # sessionVariables = {
@@ -49,8 +45,11 @@
         kb_options = "caps:escape";
       };
 
-      exec-once = {
-      };
+      exec-once = [
+        "killall waybar"
+        "sleep 0.5"
+        "waybar -c $HOME/.config/waybar/config"
+      ];
 
       decoration = {
         rounding = 10;
