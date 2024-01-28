@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
 
   # pkgs.hyprland.enable = true;
@@ -32,8 +32,13 @@
     # systemdIntegration = true;
     # enableNvidiaPatches = true;
 
+    # TODO get rid of absolute paths
     extraConfig = ''
+      exec-once = swww init
+      exec-once = swww img -o 'DP-1' /home/fabian/Pictures/Wallpaper/tiger-left.jpg
+      exec-once = swww img -o 'DP-2' /home/fabian/Pictures/Wallpaper/tiger-right.jpg
     '';
+
 
     settings = {
 

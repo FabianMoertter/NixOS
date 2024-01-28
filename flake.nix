@@ -60,7 +60,7 @@
             outputs.nixosModules.gnome
             outputs.nixosModules.users
             ./systems/laptop-2/configuration.nix
-                ];
+          ];
         };
 
         # fabian-laptop
