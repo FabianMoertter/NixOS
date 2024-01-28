@@ -29,6 +29,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+      xwayland.enable = true;
     # systemdIntegration = true;
     # enableNvidiaPatches = true;
 
@@ -39,8 +40,15 @@
       exec-once = swww img -o DP-2 /home/fabian/Pictures/Wallpaper/tiger-right.jpg
     '';
 
-
     settings = {
+
+      input = {
+        kb_layout = "us";
+        kb_options = "caps:escape";
+      };
+
+      exec-once = {
+      };
 
       decoration = {
         rounding = 10;
@@ -78,8 +86,8 @@
       ];
 
       bind = [
+          "$mod, Return, exec, alacritty"
           "$mod, M, exit,"
-          "$mod, A, exec, alacritty"
           "$mod, F, exec, firefox"
           "$mod, S, exec, rofi -show drun -show-icons"
       ]
