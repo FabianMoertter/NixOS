@@ -22,6 +22,7 @@
     gnome-music
     gnome-terminal
     gnome-characters
+    gnome-software
     tali
     totem
     iagno

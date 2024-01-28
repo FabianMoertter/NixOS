@@ -53,8 +53,13 @@
 
       decoration = {
         rounding = 10;
+        drop_shadow = false;
         shadow_offset = "0 5";
         "col.shadow" = "rgba(00000099)";
+        blur = {
+          enabled = true;
+          size = 5;
+        };
       };
 
       animations = {
@@ -91,6 +96,12 @@
           "$mod, M, exit,"
           "$mod, F, exec, firefox"
           "$mod, S, exec, rofi -show drun -show-icons"
+          "$mod, 1, focusmonitor, DP-1"
+          "$mod, 2, focusmonitor, DP-2"
+          "$mod, 3, focusmonitor, DP-1"
+          "$mod, 4, focusmonitor, DP-2"
+          "$mod, 5, focusmonitor, DP-1"
+          "$mod, 6, focusmonitor, DP-2"
       ]
       ++ (
           # workspaces
