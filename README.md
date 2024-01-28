@@ -98,6 +98,7 @@ Here is an incomplete list of great Nix/Nixpkgs/NixOS resources:
 * https://github.com/librephoenix/nixos-config
 * https://github.com/HeinzDev/Hyprland-dotfiles 
 * https://gitlab.com/Zaney/zaneyos
+  * for Hyprland config
 * https://github.com/sweenu/nixfiles
 * https://github.com/Raagh/dotfiles
 * https://github.com/terlar/nix-config
