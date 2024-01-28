@@ -43,8 +43,29 @@
     settings = {
 
       decoration = {
+        rounding = 10;
         shadow_offset = "0 5";
         "col.shadow" = "rgba(00000099)";
+      };
+
+      animations = {
+        enabled = "yes";
+        bezier = [
+          "wind, 0.05, 0.9, 0.1, 1.05"
+          "winIn, 0.1, 1.1, 0.1, 1.1"
+          "winOut, 0.3, -0.3, 0, 1"
+          "liner, 1, 1, 1, 1"
+        ];
+        animation = [
+          "windows, 1, 6, wind, slide"
+          "windowsIn, 1, 6, winIn, slide"
+          "windowsOut, 1, 5, winOut, slide"
+          "windowsMove, 1, 5, wind, slide"
+          "border, 1, 1, liner"
+          "borderangle, 1, 30, liner, loop"
+          "fade, 1, 10, default"
+          "workspaces, 1, 5, wind"
+        ];
       };
 
       "$mod" = "SUPER";
@@ -56,14 +77,13 @@
       "$mod ALT, mouse:272, resizewindow"
       ];
 
-      bind =
-        [
-	  "$mod, M, exit,"
+      bind = [
+          "$mod, M, exit,"
           "$mod, A, exec, alacritty"
           "$mod, F, exec, firefox"
           "$mod, S, exec, rofi -show drun -show-icons"
-        ]
-        ++ (
+      ]
+      ++ (
           # workspaces
           # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
           builtins.concatLists (builtins.genList (
@@ -78,7 +98,7 @@
               ]
             )
             10)
-        );
+      );
     };
 
   };

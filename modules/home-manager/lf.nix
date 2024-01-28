@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.lf = {
     enable = true;
@@ -15,6 +15,8 @@
     };
 
     keybindings = {
+      ee = "editor-open";
+      gh = "cd";
     };
 
     extraConfig = "";
