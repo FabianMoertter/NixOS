@@ -47,6 +47,7 @@
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [
+            # outputs.nixosModules.homeServer
             ./systems/mini/configuration.nix
           ];
         };
