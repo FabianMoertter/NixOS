@@ -48,6 +48,7 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             # outputs.nixosModules.homeServer
+            outputs.nixosModules.mainUser
             ./systems/mini/configuration.nix
           ];
         };
@@ -60,6 +61,7 @@
             outputs.nixosModules.bluetooth
             outputs.nixosModules.gnome
             outputs.nixosModules.users
+            outputs.nixosModules.mainUser
             ./systems/laptop-2/configuration.nix
           ];
         };
@@ -69,6 +71,7 @@
           inherit system;
           specialArgs = { inherit inputs outputs; };
           modules = [
+            outputs.nixosModules.mainUser
             ./systems/laptop/configuration.nix
           ];
         };
@@ -83,6 +86,7 @@
             outputs.nixosModules.nvidia
             outputs.nixosModules.steam
             outputs.nixosModules.users
+            outputs.nixosModules.mainUser
             ./systems/desktop/configuration.nix
           ];
         };

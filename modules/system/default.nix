@@ -6,4 +6,5 @@
   hyprland = import ./hyprland.nix;
   steam = import ./steam.nix;
   users = import ./users.nix;
+  mainUser = import ./mainUser.nix;
 }
