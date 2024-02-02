@@ -234,6 +234,17 @@ return {
 
   { 'lukas-reineke/indent-blankline.nvim' },
 
+  {
+    'LunarVim/bigfile.nvim',
+    event = 'BufReadPre',
+    opts = {
+      filesize = 2,
+    },
+    config = function (_, opts)
+      require('bigfile').setup(opts)
+    end
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
