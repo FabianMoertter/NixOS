@@ -87,6 +87,7 @@
             outputs.nixosModules.steam
             outputs.nixosModules.users
             outputs.nixosModules.mainUser
+            outputs.nixosModules.DNS
             ./systems/desktop/configuration.nix
           ];
         };

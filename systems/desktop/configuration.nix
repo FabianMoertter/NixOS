@@ -205,12 +205,6 @@ in
   # Caching service (should speedup some things)
   services.nscd.enable = true;
 
-  # Postgresql
-  # config.services.postgresql = {
-    # enable = true;
-    # ensureDatabases = [ "mydatabases" ];
-  # };
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
