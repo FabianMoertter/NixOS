@@ -117,7 +117,7 @@
     gnumake
     google-chrome
     helix
-    julia
+    # julia
     kitty
     lazydocker
     lazygit
@@ -138,9 +138,9 @@
     rustc
     skypeforlinux
     slack
-    sxhkd
+    # sxhkd
     # swaylock-effects
-    terminator
+    # terminator
     terraform
     thunderbird
     tree-sitter
@@ -149,12 +149,12 @@
     vial
     vscode
     ffmpeg
-    wezterm
+    # wezterm
     xclip
     youtube-dl
     zathura
-    zellij
-    zig
+    # zellij
+    # zig
     zoxide
     wlroots
   ];
