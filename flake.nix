@@ -23,6 +23,7 @@
 
     let
       theme = "dracula";
+      # theme = "catppuccin-mocha";
       inherit (self) outputs;
       system = "x86_64-linux";
       user = "fabian";
@@ -72,7 +73,7 @@
         # fabian-laptop
         coleoptera = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs outputs theme; };
           modules = [
             outputs.nixosModules.mainUser
             ./systems/laptop/configuration.nix
@@ -82,7 +83,7 @@
         # fabian-desktop ( lepidoptera )
         lepidoptera = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs outputs theme; };
           modules = [
             outputs.nixosModules.bluetooth
             outputs.nixosModules.gnome
@@ -101,7 +102,7 @@
 
         "fabian@hymenoptera" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs theme; };
           modules = [
             ./home-manager/fabian/home.nix
           ];
@@ -109,7 +110,7 @@
 
         "fabian@lepidoptera" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs theme; };
           modules = [
             ./home-manager/fabian/home.nix
           ];
@@ -117,7 +118,7 @@
 
         "fabian@coleoptera" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs theme; };
           modules = [
             ./home-manager/fabian/home.nix
           ];

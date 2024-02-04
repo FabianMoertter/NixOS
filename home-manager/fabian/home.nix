@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, ... }:
+{ inputs, outputs, lib, config, pkgs, theme, ... }:
 {
   home = {
     username = "fabian";
@@ -70,7 +70,7 @@
   fonts.fontconfig.enable = true;
 
   # colorScheme = inputs.nix-colors.colorSchemes.catppuccin-latte;
-  colorScheme = inputs.nix-colors.colorSchemes.dracula;
+  colorScheme = inputs.nix-colors.colorSchemes.${theme};
 
   programs = with pkgs; {
     home-manager.enable = true;
