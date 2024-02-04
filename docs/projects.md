@@ -16,3 +16,4 @@ This is a list of projects I have for my NixOS configuration:
 * **deploy-rs**: description
 * disable system going to sleep (don't know why my system does that)
 * change modules to be imported in flake
+* manage colors with nix-colors

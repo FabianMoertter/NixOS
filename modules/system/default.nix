@@ -1,5 +1,5 @@
 {
-  DNS = import ./DNS/DNS.nix;
+  DNS = import ./DNS/DNS.nix; # does not work
   bluetooth = import ./bluetooth.nix;
   bspwm = import ./bspwm.nix;
   gnome = import ./gnome.nix;

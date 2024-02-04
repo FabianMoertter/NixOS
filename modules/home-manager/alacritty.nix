@@ -1,8 +1,12 @@
-{ pkgs, config, ... }:
+{ pkgs, config, nix-colors, ... }:
 {
   programs.alacritty = {
     enable = true;
     settings = {
+      colors = {
+        foreground = "#${config.colorScheme.palette.base05}";
+        background = "#${config.colorScheme.palette.base00}";
+      };
       font = {
         size = 14.0;
         # normal = {

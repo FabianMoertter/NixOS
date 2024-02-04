@@ -1,8 +1,10 @@
 {
   alacritty = import ./alacritty.nix;
+  mpd = import ./mpd.nix;
   git = import ./git.nix;
   hyprland = import ./hyprland.nix;
   lf = import ./lf.nix;
+  kitty = import ./kitty/kitty.nix;
   neovim = import ./nvim/neovim.nix;
   qt = import ./qt.nix;
   shell = import ./shell.nix;

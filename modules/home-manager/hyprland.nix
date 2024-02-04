@@ -10,18 +10,21 @@
     # };
 
     packages = with pkgs; [
-      waybar
-      pywal
-      hyprpicker
-      # wofi
-      font-awesome
-      rofi-wayland
-      mako
-      swaynotificationcenter
       libnotify
-      swww
-      networkmanagerapplet
+      mako
+      # pywal
+      # wofi
+      cava
+      font-awesome
       grim
+      hyprpicker
+      networkmanagerapplet
+      rofi-wayland
+      slurp
+      swaylock
+      swaynotificationcenter
+      swww
+      waybar
     ];
 
   };
@@ -52,14 +55,27 @@
         "waybar -c $HOME/.config/waybar/config"
       ];
 
+      misc = {
+        enable_swallow = true;
+      };
+
+      xwayland = {};
+
       decoration = {
         rounding = 10;
+        inactive_opacity = 0.7;
+        active_opacity = 1.00;
+        fullscreen_opacity = 1.00;
         drop_shadow = false;
         shadow_offset = "0 5";
         "col.shadow" = "rgba(00000099)";
         blur = {
           enabled = true;
           size = 5;
+          ignore_opacity = true;
+          brightness = 1.0;
+          contrast = 1.0;
+          xray = true;
         };
       };
 
@@ -97,6 +113,9 @@
           "$mod, M, exit,"
           "$mod, F, exec, firefox"
           "$mod, S, exec, rofi -show drun -show-icons"
+          "$mod, G, togglegroup"
+          "$mod, Q, killactive"
+          "$mod, A, fullscreen"
           "$mod, 1, focusmonitor, DP-1"
           "$mod, 2, focusmonitor, DP-2"
           "$mod, 3, focusmonitor, DP-1"

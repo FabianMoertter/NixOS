@@ -45,7 +45,9 @@
   };
 
   imports = [
+    inputs.nix-colors.homeManagerModules.default
     outputs.homeManagerModules.alacritty
+    outputs.homeManagerModules.kitty
     outputs.homeManagerModules.git
     outputs.homeManagerModules.hyprland
     outputs.homeManagerModules.lf
@@ -66,6 +68,9 @@
   };
 
   fonts.fontconfig.enable = true;
+
+  # colorScheme = inputs.nix-colors.colorSchemes.catppuccin-latte;
+  colorScheme = inputs.nix-colors.colorSchemes.dracula;
 
   programs = with pkgs; {
     home-manager.enable = true;
@@ -92,6 +97,7 @@
     # xh
     # mendeley
     R
+    jq
     gifsicle
     alacritty
     ansible
@@ -133,7 +139,7 @@
     skypeforlinux
     slack
     sxhkd
-    swaylock-effects
+    # swaylock-effects
     terminator
     terraform
     thunderbird

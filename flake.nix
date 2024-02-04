@@ -10,6 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-colors.url = "github:misterio77/nix-colors";
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,7 +19,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sops-nix, nix-colors, ... }@inputs:
 
     let
       inherit (self) outputs;
