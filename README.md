@@ -20,8 +20,18 @@ Repo under construction!
 | Terminal Emulator | alacritty |
 
 # Project Structure
-
-TODO
+    .
+    ├── systems            # System configuration
+    ├── home-manager       # Home configuration
+    ├── docs               # Documentation files
+    ├── modules            # Modules for system and home configuration
+    ├── shells             # Development shells (independent of this NixOS configuration)
+    ├── ...
+    ├── LICENSE
+    ├── flake.nix
+    ├── flake.lock
+    ├── shell.nix
+    └── README.md
 
 # Installation
 **Warning: Do not follow this blindly, it will probably not work for you!**
