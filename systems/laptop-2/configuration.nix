@@ -106,56 +106,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.fabian = {
-    isNormalUser = true;
-    home = "/home/fabian";
-    shell = pkgs.zsh;
-    description = "Fabian";
-    extraGroups = [ "networkmanager" "wheel" "vboxusers" ];
-    packages = with pkgs; [
-      dunst
-      #dust
-      # R
-      alacritty
-      # anki-bin
-      bat
-      # cargo
-      # slack
-      # mendeley
-      # discord
-      # dog
-      # duf
-      eza
-      # fd
-      # figlet
-      # clang
-      firefox
-      fzf
-      # google-chrome
-      # julia
-      lazygit
-      lf
-      libreoffice
-      # nodejs
-      nvtop
-      ripgrep
-      # rofi
-      # rustc
-      # sd
-      skypeforlinux
-      # stow
-      # terminator
-      thunderbird
-      # xclip
-      # xh
-      # zathura
-      # zellij
-      # zoxide
-      zsh
-    ];
-  };
-
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -166,10 +116,6 @@
     wget
     gnumake
   ];
-
-  environment.shells = with pkgs; [ zsh ];
-
-  programs.zsh.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
