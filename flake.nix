@@ -22,6 +22,7 @@
   outputs = { self, nixpkgs, home-manager, sops-nix, nix-colors, ... }@inputs:
 
     let
+      theme = "dracula";
       inherit (self) outputs;
       system = "x86_64-linux";
       user = "fabian";
