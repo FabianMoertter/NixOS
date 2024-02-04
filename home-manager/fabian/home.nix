@@ -86,19 +86,24 @@
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
     # amberol
-    # vlc
     # anki-bin
+    # haruna
+    # julia
+    # mendeley
     # poetry
     # pyright
-    # haruna
     # rofi
     # sd
     # stow
+    # swaylock-effects
+    # sxhkd
+    # terminator
+    # vlc
+    # wezterm
     # xh
-    # mendeley
+    # zellij
+    # zig
     R
-    jq
-    gifsicle
     alacritty
     ansible
     bat
@@ -112,12 +117,14 @@
     eza
     fd
     fdupes
+    ffmpeg
     firefox
+    gifsicle
     glances
     gnumake
     google-chrome
     helix
-    # julia
+    jq
     kitty
     lazydocker
     lazygit
@@ -138,9 +145,6 @@
     rustc
     skypeforlinux
     slack
-    # sxhkd
-    # swaylock-effects
-    # terminator
     terraform
     thunderbird
     tree-sitter
@@ -148,15 +152,11 @@
     unzip
     vial
     vscode
-    ffmpeg
-    # wezterm
+    wlroots
     xclip
     youtube-dl
     zathura
-    # zellij
-    # zig
     zoxide
-    wlroots
   ];
 
   # Default Applications
