@@ -2,6 +2,7 @@
   DNS = import ./DNS/DNS.nix; # does not work
   bluetooth = import ./bluetooth.nix;
   bspwm = import ./bspwm.nix;
+  homeServer = import ./homeServer.nix;
   gnome = import ./gnome.nix;
   hyprland = import ./hyprland.nix;
   mainUser = import ./mainUser.nix;

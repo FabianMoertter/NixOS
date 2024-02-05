@@ -1,6 +1,12 @@
 { config, lib, pkgs, ... }:
 {
 
+  # Dashy
+  #services.dashy = {
+    #enable = true;
+    #port = 8081;
+  #};
+
   # # Cronjobs
   # services.cron = {
   #   enable = true;

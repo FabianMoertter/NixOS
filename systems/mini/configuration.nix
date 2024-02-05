@@ -75,6 +75,9 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # Calibre-Web
+  services.calibre-web.enable = true;
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 8501 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
