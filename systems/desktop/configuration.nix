@@ -1,4 +1,4 @@
-{ inputs, outputs, config, pkgs, ... }:
+{ inputs, outputs, config, pkgs, theme, ... }:
 
 # Impermanence
 let

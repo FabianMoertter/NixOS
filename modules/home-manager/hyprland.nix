@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, theme, ... }:
 {
 
   home = {
@@ -28,6 +28,16 @@
     ];
 
   };
+
+  # services.mako = {
+  #   enable = true;
+  #   backgroundColor = "#${config.colorScheme.colors.base01}";
+  #   borderColor = "#${config.colorScheme.colors.base0E}";
+  #   borderRadius = 5;
+  #   borderSize = 2;
+  #   textColor = "#${config.colorScheme.colors.base04}";
+  #   layer = "overlay";
+  # };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -109,7 +119,7 @@
       ];
 
       bind = [
-          "$mod, Return, exec, alacritty"
+          "$mod, Return, exec, kitty"
           "$mod, M, exit,"
           "$mod, F, exec, firefox"
           "$mod, S, exec, rofi -show drun -show-icons"

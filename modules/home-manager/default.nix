@@ -11,5 +11,6 @@
   steam = import ./steam.nix;
   tmux = import ./tmux.nix;
   vim = import ./vim.nix;
+  swaync = import ./swaynotificationcenter.nix;
   zathura = import ./zathura.nix;
 }
