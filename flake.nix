@@ -24,6 +24,7 @@
     let
       # theme = "dracula";
       theme = "catppuccin-frappe";
+      # theme = "catppuccin-mocha";
       inherit (self) outputs;
       system = "x86_64-linux";
       user = "fabian";

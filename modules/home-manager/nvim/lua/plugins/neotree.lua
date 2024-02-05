@@ -10,6 +10,12 @@ return {
     "MunifTanjim/nui.nvim",
   },
   config = function ()
-    require('neo-tree').setup {}
-  end,
+    require('neo-tree').setup {
+      default_component_configs = {
+        window = {
+          position = "right",
+        },
+      },
+    }
+  end
 }
