@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -88,8 +89,18 @@
     };
   };
 
+  # Paperless
+  services.paperless = {
+    enable = true;
+    mediaDir = "";
+    dataDir = "";
+    user = "fabian";
+    port = "8026";
+    address = "192.168.0.252";
+  };
+
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8501 8024 8025 ];
+  networking.firewall.allowedTCPPorts = [ 8501 8024 8025 8026 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
