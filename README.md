@@ -7,7 +7,7 @@ Repo under construction!
 | Hostname | Machine | Status
 | :--- | :--- | :---
 | lepidoptera | Desktop          | WIP
-| mantodea    | Mini Homelab     | WIP
+| mantodea    | [Mini Homelab](<./docs/home-server.md>)     | WIP
 | coleoptera  | Laptop 1	 | not started
 | hymenoptera | Laptop 2         | WIP
 |             | Raspberry Pi     | not started
@@ -141,6 +141,7 @@ Here is an incomplete list of great Nix/Nixpkgs/NixOS resources:
 
 **Companies:**
 * https://determinate.systems 
+* https://www.tweag.io/
 
 **Other:**
 * https://flakehub.com/flakes
