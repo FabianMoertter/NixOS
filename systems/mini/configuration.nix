@@ -76,10 +76,20 @@
   services.openssh.enable = true;
 
   # Calibre-Web
-  services.calibre-web.enable = true;
+  services.calibre-web = {
+    enable = true;
+    user = "fabian";
+    listen = {
+      port = 8025;
+      ip = "192.168.0.252";
+    };
+    options = {
+      enableBookUploading = true;
+    };
+  };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8501 ];
+  networking.firewall.allowedTCPPorts = [ 8501 8024 8025 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
