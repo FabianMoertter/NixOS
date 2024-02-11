@@ -4,8 +4,7 @@
     isNormalUser = true;
     description = "Fabian";
     shell = pkgs.zsh;
-    ignoreShellProgramcheck = false;
-    homeMode = 755;
+    homeMode = "755";
     extraGroups = [ "networkmanager" "wheel" "docker" "vboxuser" "libvirtd" ];
     packages = with pkgs; [
     ];
