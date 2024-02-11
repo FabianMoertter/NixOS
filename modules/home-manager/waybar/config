@@ -6,7 +6,7 @@
 
     "layer": "top",
     "margin-left": 0,
-    "margin-right": 0,
+    "margin-right": 0,    
     "spacing": 0,
 
     "hyprland/workspaces" : {
@@ -32,10 +32,14 @@
 
     "bluetooth": {
         "format": " {status}",
-        "format-disabled": "",
+        "format-disabled": " {status}",
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format-enumerate-connected": "{device_alias}",
         "format-off": "",
         "interval": 30,
-        "on-click": "blueman-manager"
+        "on-click": "blueman-manager",
     },
 
     "clock": {
@@ -44,11 +48,27 @@
         "format-alt": "{:%Y-%m-%d}"
     },
 
+    "network": {
+        "format-disconnected": "Disconnected",
+        "format-wifi": " {essid}",
+        "tooltip-format": " {signalStrength}",
+        "on-click": "wifimenu",
+    },
+
+    "disk": {
+        "interval": 600,
+        "format": "  {percentage_used}%",
+        "tooltip-format": "{used} used out of {total} on {path} ",
+	"on_click": "alacritty -e htop",
+    },
+
     "modules-left": [
 	"clock",
     ],
 
     "modules-right": [
+	"disk",
+	"network",
 	"bluetooth",
     ],
 
