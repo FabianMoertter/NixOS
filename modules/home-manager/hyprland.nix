@@ -23,11 +23,12 @@
       swaylock
       swaynotificationcenter
       swww
+      pavucontrol
     ];
 
   };
 
-  import = [
+  imports = [
     outputs.homeManagerModules.waybar
   ];
 
