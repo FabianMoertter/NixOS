@@ -14,13 +14,12 @@ in
 
   # Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  # I don't know what that does
-  # nix.settings.auto-optimise-store = true;
+  nix.settings.auto-optimise-store = true; # I don't know what that does
 
   # Cachix (still do not know what it is)
   nix.settings = {
     substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
   # Garbage Collector
@@ -86,7 +85,7 @@ in
   };
 
   fonts.packages = with pkgs; [
-    ( nerdfonts.override { fonts = [ "Hack" "FiraCode" "JetBrainsMono" ]; })
+    (nerdfonts.override { fonts = [ "Hack" "FiraCode" "JetBrainsMono" ]; })
   ];
 
   # Docker & Podman
@@ -138,14 +137,14 @@ in
   # List packages installed in system profile.
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   git
-   gparted
-   htop
-   nvtop
-   tmux
-   vim
-   wget
-   zsh
+    git
+    gparted
+    htop
+    nvtop
+    tmux
+    vim
+    wget
+    zsh
   ];
 
   environment.sessionVariables = {
@@ -185,7 +184,7 @@ in
     enableNvidiaPatches = true;
     xwayland.enable = true;
   };
-  
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -204,6 +203,10 @@ in
 
   # Caching service (should speedup some things)
   services.nscd.enable = true;
+
+  # networking.hosts = {
+  #   "192.168.0.252" = [ "fabian.home" ];
+  # };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

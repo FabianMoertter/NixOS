@@ -6,16 +6,33 @@
       layer = "top";
       position = "top";
 
-      modules-left = [ "clock" ];
-      modules-center = [ ];
-      modules-right = [ "pulseaudio" "blueooth" ];
+      modules-left = [ "clock" "custom/chatgpt" "custom/sports" ];
+      modules-center = [ "hyprland/workspaces" ];
+      modules-right = [ "custom/filemanager" "disk" "network" "pulseaudio" "bluetooth" "tray" ];
+
+      "hyprland/workspaces" = {
+        on-click = "activate";
+        active-only = false;
+        all-outputs = true;
+        format = "{}";
+        format-icons = {
+          urgent = "";
+          active = "";
+          default = "";
+        };
+      };
 
       "clock" = {
         format = "{: %I:%M %p}";
         tooltip = false;
       };
 
-      "disk" = { };
+      "disk" = {
+        interval = 600;
+        format = "  {percentage_used}%";
+        tooltip-format = "{used} used out of {total} on {path} ";
+        on_click = "alacritty -e htop";
+      };
 
       "bluetooth" = {
         format = " {status}";
@@ -48,7 +65,34 @@
         on-click = "pavucontrol";
       };
 
+      "tray" = {
+        spacing = 12;
+      };
+
+      "network" = {
+        format-disconnected = "Disconnected";
+        format-wifi = " {essid}";
+        tooltip-format = " {signalStrength}";
+        on-click = "wifimenu";
+      };
+
+      "custom/sports" = {
+        format = "🏋️";
+        on-click = "brave --app=https://calimove.com";
+      };
+
+      "custom/chatgpt" = {
+        format = "🤖";
+        on-click = "brave --app=https://chat.openai.com";
+      };
+
+      "custom/filemanager" = {
+        format = "";
+        on-click = "nautilus";
+        tooltip = false;
+      };
 
     }];
+    # style = "";
   };
 }

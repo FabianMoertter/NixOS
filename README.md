@@ -152,3 +152,5 @@ Flake based on standard template: https://github.com/Misterio77/nix-starter-conf
 
 [Neovim](Neovim) config based on kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim.
 
+Hyprland config inspired by: https://gitlab.com/stephan-raabe/dotfiles
+
