@@ -62,8 +62,16 @@
 	"on_click": "alacritty -e htop",
     },
 
+    // Filemanager Launcher
+    "custom/filemanager": {
+        "format": "",
+        "on-click": "nautilus",
+        "tooltip": false
+    },
+
     "modules-left": [
 	"clock",
+	"custom/filemanager"
     ],
 
     "modules-right": [

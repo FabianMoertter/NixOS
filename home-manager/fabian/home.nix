@@ -8,8 +8,8 @@
 
       # Test file
       ".config/test/test.yml".text = ''
-      test:
-        test: test
+        test:
+          test: test
       '';
 
       # My neovim config
@@ -18,11 +18,11 @@
       };
 
       # Copy kickstart-nvim from Github
-      ".config/kickstart/" =  {
-          source = builtins.fetchGit {
-            url = "https://github.com/nvim-lua/kickstart.nvim";
-            rev = "76c5b1ec57f40d17ac787feb018817a802e24bb6";
-          };
+      ".config/kickstart/" = {
+        source = builtins.fetchGit {
+          url = "https://github.com/nvim-lua/kickstart.nvim";
+          rev = "76c5b1ec57f40d17ac787feb018817a802e24bb6";
+        };
       };
 
       # # Copy NvChad from Github ( does not work because read-only )

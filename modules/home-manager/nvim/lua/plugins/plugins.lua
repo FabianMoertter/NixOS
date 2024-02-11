@@ -113,9 +113,10 @@ return {
   },
 
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+  -- Theme inspired by Atom
+  'navarasu/onedark.nvim',
     priority = 1000,
+    transparent = true,
     config = function()
       vim.cmd.colorscheme 'onedark'
     end,
@@ -208,11 +209,6 @@ return {
     -- vimwiki
     'vimwiki/vimwiki',
   },
-
-  -- {
-    -- nvim-neo-tree
-    -- 'nvim-neo-tree/nvim-tree.nvim',
-  -- },
 
   {
     'jackMort/ChatGPT.nvim',
