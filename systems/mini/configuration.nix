@@ -92,11 +92,12 @@
   # Paperless
   services.paperless = {
     enable = true;
-    mediaDir = "";
-    dataDir = "";
+    # mediaDir = "";
+    # dataDir = "";
     user = "fabian";
-    port = "8026";
+    port = 8026;
     address = "192.168.0.252";
+    passwordFile = "/home/fabian/home-server/paperless/paperless_auth.txt";
   };
 
   # Open ports in the firewall.
