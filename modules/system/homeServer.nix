@@ -36,6 +36,8 @@
 
   # Nginx
 
+  # Nexcloud
+
   # Calibre-Web
   services.calibre-web = {
     enable = true;
