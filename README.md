@@ -117,9 +117,11 @@ Here is an incomplete list of great Nix/Nixpkgs/NixOS resources:
 * https://github.com/hlissner/dotfiles
 * https://github.com/redyf/nixdots
 * https://github.com/rxyhn/yuki/tree/main
+* https://github.com/LongerHV/nixos-configuration
 
 **Homelab examples:**
 * https://github.com/badele/nix-homelab
+* https://github.com/TUM-DSE/doctor-cluster-config 
 
 **Videos:**
 * https://www.youtube.com/@vimjoyer
