@@ -79,8 +79,11 @@
           inherit system;
           specialArgs = { inherit inputs outputs theme; };
           modules = [
-            outputs.nixosModules.mainUser
-            ./systems/laptop/configuration.nix
+	    outputs.nixosModules.bluetooth
+	    outputs.nixosModules.gnome
+	    outputs.nixosModules.users
+	    outputs.nixosModules.mainUser
+            ./systems/laptop-1/configuration.nix
           ];
         };
 
