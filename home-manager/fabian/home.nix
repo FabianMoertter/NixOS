@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, theme, ... }:
+{ inputs, outputs, lib, config, pkgs, pkgs-unstable, theme, ... }:
 {
   home = {
     username = "fabian";
@@ -83,7 +83,7 @@
     go.enable = true;
   };
 
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
     # amberol
     # anki-bin
@@ -107,7 +107,7 @@
     alacritty
     ansible
     bat
-    brave
+    # brave
     btop
     cargo
     clang
@@ -119,6 +119,7 @@
     fdupes
     ffmpeg
     firefox
+    tmux-sessionizer
     gifsicle
     glances
     gnumake
@@ -157,7 +158,11 @@
     youtube-dl
     zathura
     zoxide
-  ];
+  ])
+  ++
+  (with pkgs-unstable; [
+    brave
+  ]);
 
   # Default Applications
   xdg.mimeApps = {

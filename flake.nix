@@ -21,7 +21,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, nix-colors, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, nix-colors, ... }@inputs:
 
     let
       # theme = "dracula";
@@ -34,6 +34,7 @@
         inherit system;
         config = { allowUnfree = true; };
       };
+      pkgs-unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib;
 
     in
@@ -77,7 +78,7 @@
         # fabian-laptop
         coleoptera = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs outputs theme; };
+          specialArgs = { inherit inputs outputs theme pkgs-unstable; };
           modules = [
             outputs.nixosModules.mainUser
             ./systems/laptop/configuration.nix
@@ -87,7 +88,7 @@
         # fabian-desktop ( lepidoptera )
         lepidoptera = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs outputs theme; };
+          specialArgs = { inherit inputs outputs theme pkgs-unstable; };
           modules = [
             outputs.nixosModules.bluetooth
             outputs.nixosModules.gnome
@@ -114,7 +115,7 @@
 
         "fabian@lepidoptera" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs outputs theme; };
+          extraSpecialArgs = { inherit inputs outputs theme pkgs-unstable; };
           modules = [
             ./home-manager/fabian/home.nix
           ];

@@ -6,7 +6,7 @@
       layer = "top";
       position = "top";
 
-      modules-left = [ "clock" "custom/chatgpt" "custom/sports" ];
+      modules-left = [ "clock" "custom/chatgpt" "custom/sports" "custom/paperless" ];
       modules-center = [ "hyprland/workspaces" ];
       modules-right = [ "custom/filemanager" "disk" "network" "pulseaudio" "bluetooth" "tray" ];
 
@@ -21,6 +21,7 @@
           default = "";
         };
       };
+
 
       "clock" = {
         format = "{: %I:%M %p}";
@@ -84,6 +85,11 @@
       "custom/chatgpt" = {
         format = "🤖";
         on-click = "brave --app=https://chat.openai.com";
+      };
+
+      "custom/paperless" = {
+        format = "📄";
+        on-click = "brave --app=http://mantodea:8026";
       };
 
       "custom/filemanager" = {
