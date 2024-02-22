@@ -44,20 +44,23 @@
     };
   };
 
-  imports = [
-    inputs.nix-colors.homeManagerModules.default
-    outputs.homeManagerModules.alacritty
-    outputs.homeManagerModules.kitty
-    outputs.homeManagerModules.git
-    outputs.homeManagerModules.hyprland
-    outputs.homeManagerModules.lf
-    outputs.homeManagerModules.neovim
-    outputs.homeManagerModules.qt
-    outputs.homeManagerModules.shell
-    outputs.homeManagerModules.tmux
-    outputs.homeManagerModules.vim
-    outputs.homeManagerModules.zathura
-  ];
+  imports = (with outputs.homeManagerModules; [
+    alacritty
+    kitty
+    git
+    hyprland
+    lf
+    neovim
+    qt
+    shell
+    tmux
+    vim
+    zathura
+  ])
+  ++
+  (with inputs; [
+    nix-colors.homeManagerModules.default
+  ]);
 
   nixpkgs = {
     overlays = [
@@ -69,7 +72,6 @@
 
   fonts.fontconfig.enable = true;
 
-  # colorScheme = inputs.nix-colors.colorSchemes.catppuccin-latte;
   colorScheme = inputs.nix-colors.colorSchemes.${theme};
 
   programs = with pkgs; {
