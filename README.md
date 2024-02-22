@@ -156,4 +156,4 @@ Flake based on standard template: https://github.com/Misterio77/nix-starter-conf
 
 Hyprland config inspired by: https://gitlab.com/stephan-raabe/dotfiles
 
-Wallpaper: [DNA](<https://www.freepik.com/free-photo/dna-strand_1036396.htm#query=dna%20wallpaper&position=30&from_view=keyword&track=ais&uuid=64828555-133e-4b5d-ab70-0dd1e7ceb070>] Image by kjpargeter on Freepik
+Wallpaper: [DNA](https://www.freepik.com/free-photo/dna-strand_1036396.htm#query=dna%20wallpaper&position=30&from_view=keyword&track=ais&uuid=64828555-133e-4b5d-ab70-0dd1e7ceb070) Image by kjpargeter on Freepik
