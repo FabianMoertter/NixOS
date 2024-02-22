@@ -58,7 +58,7 @@
     settings = {
 
       input = {
-        kb_layout = "us";
+        kb_layout = "us,de";
         kb_options = "caps:escape";
       };
 
