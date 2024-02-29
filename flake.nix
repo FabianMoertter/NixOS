@@ -80,10 +80,10 @@
           inherit system;
           specialArgs = { inherit inputs outputs theme pkgs-unstable; };
           modules = [
-	    outputs.nixosModules.bluetooth
-	    outputs.nixosModules.gnome
-	    outputs.nixosModules.users
-	    outputs.nixosModules.mainUser
+            outputs.nixosModules.bluetooth
+            outputs.nixosModules.gnome
+            outputs.nixosModules.users
+            outputs.nixosModules.mainUser
             ./systems/laptop-1/configuration.nix
           ];
         };
@@ -93,6 +93,7 @@
           inherit system;
           specialArgs = { inherit inputs outputs theme pkgs-unstable; };
           modules = [
+            # modules = with outputs.nixosModules; [
             outputs.nixosModules.bluetooth
             outputs.nixosModules.gnome
             outputs.nixosModules.nvidia
@@ -100,7 +101,8 @@
             outputs.nixosModules.users
             outputs.nixosModules.mainUser
             # outputs.nixosModules.DNS
-            ./systems/desktop/configuration.nix
+            # ++
+            # ([./systems/desktop/configuration.nix])
           ];
         };
 
