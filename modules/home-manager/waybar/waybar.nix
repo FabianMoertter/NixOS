@@ -6,9 +6,9 @@
       layer = "top";
       position = "top";
 
-      modules-left = [ "clock" "custom/chatgpt" "custom/sports" "custom/paperless" ];
+      modules-left = [ "clock" "custom/chatgpt" "custom/perplexity" "custom/sports" "custom/paperless" ];
       modules-center = [ "hyprland/workspaces" ];
-      modules-right = [ "custom/filemanager" "disk" "network" "pulseaudio" "bluetooth" "tray" ];
+      modules-right = [ "custom/keyboard_layout" "custom/filemanager" "disk" "network" "pulseaudio" "bluetooth" "tray" ];
 
       "hyprland/workspaces" = {
         on-click = "activate";
@@ -21,7 +21,6 @@
           default = "";
         };
       };
-
 
       "clock" = {
         format = "{: %I:%M %p}";
@@ -87,6 +86,11 @@
         on-click = "brave --app=https://chat.openai.com";
       };
 
+      "custom/perplexity" = {
+        format = "🤖";
+        on-click = "brave --app=https://perplexity.ai";
+      };
+
       "custom/paperless" = {
         format = "📄";
         on-click = "brave --app=http://mantodea:8026";
@@ -98,7 +102,29 @@
         tooltip = false;
       };
 
+      "custom/keyboard_layout" = {
+        format = "🎹 {}";
+        on-click = "";
+        exec = "";
+      };
+
     }];
-    # style = "";
+    style = ''
+      * {
+        font-size: 16px;
+        font-family: JetBrainsMono Nerd Font, Font Awesome, sans-serif;
+        font-weight: bold;
+        color: #f3f9ff;
+      }
+
+      window#waybar {
+        background: transparent;
+      }
+
+      tooltip {
+        background: #141414;
+        border-radius: 4px;
+      }
+    '';
   };
 }

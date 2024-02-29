@@ -51,9 +51,11 @@
     # TODO get rid of absolute paths
     extraConfig = ''
       exec-once = swww init
-      exec-once = swww img -o DP-1 /home/fabian/Pictures/Wallpaper/tiger-left.jpg
-      exec-once = swww img -o DP-2 /home/fabian/Pictures/Wallpaper/tiger-right.jpg
+      exec-once = swww img -o DP-1 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-left.jpg
+      exec-once = swww img -o DP-2 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-right.jpg
     '';
+    # exec-once = swww img -o DP-1 /home/fabian/Pictures/Wallpaper/tiger-left.jpg
+    # exec-once = swww img -o DP-2 /home/fabian/Pictures/Wallpaper/tiger-right.jpg
 
     settings = {
 
@@ -63,6 +65,8 @@
       };
 
       exec-once = [
+        "kitty tmux new -s home"
+        "thunderbird"
         "killall waybar"
         "sleep 0.5"
         "waybar -c $HOME/.config/waybar/config"
@@ -112,6 +116,15 @@
         ];
       };
 
+      windowrule = [
+        "workspace, 1, silent, kitty"
+        # Discord
+        # Thunderbird
+        "workspace, 2, silent, thunderbird"
+        # Firefox
+        # 
+      ];
+
       "$mod" = "SUPER";
 
       bindm = [
@@ -127,7 +140,7 @@
         "$mod, F, exec, firefox"
         "$mod, S, exec, rofi -show drun -show-icons"
         "$mod, G, togglegroup"
-        "$mod, Q, killactive"
+        "$mod, X, killactive"
         "$mod, A, fullscreen"
         "$mod, 1, focusmonitor, DP-1"
         "$mod, 2, focusmonitor, DP-2"
