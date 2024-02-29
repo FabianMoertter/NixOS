@@ -49,11 +49,11 @@
     # enableNvidiaPatches = true;
 
     # TODO get rid of absolute paths
-    extraConfig = ''
-      exec-once = swww init
-      exec-once = swww img -o DP-1 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-left.jpg
-      exec-once = swww img -o DP-2 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-right.jpg
-    '';
+    # extraConfig = ''
+    # exec-once = swww init
+    # exec-once = swww img -o DP-1 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-left.jpg
+    # exec-once = swww img -o DP-2 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-right.jpg
+    # '';
     # exec-once = swww img -o DP-1 /home/fabian/Pictures/Wallpaper/tiger-left.jpg
     # exec-once = swww img -o DP-2 /home/fabian/Pictures/Wallpaper/tiger-right.jpg
 
@@ -70,6 +70,9 @@
         "killall waybar"
         "sleep 0.5"
         "waybar -c $HOME/.config/waybar/config"
+        "exec-once = swww init"
+        "exec-once = swww img -o DP-1 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-left.jpg"
+        "exec-once = swww img -o DP-2 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-right.jpg"
       ];
 
       misc = {
