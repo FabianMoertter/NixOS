@@ -16,7 +16,8 @@
     enable = true;
     settings = {
       server = {
-        http_addr = "192.168.0.252";
+        #http_addr = "192.168.0.252";
+	http_addr = "192.168.178.66";
         http_port = 8027;
         domain = "fabian.home";
         serve_from_sub_path = true;
@@ -44,7 +45,8 @@
     user = "fabian";
     listen = {
       port = 8025;
-      ip = "192.168.0.252";
+      #ip = "192.168.0.252";
+      ip = "192.168.178.66";
     };
     options = {
       enableBookUploading = true;
@@ -58,11 +60,12 @@
     # dataDir = "";
     user = "fabian";
     port = 8026;
-    address = "192.168.0.252";
+    #address = "192.168.0.252";
+    address = "192.168.178.66";
     passwordFile = "/home/fabian/home-server/paperless/paperless_auth.txt";
   };
 
-  # Dashy
+  # Dashboard
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 8501 8024 8025 8026 8027 8028 ];
