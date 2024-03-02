@@ -82,6 +82,7 @@
           modules = [
             outputs.nixosModules.bluetooth
             outputs.nixosModules.gnome
+            outputs.nixosModules.steam
             outputs.nixosModules.users
             outputs.nixosModules.mainUser
             ./systems/laptop-1/configuration.nix
@@ -128,7 +129,7 @@
 
         "fabian@coleoptera" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs outputs theme; };
+          extraSpecialArgs = { inherit inputs outputs theme pkgs-unstable; };
           modules = [
             ./home-manager/fabian/home.nix
           ];
