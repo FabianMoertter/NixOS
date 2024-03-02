@@ -6,7 +6,7 @@
       layer = "top";
       position = "top";
 
-      modules-left = [ "clock" "custom/chatgpt" "custom/perplexity" "custom/sports" "custom/paperless" ];
+      modules-left = [ "clock" "custom/chatgpt" "custom/perplexity" "custom/sports" "custom/paperless" "battery" ];
       modules-center = [ "hyprland/workspaces" ];
       modules-right = [ "custom/keyboard_layout" "custom/filemanager" "disk" "network" "pulseaudio" "bluetooth" "tray" ];
 
@@ -74,6 +74,19 @@
         format-wifi = " {essid}";
         tooltip-format = " {signalStrength}";
         on-click = "wifimenu";
+      };
+
+      "battery" = {
+        states = {
+          warning = 30;
+          critical = 15;
+        };
+        format = "{icon} {capacity}%";
+        format-charging = " {capacity}%";
+        format-plugged = "{capacity}%";
+        format-alt = "{time} {icon}";
+        format-full = " {capacity}%";
+        format-icons = [ "" "" "" ];
       };
 
       "custom/sports" = {
