@@ -82,7 +82,6 @@
           modules = [
             outputs.nixosModules.bluetooth
             outputs.nixosModules.gnome
-            outputs.nixosModules.steam
             outputs.nixosModules.users
             outputs.nixosModules.mainUser
             ./systems/laptop-1/configuration.nix
