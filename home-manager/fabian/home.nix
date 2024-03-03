@@ -144,6 +144,7 @@
     python3
     ripgrep
     rstudio
+    nix-tree
     ruby
     rustc
     skypeforlinux
