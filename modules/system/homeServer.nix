@@ -17,7 +17,7 @@
     settings = {
       server = {
         #http_addr = "192.168.0.252";
-	http_addr = "192.168.178.66";
+        http_addr = "192.168.178.66";
         http_port = 8027;
         domain = "fabian.home";
         serve_from_sub_path = true;
@@ -63,6 +63,10 @@
     #address = "192.168.0.252";
     address = "192.168.178.66";
     passwordFile = "/home/fabian/home-server/paperless/paperless_auth.txt";
+  };
+
+  services.logstash = {
+    enable = true;
   };
 
   # Dashboard
