@@ -1,7 +1,7 @@
 { config, lib, ... }:
 {
   # master
-  services.salt.master.enalbe = true;
+  services.salt.master.enable = true;
 
   # minion
   # services.salt.minion.enable = true;
