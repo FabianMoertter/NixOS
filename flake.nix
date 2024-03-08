@@ -71,6 +71,7 @@
             outputs.nixosModules.gnome
             outputs.nixosModules.users
             outputs.nixosModules.mainUser
+            outputs.nixosModules.salt
             ./systems/laptop-2/configuration.nix
           ];
         };
