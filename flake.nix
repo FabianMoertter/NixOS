@@ -66,45 +66,46 @@
         hymenoptera = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs outputs; };
-          modules = [
-            outputs.nixosModules.bluetooth
-            outputs.nixosModules.gnome
-            outputs.nixosModules.users
-            outputs.nixosModules.mainUser
-            outputs.nixosModules.salt
-            ./systems/laptop-2/configuration.nix
-          ];
+          modules = (with outputs.nixosModules; [
+            bluetooth
+            gnome
+            users
+            mainUser
+            salt
+          ])
+          ++
+          ([ ./systems/laptop-2/configuration.nix ]);
         };
 
         # fabian-laptop
         coleoptera = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs outputs theme pkgs-unstable; };
-          modules = [
-            outputs.nixosModules.bluetooth
-            outputs.nixosModules.gnome
-            outputs.nixosModules.users
-            outputs.nixosModules.mainUser
-            ./systems/laptop-1/configuration.nix
-          ];
+          modules = (with outputs.nixosModules; [
+            bluetooth
+            gnome
+            users
+            mainUser
+          ])
+          ++
+          ([ ./systems/laptop-1/configuration.nix ]);
         };
 
         # fabian-desktop ( lepidoptera )
         lepidoptera = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs outputs theme pkgs-unstable; };
-          modules = [
-            # modules = with outputs.nixosModules; [
-            outputs.nixosModules.bluetooth
-            outputs.nixosModules.gnome
-            outputs.nixosModules.nvidia
-            outputs.nixosModules.steam
-            outputs.nixosModules.users
-            outputs.nixosModules.mainUser
-            # outputs.nixosModules.DNS
-            # ++
-            # ([./systems/desktop/configuration.nix])
-          ];
+          modules = (with outputs.nixosModules; [
+            bluetooth
+            salt
+            gnome
+            nvidia
+            steam
+            users
+            mainUser
+          ])
+          ++
+          ([ ./systems/desktop/configuration.nix ]);
         };
 
       };
