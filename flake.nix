@@ -72,6 +72,7 @@
             outputs.nixosModules.users
             outputs.nixosModules.mainUser
             outputs.nixosModules.salt
+            outputs.nixosModules.virtualization
             ./systems/laptop-2/configuration.nix
           ];
         };

@@ -10,4 +10,5 @@
   salt = import ./salt.nix; # SaltStack
   steam = import ./steam.nix;
   users = import ./users.nix;
+  virtualization = import ./virtualization.nix;
 }
