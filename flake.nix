@@ -73,6 +73,7 @@
             mainUser
             salt
             virtualization
+            steam
           ])
           ++
           ([ ./systems/laptop-2/configuration.nix ]);

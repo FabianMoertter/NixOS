@@ -12,6 +12,16 @@
           test: test
       '';
 
+      # Wallpaper
+      "Pictures/Wallpaper/dna-stand-left.jpg" = {
+        source = config.lib.file.mkOutOfStoreSymlink ../../assets/wallpaper/dna-strand-left.jpg;
+      };
+
+      # Wallpaper
+      "Pictures/Wallpaper/dna-stand-right.jpg" = {
+        source = config.lib.file.mkOutOfStoreSymlink ../../assets/wallpaper/dna-strand-right.jpg;
+      };
+
       # My neovim config
       ".config/nvim" = {
         source = config.lib.file.mkOutOfStoreSymlink ../../modules/home-manager/nvim;
@@ -161,6 +171,7 @@
     youtube-dl
     zathura
     zoxide
+    zip
   ])
   ++
   (with pkgs-unstable; [

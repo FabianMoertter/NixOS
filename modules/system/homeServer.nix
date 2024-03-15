@@ -70,6 +70,9 @@
   };
 
   # Dashboard
+  services.homepage-dashboard = {
+    enable = true;
+  };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 8501 8024 8025 8026 8027 8028 ];
