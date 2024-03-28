@@ -65,9 +65,18 @@
     passwordFile = "/home/fabian/home-server/paperless/paperless_auth.txt";
   };
 
-  services.logstash = {
+  # Jenkins
+  services.jenkins = {
     enable = true;
+    listenAddress = "192.168.178.66";
+    port = 8030;
+    withCLI = false;
   };
+
+  # Logstash
+  # services.logstash = {
+    # enable = true;
+  # };
 
   # Dashboard
   services.homepage-dashboard = {
@@ -75,7 +84,7 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8501 8024 8025 8026 8027 8028 ];
+  networking.firewall.allowedTCPPorts = [ 8501 8024 8025 8026 8027 8028 8030 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
