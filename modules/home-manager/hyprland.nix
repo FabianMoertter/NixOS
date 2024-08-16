@@ -61,7 +61,8 @@
 
       input = {
         kb_layout = "us,de";
-        kb_options = "caps:escape";
+        kb_variant = ",qwerty";
+        kb_options = "caps:escape,grp:alt_shift_toggle";
       };
 
       exec-once = [
@@ -119,6 +120,11 @@
           "workspaces, 1, 5, wind"
         ];
       };
+
+      monitor = [
+      	"DP-1, 1920x1080, 1920x0, 1"
+	"DP-2, 1920x1080, 0x0, 1"
+      ];
 
       windowrule = [
         "workspace, 1, silent, kitty"
