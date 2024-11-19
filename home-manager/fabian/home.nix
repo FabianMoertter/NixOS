@@ -98,7 +98,7 @@
   home.packages = (with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
     # amberol
-    # anki-bin
+    anki-bin
     # haruna
     # julia
     # mendeley
@@ -108,10 +108,11 @@
     # sd
     # stow
     # swaylock-effects
+    # ruff, uv, pedantic
     # sxhkd
     # terminator
     # vlc
-    # wezterm
+    # wezter
     # xh
     # zellij
     # zig
@@ -119,8 +120,8 @@
     alacritty
     ansible
     bat
-    # brave
     btop
+    # dbeaver-bin
     cargo
     clang
     conda
@@ -129,6 +130,7 @@
     eza
     fd
     fdupes
+    okular
     ffmpeg
     firefox
     tmux-sessionizer
@@ -160,6 +162,7 @@
     skypeforlinux
     slack
     terraform
+    awscli2
     thunderbird
     tree-sitter
     ueberzug

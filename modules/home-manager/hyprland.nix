@@ -66,15 +66,14 @@
       };
 
       exec-once = [
-        "kitty tmux new -s home"
-        "thunderbird"
+        # "kitty tmux new -s home"
+        # "thunderbird"
         "killall waybar"
         "sleep 0.5"
         "waybar -c $HOME/.config/waybar/config"
-        "exec-once = swww init"
-        "exec-once = swww img -o DP-1 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-left.jpg"
-        "exec-once = swww img -o DP-2 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-right.jpg"
-        # "exec-once = swww img -o eDP-1 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-left.jpg"
+        "swww init"
+        # "swww img -o DP-2 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-left.jpg"
+        "swww img -o DP-1 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-right.jpg"
       ];
 
       misc = {
@@ -122,15 +121,16 @@
       };
 
       monitor = [
-      	"DP-1, 1920x1080, 1920x0, 1"
-	"DP-2, 1920x1080, 0x0, 1"
+        "DP-2, 1920x1080, 1920x0, 1"
+        "DP-1, 1920x1080, 0x0, 1"
       ];
 
       windowrule = [
-        "workspace, 1, silent, kitty"
+        "float, anki"
+        # "workspace, 1, silent, kitty"
         # Discord
         # Thunderbird
-        "workspace, 2, silent, thunderbird"
+        # "workspace, 2, silent, thunderbird"
         # Firefox
         # 
       ];
@@ -152,12 +152,12 @@
         "$mod, G, togglegroup"
         "$mod, X, killactive"
         "$mod, A, fullscreen"
-        "$mod, 1, focusmonitor, DP-1"
-        "$mod, 2, focusmonitor, DP-2"
-        "$mod, 3, focusmonitor, DP-1"
-        "$mod, 4, focusmonitor, DP-2"
-        "$mod, 5, focusmonitor, DP-1"
-        "$mod, 6, focusmonitor, DP-2"
+        "$mod, 1, focusmonitor, DP-2"
+        "$mod, 2, focusmonitor, DP-1"
+        "$mod, 3, focusmonitor, DP-2"
+        "$mod, 4, focusmonitor, DP-1"
+        "$mod, 5, focusmonitor, DP-2"
+        "$mod, 6, focusmonitor, DP-1"
         "$mod, K, movefocus, u"
         "$mod, J, movefocus, d"
         "$mod, H, movefocus, l"
