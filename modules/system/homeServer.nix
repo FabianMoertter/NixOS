@@ -37,7 +37,7 @@ in
   services.mysql = {
     enable = true;
     dataDir = "/data/mysql";
-    package = pkgs.mariadb;
+    # package = pkgs.mariadb;
     ensureDatabases = [ "photoprism" ];
     ensureUsers = [{
       name = "photoprism";
@@ -105,7 +105,6 @@ in
     port = 8030;
     withCLI = false;
   };
-
 
   # Nextcloud
   # services.nextcloud = {                
