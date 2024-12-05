@@ -54,7 +54,7 @@
         # mini (home server)
         mantodea = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs outputs pkgs-unstable; };
           modules = [
             outputs.nixosModules.homeServer
             outputs.nixosModules.mainUser

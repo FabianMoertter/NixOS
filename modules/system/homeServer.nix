@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
-  let
-    ip_address = "192.168.2.103";
-  in
+{ config, lib, pkgs, pkgs-unstable, ... }:
+let
+  ip_address = "192.168.2.103";
+in
 {
 
   # # Cronjobs
@@ -31,6 +31,39 @@
   services.prometheus = {
     enable = true;
     port = 8028;
+  };
+
+  # MySQL
+  services.mysql = {
+    enable = true;
+    dataDir = "/data/mysql";
+    package = pkgs.mariadb;
+    ensureDatabases = [ "photoprism" ];
+    ensureUsers = [{
+      name = "photoprism";
+      ensurePermissions = {
+        "photoprism.*" = "ALL PRIVILEGES";
+      };
+    }];
+  };
+
+  # Photoprism
+  services.photoprism = {
+    enable = true;
+    port = 2342;
+    originalsPath = "/var/lib/private/photoprism/originals";
+    address = "0.0.0.0";
+    settings = {
+      PHOTOPRISM_ADMIN_USER = "admin";
+      PHOTOPRISM_ADMIN_PASSWORD = "...";
+      PHOTOPRISM_DEFAULT_LOCALE = "en";
+      PHOTOPRISM_DATABASE_DRIVER = "mysql";
+      PHOTOPRISM_DATABASE_NAME = "photoprism";
+      PHOTOPRISM_DATABASE_SERVER = "/run/mysqld/mysqld.sock";
+      PHOTOPRISM_DATABASE_USER = "photoprism";
+      PHOTOPRISM_SITE_URL = "http://sub.domain.tld:2342";
+      PHOTOPRISM_SITE_TITLE = "My PhotoPrism";
+    };
   };
 
   # Loki
@@ -76,54 +109,24 @@
 
   # Nextcloud
   # services.nextcloud = {                
-    # enable = true;                   
-    # hostName = "nextcloud.tld";
-    # database.createLocally = true;
-    # config = {
-      # dbtype = "pgsql";
-      # adminpassFile = "/home/fabian/home-server/nextcloud/adminpass.txt";
-    # };
-    # Instead of using pkgs.nextcloud28Packages.apps,
-    # we'll reference the package version specified above
-    # extraApps = {
-      # inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks;
-    # };
-    # extraAppsEnable = true;
-    # };
-
-  # Photoprism
-  # services.photoprism = {
-    # enable = true; # port = 8811;
-    # address = "192.168.178.66";
-    # address = "0.0.0.0";
-    # originalsPath = "/var/lib/private/photoprism/originals";
-    # settings = {
-      # PHOTPRISM_ADMIN_USER = "admin";
-      # PHOTPRISM_ADMIN_PASSWORD = "admin";
-      # PHOTOPRISM_DEFAULT_LOCALE = "en";
-      # PHOTOPRISM_DATABASE_DRIVER = "mysql";
-      # PHOTOPRISM_DATABASE_NAME = "photoprism";
-      # PHOTOPRISM_DATABASE_SERVER = "/run/mysqld/mysqld.sock";
-      # PHOTOPRISM_DATABASE_USER = "photoprism";
-    # };
+  # enable = true;                   
+  # hostName = "nextcloud.tld";
+  # database.createLocally = true;
+  # config = {
+  # dbtype = "pgsql";
+  # adminpassFile = "/home/fabian/home-server/nextcloud/adminpass.txt";
   # };
-
-  # MySQL
-  # services.mysql = {
-    # enable = true;
-    # dataDir = "/data/mysql";
-    # ensureDatabases = [ "photoprism" ];
-    # ensureUsers = [ {
-      # name = "photoprism";
-      # ensurePermissions = {
-        # "photoprism.*" = "ALL PRIVILEGES";
-      # };
-    # } ];
+  # Instead of using pkgs.nextcloud28Packages.apps,
+  # we'll reference the package version specified above
+  # extraApps = {
+  # inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks;
+  # };
+  # extraAppsEnable = true;
   # };
 
   # Logstash
   # services.logstash = {
-    # enable = true;
+  # enable = true;
   # };
 
   # Dashboard
@@ -143,7 +146,7 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8501 8024 8025 8026 8027 8028 8030 ];
+  networking.firewall.allowedTCPPorts = [ 8501 8024 8025 8026 8027 8028 8030 2342 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
