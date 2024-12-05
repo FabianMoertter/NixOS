@@ -52,7 +52,7 @@ in
     enable = true;
     port = 2342;
     originalsPath = "/var/lib/private/photoprism/originals";
-    address = "0.0.0.0";
+    address = ip_address;
     settings = {
       PHOTOPRISM_ADMIN_USER = "admin";
       PHOTOPRISM_ADMIN_PASSWORD = "...";
