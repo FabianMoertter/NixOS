@@ -14,14 +14,9 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, nix-colors, ... }@inputs:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, nix-colors, ... }:
 
     let
       # theme = "dracula";
@@ -107,7 +102,16 @@
             mainUser
           ])
           ++
-          ([ ./systems/desktop/configuration.nix ]);
+          ([
+            ./systems/desktop/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs outputs theme pkgs-unstable; };
+              home-manager.users.fabian = import ./home-manager/fabian/home.nix;
+            }
+          ]);
         };
 
       };
@@ -121,14 +125,6 @@
             ./home-manager/fabian/home.nix
           ];
         };
-
-#        "fabian@lepidoptera" = home-manager.lib.homeManagerConfiguration {
-#          inherit pkgs;
-#          extraSpecialArgs = { inherit inputs outputs theme pkgs-unstable; };
-#          modules = [
-#            ./home-manager/fabian/home.nix
-#          ];
-#        };
 
         "fabian@coleoptera" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;

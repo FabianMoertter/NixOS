@@ -72,13 +72,13 @@
     nix-colors.homeManagerModules.default
   ]);
 
-  nixpkgs = {
-    overlays = [
-    ];
-    config = {
-      allowUnfree = true;
-    };
-  };
+#  nixpkgs = {
+#    overlays = [
+#    ];
+#    config = {
+#      allowUnfree = true;
+#    };
+#  };
 
   fonts.fontconfig.enable = true;
 
@@ -171,7 +171,7 @@
     vscode
     wlroots
     xclip
-    youtube-dl
+    yt-dlp
     zathura
     zoxide
     zip
