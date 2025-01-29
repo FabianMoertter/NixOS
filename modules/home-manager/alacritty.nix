@@ -3,7 +3,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      colors = with config.colorScheme.colors; {
+      colors = with config.colorScheme.palette; {
         primary = {
           background = "0x${base00}";
           foreground = "0x${base06}";
@@ -36,8 +36,8 @@
       font = {
         size = 14.0;
         # normal = {
-          # family = "FiraCode";
-          # style = "Regular";
+        # family = "FiraCode";
+        # style = "Regular";
         # };
       };
       window = {
