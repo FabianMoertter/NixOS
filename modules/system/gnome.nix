@@ -10,22 +10,22 @@
   services.xserver.xautolock.time = 30;
 
   # Exclude GNOME Packages
-  environment.gnome.excludePackages = ( with pkgs; [
-    gnome-tour 
-    gnome-photos
-  ]) ++ ( with pkgs.gnome; [
-    geary
-    hitori
-    atomix
-    epiphany
-    cheese
-    gnome-music
-    gnome-terminal
-    gnome-characters
-    gnome-software
-    tali
-    totem
-    iagno
-  ]);
+  # environment.gnome.excludePackages = ( with pkgs; [
+  #   gnome-tour
+  #   gnome-photos
+  # ]) ++ ( with pkgs.gnome; [
+  #   geary
+  #   hitori
+  #   atomix
+  #   epiphany
+  #   cheese
+  #   gnome-music
+  #   gnome-terminal
+  #   gnome-characters
+  #   gnome-software
+  #   tali
+  #   totem
+  #   iagno
+  # ]);
 
 }

@@ -105,17 +105,17 @@ in
   # virtualisation.virtualbox.guest.x11 = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us,de";
-    xkbVariant = "";
-    xkbOptions = "caps:escape";
+    variant = "";
+    options = "caps:escape";
   };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -140,7 +140,7 @@ in
     git
     gparted
     htop
-    nvtop
+    nvtopPackages.full
     tmux
     vim
     wget
@@ -181,7 +181,7 @@ in
   # Hyprland
   programs.hyprland = {
     enable = true;
-    enableNvidiaPatches = true;
+    # enableNvidiaPatches = true;
     xwayland.enable = true;
   };
 

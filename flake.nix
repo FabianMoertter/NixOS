@@ -122,13 +122,13 @@
           ];
         };
 
-        "fabian@lepidoptera" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs outputs theme pkgs-unstable; };
-          modules = [
-            ./home-manager/fabian/home.nix
-          ];
-        };
+#        "fabian@lepidoptera" = home-manager.lib.homeManagerConfiguration {
+#          inherit pkgs;
+#          extraSpecialArgs = { inherit inputs outputs theme pkgs-unstable; };
+#          modules = [
+#            ./home-manager/fabian/home.nix
+#          ];
+#        };
 
         "fabian@coleoptera" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
