@@ -72,14 +72,6 @@
     nix-colors.homeManagerModules.default
   ]);
 
-#  nixpkgs = {
-#    overlays = [
-#    ];
-#    config = {
-#      allowUnfree = true;
-#    };
-#  };
-
   fonts.fontconfig.enable = true;
 
   colorScheme = inputs.nix-colors.colorSchemes.${theme};
@@ -97,22 +89,15 @@
 
   home.packages = (with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
-    # amberol
     anki-bin
-    # haruna
-    # julia
     # mendeley
     # poetry
-    # pyright
     # rofi
     # sd
-    # stow
     # swaylock-effects
     # ruff, uv, pedantic
-    # sxhkd
     # terminator
     # vlc
-    # wezter
     # xh
     # zellij
     # zig
