@@ -87,9 +87,9 @@
         inactive_opacity = 1.00;
         active_opacity = 1.00;
         fullscreen_opacity = 1.00;
-        drop_shadow = false;
-        shadow_offset = "0 5";
-        "col.shadow" = "rgba(00000099)";
+        # drop_shadow = false;
+        # shadow_offset = "0 5";
+        # "col.shadow" = "rgba(00000099)";
         blur = {
           enabled = true;
           size = 5;

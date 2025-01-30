@@ -22,6 +22,8 @@
       set -g default-terminal "xterm-256color"
       set -ga terminal-overrides ",*256col*:Tc"
 
+      set-option -g status-position top
+
       set -g @catppuccin_flavour 'latte' # macchiato, frappe, latte, mocha
       set -g @catppuccin_window_left_separator "█"
       set -g @catppuccin_window_right_separator "█ "
@@ -40,7 +42,7 @@
       set -g @catppuccin_status_fill "all"
       set -g @catppuccin_status_connect_separator "no"
     '';
-    plugins = [ 
+    plugins = [
       pkgs.tmuxPlugins.vim-tmux-navigator
       pkgs.tmuxPlugins.catppuccin
     ];
