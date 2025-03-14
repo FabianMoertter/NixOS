@@ -77,8 +77,8 @@ in
   # MySQL
   services.mysql = {
     enable = true;
-    dataDir = "/data/mysql";
-    # package = pkgs.mariadb;
+    # dataDir = "/data/mysql";
+    package = pkgs.mysql;
     ensureDatabases = [ "photoprism" ];
     ensureUsers = [{
       name = "photoprism";
