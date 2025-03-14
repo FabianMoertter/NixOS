@@ -38,7 +38,7 @@ in
         "My Second Group" = [{
           "Calibre-Web" = {
             description = "Calibre-Web";
-            href = "http://127.0.0.1:8025";
+            href = "http://mantodea:8025";
           };
         }];
       }
@@ -78,7 +78,7 @@ in
   services.mysql = {
     enable = true;
     # dataDir = "/data/mysql";
-    package = pkgs.mysql;
+    package = pkgs.mariadb;
     ensureDatabases = [ "photoprism" ];
     ensureUsers = [{
       name = "photoprism";
@@ -166,11 +166,6 @@ in
   # services.logstash = {
   # enable = true;
   # };
-
-  # Dashboard
-  services.homepage-dashboard = {
-    enable = true;
-  };
 
   # Nginx
   services.nginx = {
