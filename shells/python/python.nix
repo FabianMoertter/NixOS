@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> { } }:
 let
   my-python-packages = p: with p; [
     # autogluon
@@ -7,6 +7,7 @@ let
     # shiny
     # htmltools
     altair
+    tkinter
     django
     pip
     elasticsearch
@@ -35,11 +36,12 @@ let
     uvicorn
     virtualenv
     #(
-    	#buildPythonPackage rec {
-		#pname = "shiny";
-		#version = 
-	#};
+    #buildPythonPackage rec {
+    #pname = "shiny";
+    #version = 
+    #};
     #)
   ];
   my-python = pkgs.python310.withPackages my-python-packages;
-in my-python.env
+in
+my-python.env

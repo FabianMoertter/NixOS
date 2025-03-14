@@ -40,6 +40,7 @@ let
     ops = "cd /home/fabian/Projects/dev-repo";
     learn = "cd /home/fabian/Projects/learning";
     data = "cd /data/home/fabian/";
+    web = "cd /data/home/fabian/Projects/fabian-moertter.github.io";
 
     #NixOS functions
     update = "sudo nixos-rebuild switch --flake /home/fabian/Projects/NixOS/nixos-config/ .#";

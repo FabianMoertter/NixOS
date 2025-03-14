@@ -89,13 +89,13 @@
 
   home.packages = (with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
-    anki-bin
+    # dbeaver-bin
     # mendeley
     # poetry
     # rofi
+    # ruff, uv, pedantic
     # sd
     # swaylock-effects
-    # ruff, uv, pedantic
     # terminator
     # vlc
     # xh
@@ -103,10 +103,11 @@
     # zig
     R
     alacritty
+    anki-bin
     ansible
+    awscli2
     bat
     btop
-    # dbeaver-bin
     cargo
     clang
     conda
@@ -115,10 +116,9 @@
     eza
     fd
     fdupes
-    okular
     ffmpeg
     firefox
-    tmux-sessionizer
+    ghostty
     gifsicle
     glances
     gnumake
@@ -131,24 +131,28 @@
     libreoffice
     lua
     luarocks
+    memos
     mpd
     mpv
     mpvpaper
     ncdu
+    nix-tree
     nodejs
     nushell
+    okular
+    outline
     perl
     python3
     ripgrep
     rstudio
-    nix-tree
     ruby
     rustc
     skypeforlinux
     slack
+    standardnotes
     terraform
-    awscli2
     thunderbird
+    tmux-sessionizer
     tree-sitter
     ueberzug
     unzip
@@ -158,20 +162,25 @@
     xclip
     yt-dlp
     zathura
-    zoxide
     zip
+    zoxide
   ])
   ++
   (with pkgs-unstable; [
     brave
+    home-assistant
+    cursor
   ]);
 
   # Default Applications
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/html" = "firefox.desktop";
-      #"image/pdf" = "firefox.desktop";
+  xdg = {
+    configFile."mimeapps.list".force = true;
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/html" = "firefox.desktop";
+        #"image/pdf" = "firefox.desktop";
+      };
     };
   };
 

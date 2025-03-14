@@ -94,7 +94,6 @@
           specialArgs = { inherit inputs outputs theme pkgs-unstable; };
           modules = (with outputs.nixosModules; [
             bluetooth
-            salt
             gnome
             nvidia
             steam

@@ -1,5 +1,5 @@
 # Module for users other than my own/main user
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
   users.users = {
 
@@ -25,7 +25,7 @@
         firefox
         google-chrome
         libreoffice
-        skypeforlinux
+        # skypeforlinux
       ];
     };
 
