@@ -1,4 +1,4 @@
-{ inputs, outputs, config, pkgs, theme, ... }:
+{ inputs, outputs, config, pkgs, pkgs-unstable, theme, ... }:
 
 # Impermanence
 let
@@ -203,6 +203,52 @@ in
 
   # Caching service (should speedup some things)
   services.nscd.enable = true;
+
+  services.homepage-dashboard = {
+    enable = true;
+    package = pkgs-unstable.homepage-dashboard;
+    listenPort = 8034;
+    settings = { };
+
+    # https://gethomepage.dev/latest/configs/bookmarks/
+    bookmarks = [ ];
+
+    # https://gethomepage.dev/latest/configs/services/
+    services = [
+
+      {
+        "My First Group" = [{
+          "My First Service" = {
+            description = "Homepage is awesome";
+            href = "http://localhost/";
+          };
+        }];
+      }
+
+      {
+        "My Second Group" = [{
+          "My Second Service" = {
+            description = "Calibre-Web";
+            href = "http://mantodea:8025";
+          };
+        }];
+      }
+
+    ];
+
+    # https://gethomepage.dev/latest/configs/service-widgets/
+    widgets = [ ];
+
+    # https://gethomepage.dev/latest/configs/kubernetes/
+    kubernetes = { };
+
+    # https://gethomepage.dev/latest/configs/docker/
+    docker = { };
+
+    # https://gethomepage.dev/latest/configs/custom-css-js/
+    customJS = "";
+    customCSS = "";
+  };
 
   # networking.hosts = {
   #   "192.168.0.252" = [ "fabian.home" ];

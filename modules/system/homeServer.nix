@@ -14,6 +14,47 @@ in
 
   # Services
 
+  # Homepage-Dashboard
+  services.homepage-dashboard = {
+    enable = true;
+    package = pkgs-unstable.homepage-dashboard;
+    listenPort = 8004;
+    settings = { };
+
+    bookmarks = [ ];
+
+    services = [
+
+      {
+        "My First Group" = [{
+          "My First Service" = {
+            description = "Homepage is awesome";
+            href = "http://localhost/";
+          };
+        }];
+      }
+
+      {
+        "My Second Group" = [{
+          "Calibre-Web" = {
+            description = "Calibre-Web";
+            href = "http://127.0.0.1:8025";
+          };
+        }];
+      }
+
+    ];
+
+    widgets = [ ];
+
+    kubernetes = { };
+
+    docker = { };
+
+    customJS = "";
+    customCSS = "";
+  };
+
   # Grafana
   services.grafana = {
     enable = true;
@@ -69,8 +110,6 @@ in
   # Loki
 
   # PiHole
-
-  # Nginx
 
   # Nexcloud
 
@@ -145,7 +184,7 @@ in
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8501 8024 8025 8026 8027 8028 8030 2342 ];
+  networking.firewall.allowedTCPPorts = [ 8501 8004 8024 8025 8026 8027 8028 8030 2342 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

@@ -140,7 +140,6 @@
     nodejs
     nushell
     okular
-    outline
     perl
     python3
     ripgrep
@@ -169,7 +168,7 @@
   (with pkgs-unstable; [
     brave
     home-assistant
-    cursor
+    ollama
   ]);
 
   # Default Applications
