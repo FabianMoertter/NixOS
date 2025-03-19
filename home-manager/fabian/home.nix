@@ -104,6 +104,7 @@
     R
     alacritty
     anki-bin
+    tcpdump
     ansible
     awscli2
     bat
@@ -113,6 +114,7 @@
     conda
     ctags
     discord
+    teams-for-linux
     eza
     fd
     fdupes
@@ -146,7 +148,6 @@
     rstudio
     ruby
     rustc
-    skypeforlinux
     slack
     standardnotes
     terraform
@@ -159,6 +160,7 @@
     vscode
     wlroots
     xclip
+    skypeforlinux
     yt-dlp
     zathura
     zip

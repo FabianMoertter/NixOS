@@ -154,11 +154,6 @@ in
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
 
-    # XDG_CURRENT_DESKTOP = "Hyprland";
-    # XDG_SESSION_TYPE = "wayland";
-    # XDG_SESSION_DESKTOP = "Hyprland";
-    # GDK_BACKEND = "wayland";
-
     # Editor
     EDITOR = "nvim";
     VISUAL = "nvim";
@@ -174,7 +169,6 @@ in
     NIXPKGS_ALLOW_UNFREE = "1";
   };
 
-  # Still do not know what xdg Portals are
   xdg.portal.enable = true;
   # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
