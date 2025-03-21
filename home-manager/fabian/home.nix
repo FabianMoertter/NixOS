@@ -117,6 +117,8 @@
     teams-for-linux
     eza
     fd
+    kubernetes
+    minikube
     fdupes
     ffmpeg
     firefox
@@ -161,6 +163,8 @@
     wlroots
     xclip
     skypeforlinux
+    kooha
+    vhs
     yt-dlp
     zathura
     zip
