@@ -51,6 +51,13 @@ let
     # delete generations ( add days as variable )
     delete-generations = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 30d";
 
+    # dev shells
+
+    # Go
+    go_init = "nix flake init --template 'https://flakehub.com/f/the-nix-way/dev-templates/*#go'";
+    # Python
+    python_init = "nix flake init --template 'https://flakehub.com/f/the-nix-way/dev-templates/*#python'";
+
     # Neovim
     nvim-lazy = "NVIM_APPNAME=LazyVim nvim";
     nvim-kick = "NVIM_APPNAME=kickstart nvim";
