@@ -103,6 +103,7 @@
     # zig
     R
     gearlever
+    appimage-run
     alacritty
     anki-bin
     tcpdump
