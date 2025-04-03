@@ -145,7 +145,7 @@
       ];
 
       bind = [
-        "$mod, Return, exec, kitty"
+        "$mod, Return, exec, ghostty"
         "$mod, M, exit,"
         "$mod, F, exec, firefox"
         "$mod, S, exec, rofi -show drun -show-icons"

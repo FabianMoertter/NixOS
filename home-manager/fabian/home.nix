@@ -102,6 +102,7 @@
     # zellij
     # zig
     R
+    gearlever
     alacritty
     anki-bin
     tcpdump
@@ -164,6 +165,7 @@
     xclip
     skypeforlinux
     kooha
+    devenv
     vhs
     yt-dlp
     zathura
