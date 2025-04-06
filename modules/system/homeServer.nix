@@ -230,17 +230,6 @@ in
   # enable = true;
   # };
 
-  # Nginx
-  services.nginx = {
-    enable = true;
-    # virtualHosts."grafana.home" = {
-    # locations."/".proxyPass = "http://127.0.0.1:8080";
-    # };
-    # virtualHosts."jellyfin.home" = {
-    # locations."/".proxyPass = "http://127.0.0.1:8096";
-    # };
-  };
-
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 8501 8004 8024 8025 8026 8027 8028 8030 2342 8080 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
