@@ -136,21 +136,6 @@ in
   services.prometheus = {
     enable = true;
     port = 8028;
-    exporters = {
-      node = {
-        enable = true;
-        enabledCollectors = [ "systemd" ];
-        port = 9002;
-      };
-      scrapeConfigs = [
-        {
-          job_name = "test";
-          static_configs = [{
-            targets = [ "127.0.0.1:9002" ];
-          }];
-        }
-      ];
-    };
   };
 
   # MySQL
