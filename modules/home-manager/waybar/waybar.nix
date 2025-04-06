@@ -8,9 +8,9 @@
       layer = "top";
       position = "top";
 
-      modules-left = [ "clock" "custom/chatgpt" "custom/perplexity" "custom/sports" "custom/paperless" "battery" ];
+      modules-left = [ "custom/chatgpt" "custom/perplexity" "custom/sports" "custom/paperless" ];
       modules-center = [ "hyprland/workspaces" ];
-      modules-right = [ "custom/keyboard_layout" "custom/filemanager" "disk" "network" "pulseaudio" "bluetooth" "tray" ];
+      modules-right = [ "custom/filemanager" "disk" "network" "pulseaudio" "bluetooth" "clock" "tray" ];
 
       "hyprland/workspaces" = {
         on-click = "activate";
@@ -25,9 +25,11 @@
       };
 
       "clock" = {
-        format = "{: %I:%M %p}";
-        tooltip = false;
+        format = '' {:L%H:%M}'';
+        tooltip = true;
+        tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
       };
+
 
       "disk" = {
         interval = 600;
@@ -91,6 +93,16 @@
         format-icons = [ "" "" "" ];
       };
 
+      "custom/dashboard" = {
+        format = "🤖";
+        on-click = "brave --app=mantodea:8004";
+      };
+
+      "custom/anytype" = {
+        format = "🤖";
+        on-click = "true";
+      };
+
       "custom/sports" = {
         format = "🏋️";
         on-click = "brave --app=https://calimove.com";
@@ -130,6 +142,9 @@
         font-family: JetBrainsMono Nerd Font, Font Awesome, sans-serif;
         font-weight: bold;
         color: #f3f9ff;
+        border-radius: 0px;
+        border: none;
+        min-height: 0px;
       }
 
       window#waybar {
@@ -137,8 +152,19 @@
       }
 
       tooltip {
-        background: #141414;
-        border-radius: 4px;
+        background: #${config.colorScheme.palette.base00};
+        border: 1px solid #${config.colorScheme.palette.base05};
+        border-radius: 12px;
+      }
+      tooltip label {
+        color: #${config.colorScheme.palette.base05};
+      }
+
+      #clock {
+        font-weight: bold;
+        padding: 0px 10px;
+        color: #${config.colorScheme.palette.base00};
+        background: #${config.colorScheme.palette.base0E};
       }
     '';
   };

@@ -39,6 +39,7 @@ in
   nix.extraOptions = ''
     keep-outputs = true
     keep-derivations = true
+    trusted-users = root fabian
   '';
 
   # QMK

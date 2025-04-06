@@ -94,6 +94,7 @@
     # poetry
     # rofi
     # ruff, uv, pedantic
+    code-cursor
     # sd
     # swaylock-effects
     # terminator
@@ -172,6 +173,7 @@
     zathura
     zip
     zoxide
+    warp-terminal
   ])
   ++
   (with pkgs-unstable; [
