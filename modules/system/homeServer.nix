@@ -112,10 +112,11 @@ in
     #   watch = true;
     # };
 
-    dynamicConfigOptions = {
-      http.routers = { };
-      http.services = { };
-    };
+    # dynamicConfigOptions = {
+    #   http.routers = { };
+    #   http.services = { };
+    # };
+
   };
 
   # Grafana
