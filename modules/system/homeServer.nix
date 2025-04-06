@@ -43,6 +43,18 @@ in
         }];
       }
 
+      {
+        "My Third Group" = [{
+          "Grafana" = {
+            description = "Grafana";
+            href = "http://mantodea:8027";
+          };
+          "Prometheus" = {
+            description = "Prometheus";
+            href = "http://mantodea:8028";
+          };
+        }];
+      }
     ];
 
     widgets = [ ];
