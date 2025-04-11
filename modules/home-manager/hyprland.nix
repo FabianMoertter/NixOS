@@ -4,9 +4,7 @@
   home = {
 
     packages = with pkgs; [
-      libnotify
       # pywal
-      # wofi
       cava
       font-awesome
       grim
@@ -138,6 +136,8 @@
         "$mod, 4, focusmonitor, DP-1"
         "$mod, 5, focusmonitor, DP-2"
         "$mod, 6, focusmonitor, DP-1"
+        "$mod, 7, focusmonitor, DP-2"
+        "$mod, 8, focusmonitor, DP-1"
         "$mod, K, movefocus, u"
         "$mod, J, movefocus, d"
         "$mod, H, movefocus, l"
