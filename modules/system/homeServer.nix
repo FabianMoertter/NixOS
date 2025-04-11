@@ -35,6 +35,15 @@ in
       }
 
       {
+        "Another Group" = [{
+          "Blog" = {
+            description = "Blog";
+            href = "https://fabianmoertter.github.io/#";
+          };
+        }];
+      }
+
+      {
         "My Second Group" = [{
           "Calibre-Web" = {
             description = "Calibre-Web";

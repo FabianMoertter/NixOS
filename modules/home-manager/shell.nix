@@ -135,6 +135,7 @@ in
 
       # nix-direnv less verbose output
       export DIRENV_LOG_FORMAT=
+      export DIRENV_WARN_TIMEOUT=1m
 
       # set options
       setopt sharehistory
