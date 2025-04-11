@@ -3,12 +3,6 @@
 
   home = {
 
-    # sessionVariables = {
-    #   XDG_CURRENT_DESKTOP = "Hyprland";
-    #   XDG_SESSION_DESKTOP = "Hyprland";
-    #   XDG_SESSION_TYPE = "Hyprland";
-    # };
-
     packages = with pkgs; [
       libnotify
       # pywal
@@ -32,30 +26,16 @@
     outputs.homeManagerModules.waybar
   ];
 
-  # services.mako = {
-  #   enable = true;
-  #   backgroundColor = "#${config.colorScheme.colors.base01}";
-  #   borderColor = "#${config.colorScheme.colors.base0E}";
-  #   borderRadius = 5;
-  #   borderSize = 2;
-  #   textColor = "#${config.colorScheme.colors.base04}";
-  #   layer = "overlay";
-  # };
-
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    # systemdIntegration = true;
-    # enableNvidiaPatches = true;
 
-    # TODO get rid of absolute paths
-    # extraConfig = ''
-    # exec-once = swww init
-    # exec-once = swww img -o DP-1 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-left.jpg
-    # exec-once = swww img -o DP-2 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-right.jpg
-    # '';
-    # exec-once = swww img -o DP-1 /home/fabian/Pictures/Wallpaper/tiger-left.jpg
-    # exec-once = swww img -o DP-2 /home/fabian/Pictures/Wallpaper/tiger-right.jpg
+    extraConfig = ''
+      env = XDG_CURRENT_DESKTOP,Hyprland
+      env = XDG_SESSION_DESKTOP,Hyprland
+      env = XDG_SESSION_TYPE,wayland
+      env = NIXPKGS_ALLOW_UNFREE,1
+    '';
 
     settings = {
 

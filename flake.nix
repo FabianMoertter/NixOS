@@ -14,14 +14,16 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
+    stylix.url = "github:danth/stylix/release-24.11";
+
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, nix-colors, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, nix-colors, stylix, ... }:
 
     let
       # theme = "dracula";
-      theme = "catppuccin-frappe";
       # theme = "catppuccin-mocha";
+      theme = "catppuccin-frappe";
       inherit (self) outputs;
       system = "x86_64-linux";
       user = "fabian";
@@ -31,7 +33,6 @@
       };
       pkgs-unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib;
-
     in
     {
 

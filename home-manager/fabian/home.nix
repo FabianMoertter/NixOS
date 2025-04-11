@@ -88,43 +88,33 @@
   };
 
   home.packages = (with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
     # dbeaver-bin
     # mendeley
-    # poetry
-    # rofi
-    # ruff, uv, pedantic
-    code-cursor
     # sd
     # swaylock-effects
-    # terminator
     # vlc
     # xh
-    # zellij
-    # zig
+    (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
     R
-    gearlever
-    appimage-run
     alacritty
     anki-bin
-    tcpdump
     ansible
+    appimage-run
     awscli2
     bat
     btop
     cargo
     clang
-    conda
+    code-cursor
     ctags
+    devenv
     discord
-    teams-for-linux
     eza
     fd
-    kubernetes
-    minikube
     fdupes
     ffmpeg
     firefox
+    gearlever
     ghostty
     gifsicle
     glances
@@ -133,12 +123,15 @@
     helix
     jq
     kitty
+    kooha
+    kubernetes
     lazydocker
     lazygit
     libreoffice
     lua
     luarocks
     memos
+    minikube
     mpd
     mpv
     mpvpaper
@@ -153,27 +146,27 @@
     rstudio
     ruby
     rustc
+    skypeforlinux
     slack
     standardnotes
+    tcpdump
+    teams-for-linux
     terraform
     thunderbird
     tmux-sessionizer
     tree-sitter
     ueberzug
     unzip
+    vhs
     vial
     vscode
+    warp-terminal
     wlroots
     xclip
-    skypeforlinux
-    kooha
-    devenv
-    vhs
     yt-dlp
     zathura
     zip
     zoxide
-    warp-terminal
   ])
   ++
   (with pkgs-unstable; [

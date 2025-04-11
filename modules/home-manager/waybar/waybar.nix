@@ -8,28 +8,64 @@
       layer = "top";
       position = "top";
 
-      modules-left = [ "custom/chatgpt" "custom/perplexity" "custom/sports" "custom/paperless" ];
-      modules-center = [ "hyprland/workspaces" ];
-      modules-right = [ "custom/filemanager" "disk" "network" "pulseaudio" "bluetooth" "clock" "tray" ];
+      modules-left = ["hyprland/workspaces" "cava" ];
+      # modules-center = [ "idle_inhibitor" "clock" ];
+      # modules-center = [ "clock" "custom/notification" ];
+      modules-center = [ "clock" ];
 
+
+      # modules-left = [ "custom/chatgpt" "custom/perplexity" "custom/sports" "custom/paperless" ];
+      # modules-center = [ "hyprland/workspaces" ];
+      modules-right = [ "custom/paperless" "custom/filemanager" "disk" "network" "pulseaudio" "bluetooth" "tray" ];
+
+      # "hyprland/workspaces" = {
+      #   on-click = "activate";
+      #   active-only = false;
+      #   all-outputs = true;
+      #   format = "{}";
+      #   format-icons = {
+      #     urgent = "";
+      #     active = "";
+      #     default = "";
+      #   };
+      # };
+      #
       "hyprland/workspaces" = {
-        on-click = "activate";
-        active-only = false;
+        disable-scroll = true;
         all-outputs = true;
-        format = "{}";
-        format-icons = {
-          urgent = "";
-          active = "";
-          default = "";
+        active-only = false;
+        on-click = "activate";
+        persistent-workspaces = {
+          "*" = [1 2 3 4 5 6 7 8];
         };
       };
 
       "clock" = {
-        format = '' {:L%H:%M}'';
+        format = "{:%a %d %b %R}";
+        # format = '' {:L%H:%M}'';
+        # format = "{:%R 󰃭 %d·%m·%y}";
         tooltip = true;
-        tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
+        format-alt = "{:%I:%M %p}";
+        tooltip-format = "<tt>{calendar}</tt>";
+        calendar = {
+          mode = "month";
+          mode-mon-col = 3;
+          on-scroll = 1;
+          on-click-right = "mode";
+          format = {
+            months = "<span color='#ffead3'><b>{}</b></span>";
+            weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+            today = "<span color='#ff6699'><b>{}</b></span>";
+          };
+        };
+        actions = {
+          on-click-right = "mode";
+          on-click-forward = "tz_up";
+          on-click-backward = "tz_down";
+          on-scroll-up = "shift_up";
+          on-scroll-down = "shift_down";
+        };
       };
-
 
       "disk" = {
         interval = 600;
@@ -48,6 +84,17 @@
         format-off = "";
         interval = 30;
         on-click = "blueman-manager";
+      };
+
+      "cava" = {
+        hide_on_silence = false;
+        framerate = 60;
+        bars = 10;
+        format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
+        input_delay = 1;
+        # "noise_reduction" = 0.77;
+        sleep_timer = 5;
+        bar_delimiter = 0;
       };
 
       "pulseaudio" = {
@@ -71,6 +118,13 @@
 
       "tray" = {
         spacing = 12;
+      };
+
+      "hyprland/language" = {
+        format-en = "🇺🇸";
+        format-de = "🇩🇪";
+        min-length = 5;
+        tooltip = false;
       };
 
       "network" = {
@@ -151,6 +205,10 @@
         background: transparent;
       }
 
+      #cava {
+        color: @pink;
+      }
+
       tooltip {
         background: #${config.colorScheme.palette.base00};
         border: 1px solid #${config.colorScheme.palette.base05};
@@ -166,6 +224,29 @@
         color: #${config.colorScheme.palette.base00};
         background: #${config.colorScheme.palette.base0E};
       }
+
+      .modules-left {
+        background: #${config.colorScheme.palette.base00};
+        border: 1px solid #${config.colorScheme.palette.base0E};
+        padding-right: 15px;
+        padding-left: 2px;
+        border-radius: 10px;
+      }
+      .modules-center {
+        background: #${config.colorScheme.palette.base00};
+        border: 1px solid #${config.colorScheme.palette.base0E};
+        padding-right: 5px;
+        padding-left: 5px;
+        border-radius: 10px;
+      }
+      .modules-right {
+        background: #${config.colorScheme.palette.base00};
+        border: 1px solid #${config.colorScheme.palette.base0E};
+        padding-right: 15px;
+        padding-left: 15px;
+        border-radius: 10px;
+      }
+
     '';
   };
 }
