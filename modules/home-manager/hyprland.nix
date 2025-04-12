@@ -4,7 +4,9 @@
   home = {
 
     packages = with pkgs; [
+      libnotify
       # pywal
+      mpvpaper
       cava
       font-awesome
       grim
@@ -45,12 +47,11 @@
 
       exec-once = [
         # "kitty tmux new -s home"
-        # "thunderbird"
         "killall waybar"
         "sleep 0.5"
         "waybar -c $HOME/.config/waybar/config"
         "swww init"
-        # "swww img -o DP-2 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-left.jpg"
+        "swww img -o DP-2 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-left.jpg"
         "swww img -o DP-1 /home/fabian/Projects/NixOS/nixos-config/assets/wallpaper/dna-strand-right.jpg"
       ];
 
@@ -122,6 +123,17 @@
         "$mod ALT, mouse:272, resizewindow"
       ];
 
+      workspace = [
+        "1, monitor:DP-1"
+        "2, monitor:DP-2"
+        "3, monitor:DP-1"
+        "4, monitor:DP-2"
+        "5, monitor:DP-1"
+        "6, monitor:DP-2"
+        "7, monitor:DP-1"
+        "8, monitor:DP-2"
+      ];
+
       bind = [
         "$mod, Return, exec, ghostty"
         "$mod, M, exit,"
@@ -130,6 +142,12 @@
         "$mod, G, togglegroup"
         "$mod, X, killactive"
         "$mod, A, fullscreen"
+        # "$mod SHIFT, N, changegroupactive, f"
+        # "$mod SHIFT, P, changegroupactive, b"
+        # "$mod, R, togglesplit,"
+        # "$mod, T, togglefloating,"
+        # "$mod, P, pseudo,"
+        # "$mod ALT, ,resizeactive,"
         "$mod, 1, focusmonitor, DP-2"
         "$mod, 2, focusmonitor, DP-1"
         "$mod, 3, focusmonitor, DP-2"
@@ -142,6 +160,10 @@
         "$mod, J, movefocus, d"
         "$mod, H, movefocus, l"
         "$mod, L, movefocus, r"
+        "$mod, up, movefocus, u"
+        "$mod, down, movefocus, d"
+        "$mod, left, movefocus, l"
+        "$mod, right, movefocus, r"
       ]
       ++ (
         # workspaces
