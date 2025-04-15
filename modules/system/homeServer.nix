@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-unstable, sops, ... }:
+{ config, lib, pkgs, pkgs-unstable, ... }:
 let
   ip_address = "192.168.2.103";
 in
