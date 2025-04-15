@@ -29,9 +29,9 @@ in
         saturate = 50;
         brightness = 50;
         opacity = 50;
+        # theme = dark;
       };
       # favicon = "";
-      theme = dark;
     };
 
 
