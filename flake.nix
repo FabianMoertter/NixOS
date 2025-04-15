@@ -16,7 +16,7 @@
 
     stylix.url = "github:danth/stylix/release-24.11";
 
-    sops-nix = "github:Mic92/sops-nix";
+    sops-nix.url = "github:Mic92/sops-nix";
 
   };
 

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-unstable, ... }:
+{ config, lib, pkgs, pkgs-unstable, sops, ... }:
 let
   ip_address = "192.168.2.103";
 in
@@ -28,30 +28,30 @@ in
 
 
     bookmarks = [
-    {
-      Developer = [
       {
-        Github = [
-        {
-          abbr = "GH";
-          href = "https://github.com/";
-        }
+        Developer = [
+          {
+            Github = [
+              {
+                abbr = "GH";
+                href = "https://github.com/";
+              }
+            ];
+          }
         ];
       }
-      ];
-    }
-    {
-      Entertainment = [
       {
-        YouTube = [
-        {
-          abbr = "YT";
-          href = "https://youtube.com/";
-        }
+        Entertainment = [
+          {
+            YouTube = [
+              {
+                abbr = "YT";
+                href = "https://youtube.com/";
+              }
+            ];
+          }
         ];
       }
-      ];
-    }
     ];
 
     services = [
@@ -97,27 +97,27 @@ in
       }
     ];
 
-    widgets = [ 
-    {
-      resources = {
-        cpu = true;
-        disk = "/";
-        memory = true;
-      };
-    }
-    {
-      search = {
-        provider = "duckduckgo";
-        target = "_blank";
-      };
-    }
-    # {
-    #   calibre-web = {
-    #     url = "http://mantodea:8025";
-    #     username = "";
-    #     password = "";
-    #   };
-    # }
+    widgets = [
+      {
+        resources = {
+          cpu = true;
+          disk = "/";
+          memory = true;
+        };
+      }
+      {
+        search = {
+          provider = "duckduckgo";
+          target = "_blank";
+        };
+      }
+      {
+        calibreweb = {
+          url = "http://mantodea:8025";
+          username = builtins.readFile (config.sops.secrets.calibre-web_user.path);
+          password = builtins.readFile (config.sops.secrets.calibre-web_password.path);
+        };
+      }
     ];
 
     kubernetes = { };
