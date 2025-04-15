@@ -80,7 +80,8 @@ in
       }
     ];
 
-    widgets = [ {
+    widgets = [ 
+    {
       resources = {
         cpu = true;
         disk = "/";
@@ -91,6 +92,13 @@ in
       search = {
         provider = "duckduckgo";
         target = "_blank";
+      };
+    }
+    {
+      calibre-web = {
+        url = "http://mantodea:8025";
+        username = "";
+        password = "";
       };
     }
     ];
