@@ -88,6 +88,8 @@ in
           "Grafana" = {
             description = "Grafana";
             href = "http://mantodea:8027";
+            username = "admin";
+            password = "grafana";
           };
           "Prometheus" = {
             description = "Prometheus";
@@ -126,16 +128,6 @@ in
 
     customJS = "";
     customCSS = "";
-
-    services = [
-      {
-        grafana = {
-          url = "http://mantodea:8027";
-          username = "admin";
-          password = "grafana";
-        };
-      }
-    ];
   };
 
   # Grafana
