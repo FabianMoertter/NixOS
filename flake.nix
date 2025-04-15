@@ -16,6 +16,8 @@
 
     stylix.url = "github:danth/stylix/release-24.11";
 
+    sops-nix = "github:Mic92/sops-nix";
+
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, nix-colors, stylix, ... }:

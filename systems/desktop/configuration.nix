@@ -8,6 +8,7 @@ in
   imports =
     [
       ./hardware-configuration.nix
+      inputs.sops-nix.nixosModules.sops
       # Impermanence
       # "${impermanence}/nixos.nix"
     ];
@@ -28,6 +29,11 @@ in
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
+
+  # SOPS
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/fabian/.config/sops/age/keys.txt";
 
   # Automatic Updates (check how it works first)
   # system.autoUpgrade = {
