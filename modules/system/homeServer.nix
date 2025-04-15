@@ -106,6 +106,13 @@ in
         };
       }
       {
+        grafana = {
+          url = "http://mantodea:8027";
+          username = "admin";
+          password = "grafana";
+        };
+      }
+      {
         search = {
           provider = "duckduckgo";
           target = "_blank";
