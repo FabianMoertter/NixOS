@@ -111,13 +111,13 @@ in
           target = "_blank";
         };
       }
-      {
-        calibreweb = {
-          url = "http://mantodea:8025";
-          username = "admin";
-          password = "admin123";
-        };
-      }
+      # {
+      #   calibreweb = {
+      #     url = "http://mantodea:8025";
+      #     username = "admin";
+      #     password = "admin123";
+      #   };
+      # }
     ];
 
     kubernetes = { };
