@@ -19,7 +19,21 @@ in
     enable = true;
     package = pkgs-unstable.homepage-dashboard;
     listenPort = 8004;
-    settings = { };
+    settings = {
+      title = "Fabians Home";
+      description = "Fabians Home";
+      # startUrl = "https://custom.url";
+      background = {
+        image = "https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=2560&q=80";
+        blur = "sm";
+        saturate = 50;
+        brightness = 50;
+        opacity = 50;
+      };
+      # favicon = "";
+      theme = dark;
+    };
+
 
     bookmarks = [ ];
 
