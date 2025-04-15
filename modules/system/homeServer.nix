@@ -114,8 +114,8 @@ in
       {
         calibreweb = {
           url = "http://mantodea:8025";
-          username = builtins.readFile (config.sops.secrets.calibre-web_user.path);
-          password = builtins.readFile (config.sops.secrets.calibre-web_password.path);
+          username = "admin";
+          password = "admin123";
         };
       }
     ];
