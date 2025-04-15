@@ -4,14 +4,6 @@ let
 in
 {
 
-  # # Cronjobs
-  # services.cron = {
-  #   enable = true;
-  #   systemCronJobs = [
-  #     "*/5 * * * *    root    data >> /tmp/cron.log"
-  #   ];
-  # };
-
   # Services
 
   # Homepage-Dashboard
@@ -94,13 +86,13 @@ in
         target = "_blank";
       };
     }
-    {
-      calibre-web = {
-        url = "http://mantodea:8025";
-        username = "";
-        password = "";
-      };
-    }
+    # {
+    #   calibre-web = {
+    #     url = "http://mantodea:8025";
+    #     username = "";
+    #     password = "";
+    #   };
+    # }
     ];
 
     kubernetes = { };
@@ -167,8 +159,6 @@ in
 
   # PiHole
 
-  # Nexcloud
-
   # Calibre-Web
   services.calibre-web = {
     enable = true;
@@ -200,28 +190,6 @@ in
     port = 8030;
     withCLI = false;
   };
-
-  # Nextcloud
-  # services.nextcloud = {                
-  # enable = true;                   
-  # hostName = "nextcloud.tld";
-  # database.createLocally = true;
-  # config = {
-  # dbtype = "pgsql";
-  # adminpassFile = "/home/fabian/home-server/nextcloud/adminpass.txt";
-  # };
-  # Instead of using pkgs.nextcloud28Packages.apps,
-  # we'll reference the package version specified above
-  # extraApps = {
-  # inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks;
-  # };
-  # extraAppsEnable = true;
-  # };
-
-  # Logstash
-  # services.logstash = {
-  # enable = true;
-  # };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 8501 8004 8024 8025 8026 8027 8028 8030 2342 8080 ];
