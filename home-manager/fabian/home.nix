@@ -100,6 +100,7 @@
     anki-bin
     ansible
     appimage-run
+    whatsapp-for-linux
     awscli2
     bat
     btop
