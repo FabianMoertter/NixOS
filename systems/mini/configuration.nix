@@ -19,9 +19,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # SOPS
-  sops.defaultSopsFile = ./secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/fabian/.config/sops/age/keys.txt";
+  # sops.defaultSopsFile = ./secrets/secrets.yaml;
+  # sops.defaultSopsFormat = "yaml";
+  # sops.age.keyFile = "/home/fabian/.config/sops/age/keys.txt";
   # sops.secrets.calibre-web_user = {
   #   neededForUsers = true;
   # };
