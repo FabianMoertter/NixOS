@@ -24,10 +24,10 @@
   sops.age.keyFile = "/home/fabian/.config/sops/age/keys.txt";
   sops.secrets.calibre-web_user = {
     neededForUsers = true;
-  }
+  };
   sops.secrets.calibre-web_password = {
     neededForUsers = true;
-  }
+  };
 
   networking.hostName = "mantodea"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
