@@ -14,7 +14,7 @@
       networkmanagerapplet
       rofi-wayland
       slurp
-      swaylock
+      hyprlock
       swaynotificationcenter
       swww
       pavucontrol

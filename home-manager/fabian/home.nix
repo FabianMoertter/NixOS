@@ -100,10 +100,13 @@
     anki-bin
     ansible
     appimage-run
+    dbeaver-bin
     whatsapp-for-linux
     awscli2
     bat
     btop
+    wezterm
+    glances
     cargo
     clang
     code-cursor

@@ -8,7 +8,7 @@
       layer = "top";
       position = "top";
 
-      modules-left = ["hyprland/workspaces" "cava" ];
+      modules-left = [ "hyprland/workspaces" "cava" ];
       # modules-center = [ "idle_inhibitor" "clock" ];
       # modules-center = [ "clock" "custom/notification" ];
       modules-center = [ "clock" ];
@@ -30,14 +30,22 @@
       #   };
       # };
       #
+
       "hyprland/workspaces" = {
         disable-scroll = true;
         all-outputs = true;
         active-only = false;
         on-click = "activate";
         persistent-workspaces = {
-          "*" = [1 2 3 4 5 6 7 8];
+          "*" = [ 1 2 3 4 5 6 7 8 ];
         };
+      };
+
+      "custom/startmenu" = {
+        tooltip = false;
+        format = "";
+        # exec = "rofi -show drun";
+        on-click = "sleep 0.1 && rofi-launcher";
       };
 
       "clock" = {
@@ -90,7 +98,7 @@
         hide_on_silence = false;
         framerate = 60;
         bars = 10;
-        format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
+        format-icons = [ "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
         input_delay = 1;
         # "noise_reduction" = 0.77;
         sleep_timer = 5;
@@ -188,8 +196,8 @@
         on-click = "";
         exec = "";
       };
-
     }];
+
     style = ''
       * {
         font-size: 16px;
@@ -217,14 +225,12 @@
       tooltip label {
         color: #${config.colorScheme.palette.base05};
       }
-
       #clock {
         font-weight: bold;
         padding: 0px 10px;
         color: #${config.colorScheme.palette.base00};
         background: #${config.colorScheme.palette.base0E};
       }
-
       .modules-left {
         background: #${config.colorScheme.palette.base00};
         border: 1px solid #${config.colorScheme.palette.base0E};
@@ -246,7 +252,6 @@
         padding-left: 15px;
         border-radius: 10px;
       }
-
     '';
   };
 }
