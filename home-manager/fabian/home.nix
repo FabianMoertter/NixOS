@@ -85,10 +85,10 @@
     };
     fzf.enable = true;
     go.enable = true;
+    # nix-index-database.comma.enable = true;
   };
 
   home.packages = (with pkgs; [
-    # dbeaver-bin
     # mendeley
     # sd
     # swaylock-effects
@@ -98,14 +98,14 @@
     R
     alacritty
     anki-bin
-    ansible
+    # ansible
     appimage-run
     dbeaver-bin
     whatsapp-for-linux
     awscli2
     bat
     btop
-    wezterm
+    # wezterm
     glances
     cargo
     clang
@@ -117,7 +117,6 @@
     fd
     fdupes
     ffmpeg
-    firefox
     gearlever
     ghostty
     gifsicle
@@ -127,14 +126,15 @@
     helix
     jq
     kitty
-    kooha
+    # kooha
     kubernetes
-    lazydocker
+    # lazydocker
     lazygit
     libreoffice
     lua
-    luarocks
-    memos
+    evolution
+    # luarocks
+    # memos
     minikube
     mpd
     mpv
@@ -144,32 +144,33 @@
     nodejs
     nushell
     okular
-    perl
+    # perl
     python3
     ripgrep
     rstudio
-    ruby
+    # ruby
     rustc
-    skypeforlinux
-    slack
-    standardnotes
+    # slack
+    # standardnotes
     tcpdump
     teams-for-linux
-    terraform
+    # terraform
     thunderbird
     tmux-sessionizer
     tree-sitter
     ueberzug
     unzip
     vhs
-    vial
+    # vial
     vscode
     warp-terminal
     wlroots
     xclip
+    # yed
     yt-dlp
     zathura
     zip
+    zotero
     zoxide
   ])
   ++
@@ -177,6 +178,7 @@
     brave
     home-assistant
     ollama
+    firefox
   ]);
 
   # Default Applications
