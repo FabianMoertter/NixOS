@@ -12,7 +12,6 @@
         firefox
         google-chrome
         libreoffice
-        skypeforlinux
       ];
     };
 
@@ -25,7 +24,6 @@
         firefox
         google-chrome
         libreoffice
-        # skypeforlinux
       ];
     };
 
