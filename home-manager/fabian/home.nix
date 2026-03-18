@@ -111,7 +111,7 @@
     clang
     code-cursor
     ctags
-    devenv
+    # devenv
     discord
     eza
     fd

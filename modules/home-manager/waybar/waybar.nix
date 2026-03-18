@@ -7,69 +7,54 @@
     settings = [{
       layer = "top";
       position = "top";
+      height = 44;
+      margin-top = 8;
+      margin-left = 10;
+      margin-right = 10;
 
       modules-left = [ "hyprland/workspaces" "cava" ];
-      # modules-center = [ "idle_inhibitor" "clock" ];
-      # modules-center = [ "clock" "custom/notification" ];
       modules-center = [ "clock" ];
-
-
-      # modules-left = [ "custom/chatgpt" "custom/perplexity" "custom/sports" "custom/paperless" ];
-      # modules-center = [ "hyprland/workspaces" ];
-      modules-right = [ "custom/paperless" "custom/filemanager" "disk" "network" "pulseaudio" "bluetooth" "tray" ];
-
-      # "hyprland/workspaces" = {
-      #   on-click = "activate";
-      #   active-only = false;
-      #   all-outputs = true;
-      #   format = "{}";
-      #   format-icons = {
-      #     urgent = "";
-      #     active = "";
-      #     default = "";
-      #   };
-      # };
-      #
+      modules-right = [ "disk" "network" "pulseaudio" "bluetooth" "custom/filemanager" "custom/paperless" "tray" ];
 
       "hyprland/workspaces" = {
         disable-scroll = true;
         all-outputs = true;
         active-only = false;
         on-click = "activate";
+        format = "{name}";
         persistent-workspaces = {
           "*" = [ 1 2 3 4 5 6 7 8 ];
         };
       };
 
-      "custom/startmenu" = {
-        tooltip = false;
-        format = "";
-        # exec = "rofi -show drun";
-        on-click = "sleep 0.1 && rofi-launcher";
+      "cava" = {
+        hide_on_silence = true;
+        framerate = 60;
+        bars = 8;
+        format-icons = [ "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+        input_delay = 1;
+        sleep_timer = 5;
+        bar_delimiter = 0;
       };
 
       "clock" = {
-        format = "{:%a %d %b %R}";
-        # format = '' {:L%H:%M}'';
-        # format = "{:%R 󰃭 %d·%m·%y}";
+        format = "󰃭  {:%a %d %b  %H:%M}";
         tooltip = true;
+        tooltip-format = "<tt><small>{calendar}</small></tt>";
         format-alt = "{:%I:%M %p}";
-        tooltip-format = "<tt>{calendar}</tt>";
         calendar = {
           mode = "month";
           mode-mon-col = 3;
           on-scroll = 1;
           on-click-right = "mode";
           format = {
-            months = "<span color='#ffead3'><b>{}</b></span>";
-            weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-            today = "<span color='#ff6699'><b>{}</b></span>";
+            months = "<span color='#${config.colorScheme.palette.base0E}'><b>{}</b></span>";
+            weekdays = "<span color='#${config.colorScheme.palette.base0A}'><b>{}</b></span>";
+            today = "<span color='#${config.colorScheme.palette.base08}'><b><u>{}</u></b></span>";
           };
         };
         actions = {
           on-click-right = "mode";
-          on-click-forward = "tz_up";
-          on-click-backward = "tz_down";
           on-scroll-up = "shift_up";
           on-scroll-down = "shift_down";
         };
@@ -77,180 +62,215 @@
 
       "disk" = {
         interval = 600;
-        format = "  {percentage_used}%";
-        tooltip-format = "{used} used out of {total} on {path} ";
-        on_click = "alacritty -e htop";
-      };
-
-      "bluetooth" = {
-        format = " {status}";
-        format-disabled = " {status}";
-        format-connected = " {num_connections}";
-        tooltip-format = "{device_alias}";
-        format-connected-battery = " {device_alias} {device_battery_percentage}%";
-        tooltip-format-enumerate-connected = "{device_alias}";
-        format-off = "";
-        interval = 30;
-        on-click = "blueman-manager";
-      };
-
-      "cava" = {
-        hide_on_silence = false;
-        framerate = 60;
-        bars = 10;
-        format-icons = [ "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
-        input_delay = 1;
-        # "noise_reduction" = 0.77;
-        sleep_timer = 5;
-        bar_delimiter = 0;
-      };
-
-      "pulseaudio" = {
-        format = "{icon} {volume}% {format_source}";
-        format-bluetooth = "{volume}% {icon} {format_source}";
-        format-bluetooth-muted = " {icon} {format_source}";
-        format-muted = " {format_source}";
-        format-source = " {volume}%";
-        format-source-muted = "";
-        format-icons = {
-          headphone = "";
-          hands-free = "";
-          headset = "";
-          phone = "";
-          portable = "";
-          car = "";
-          default = [ "" "" "" ];
-        };
-        on-click = "pavucontrol";
-      };
-
-      "tray" = {
-        spacing = 12;
-      };
-
-      "hyprland/language" = {
-        format-en = "🇺🇸";
-        format-de = "🇩🇪";
-        min-length = 5;
-        tooltip = false;
+        format = "󰋊 {percentage_used}%";
+        tooltip-format = "{used} / {total} ({percentage_used}%) on {path}";
+        on-click = "kitty -e btop";
       };
 
       "network" = {
-        format-disconnected = "Disconnected";
-        format-wifi = " {essid}";
-        tooltip-format = " {signalStrength}";
+        format-wifi = "󰤨 {essid}";
+        format-ethernet = "󰈀 {ipaddr}";
+        format-disconnected = "󰤭 Offline";
+        tooltip-format-wifi = "󰤨 {essid}  {signalStrength}%\n{ipaddr}/{cidr}";
+        tooltip-format-ethernet = "󰈀 {ifname}\n{ipaddr}/{cidr}";
+        tooltip-format-disconnected = "Disconnected";
         on-click = "wifimenu";
       };
 
-      "battery" = {
-        states = {
-          warning = 30;
-          critical = 15;
+      "pulseaudio" = {
+        format = "{icon} {volume}%";
+        format-bluetooth = "󰂯 {volume}%";
+        format-bluetooth-muted = "󰂲 Muted";
+        format-muted = "󰝟 Muted";
+        format-source = "󰍬 {volume}%";
+        format-source-muted = "󰍭";
+        format-icons = {
+          headphone = "󰋋";
+          headset = "󰋎";
+          default = [ "󰕿" "󰖀" "󰕾" ];
         };
-        format = "{icon} {capacity}%";
-        format-charging = " {capacity}%";
-        format-plugged = "{capacity}%";
-        format-alt = "{time} {icon}";
-        format-full = " {capacity}%";
-        format-icons = [ "" "" "" ];
+        on-click = "pavucontrol";
+        on-scroll-up = "pactl set-sink-volume @DEFAULT_SINK@ +5%";
+        on-scroll-down = "pactl set-sink-volume @DEFAULT_SINK@ -5%";
       };
 
-      "custom/dashboard" = {
-        format = "🤖";
-        on-click = "brave --app=mantodea:8004";
-      };
-
-      "custom/anytype" = {
-        format = "🤖";
-        on-click = "true";
-      };
-
-      "custom/sports" = {
-        format = "🏋️";
-        on-click = "brave --app=https://calimove.com";
-      };
-
-      "custom/chatgpt" = {
-        format = "🤖";
-        on-click = "brave --app=https://chat.openai.com";
-      };
-
-      "custom/perplexity" = {
-        format = "🤖";
-        on-click = "brave --app=https://perplexity.ai";
+      "bluetooth" = {
+        format = "󰂯 {status}";
+        format-disabled = "󰂲";
+        format-off = "󰂲";
+        format-connected = "󰂱 {num_connections}";
+        format-connected-battery = "󰂱 {device_alias} {device_battery_percentage}%";
+        tooltip-format = "{controller_alias}\n{num_connections} connected";
+        tooltip-format-connected = "{controller_alias}\n\n{device_enumerate}";
+        tooltip-format-enumerate-connected = "{device_alias}";
+        on-click = "blueman-manager";
+        interval = 30;
       };
 
       "custom/paperless" = {
-        format = "📄";
+        format = "󱎓";
+        tooltip = true;
+        tooltip-format = "Paperless";
         on-click = "brave --app=http://mantodea:8026";
       };
 
       "custom/filemanager" = {
-        format = "";
+        format = "󰉋";
+        tooltip = true;
+        tooltip-format = "Files";
         on-click = "nautilus";
-        tooltip = false;
       };
 
-      "custom/keyboard_layout" = {
-        format = "🎹 {}";
-        on-click = "";
-        exec = "";
+      "tray" = {
+        spacing = 10;
+        icon-size = 18;
       };
     }];
 
     style = ''
       * {
-        font-size: 16px;
-        font-family: JetBrainsMono Nerd Font, Font Awesome, sans-serif;
+        font-size: 13px;
+        font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
         font-weight: bold;
-        color: #f3f9ff;
-        border-radius: 0px;
+        min-height: 0;
         border: none;
-        min-height: 0px;
+        border-radius: 0;
       }
 
       window#waybar {
         background: transparent;
       }
 
-      #cava {
-        color: @pink;
-      }
-
+      /* ── Tooltips ─────────────────────────────────────── */
       tooltip {
         background: #${config.colorScheme.palette.base00};
-        border: 1px solid #${config.colorScheme.palette.base05};
-        border-radius: 12px;
+        border: 1px solid #${config.colorScheme.palette.base0E};
+        border-radius: 10px;
+        color: #${config.colorScheme.palette.base05};
+        padding: 4px;
       }
       tooltip label {
         color: #${config.colorScheme.palette.base05};
       }
+
+      /* ── Module groups (pill containers) ─────────────── */
+      .modules-left,
+      .modules-center,
+      .modules-right {
+        background: alpha(#${config.colorScheme.palette.base00}, 0.92);
+        border: 1px solid alpha(#${config.colorScheme.palette.base0E}, 0.35);
+        border-radius: 12px;
+        padding: 0 4px;
+        margin: 4px 0;
+      }
+
+      /* ── Workspaces ───────────────────────────────────── */
+      #workspaces {
+        padding: 0 4px;
+      }
+      #workspaces button {
+        color: #${config.colorScheme.palette.base04};
+        background: transparent;
+        padding: 4px 7px;
+        margin: 4px 1px;
+        border-radius: 8px;
+        transition: all 0.15s ease;
+        min-width: 18px;
+      }
+      #workspaces button:hover {
+        background: alpha(#${config.colorScheme.palette.base0E}, 0.18);
+        color: #${config.colorScheme.palette.base05};
+      }
+      #workspaces button.active {
+        background: #${config.colorScheme.palette.base0E};
+        color: #${config.colorScheme.palette.base00};
+        min-width: 22px;
+      }
+      #workspaces button.urgent {
+        background: #${config.colorScheme.palette.base08};
+        color: #${config.colorScheme.palette.base00};
+      }
+      #workspaces button.empty {
+        color: #${config.colorScheme.palette.base03};
+      }
+
+      /* ── Cava ─────────────────────────────────────────── */
+      #cava {
+        color: #${config.colorScheme.palette.base0E};
+        padding: 0 10px 0 4px;
+        letter-spacing: 1px;
+      }
+
+      /* ── Clock ────────────────────────────────────────── */
       #clock {
         font-weight: bold;
-        padding: 0px 10px;
-        color: #${config.colorScheme.palette.base00};
-        background: #${config.colorScheme.palette.base0E};
+        font-size: 14px;
+        color: #${config.colorScheme.palette.base05};
+        padding: 0 16px;
+        letter-spacing: 0.5px;
       }
-      .modules-left {
-        background: #${config.colorScheme.palette.base00};
-        border: 1px solid #${config.colorScheme.palette.base0E};
-        padding-right: 15px;
-        padding-left: 2px;
-        border-radius: 10px;
+
+      /* ── Disk ─────────────────────────────────────────── */
+      #disk {
+        color: #${config.colorScheme.palette.base0A};
+        padding: 0 10px;
       }
-      .modules-center {
-        background: #${config.colorScheme.palette.base00};
-        border: 1px solid #${config.colorScheme.palette.base0E};
-        padding-right: 5px;
-        padding-left: 5px;
-        border-radius: 10px;
+
+      /* ── Network ──────────────────────────────────────── */
+      #network {
+        color: #${config.colorScheme.palette.base0B};
+        padding: 0 10px;
       }
-      .modules-right {
-        background: #${config.colorScheme.palette.base00};
-        border: 1px solid #${config.colorScheme.palette.base0E};
-        padding-right: 15px;
-        padding-left: 15px;
-        border-radius: 10px;
+      #network.disconnected {
+        color: #${config.colorScheme.palette.base08};
+      }
+
+      /* ── Audio ────────────────────────────────────────── */
+      #pulseaudio {
+        color: #${config.colorScheme.palette.base09};
+        padding: 0 10px;
+      }
+      #pulseaudio.muted {
+        color: #${config.colorScheme.palette.base04};
+      }
+      #pulseaudio.source-muted {
+        color: #${config.colorScheme.palette.base04};
+      }
+
+      /* ── Bluetooth ────────────────────────────────────── */
+      #bluetooth {
+        color: #${config.colorScheme.palette.base0D};
+        padding: 0 10px;
+      }
+      #bluetooth.disabled,
+      #bluetooth.off {
+        color: #${config.colorScheme.palette.base04};
+      }
+
+      /* ── Custom launchers ─────────────────────────────── */
+      #custom-filemanager,
+      #custom-paperless {
+        color: #${config.colorScheme.palette.base0C};
+        font-size: 15px;
+        padding: 0 10px;
+        transition: color 0.15s ease;
+      }
+      #custom-filemanager:hover,
+      #custom-paperless:hover {
+        color: #${config.colorScheme.palette.base05};
+      }
+
+      /* ── Tray ─────────────────────────────────────────── */
+      #tray {
+        padding: 0 8px;
+      }
+      #tray > .passive {
+        -gtk-icon-effect: dim;
+      }
+      #tray > .needs-attention {
+        -gtk-icon-effect: highlight;
+        background-color: #${config.colorScheme.palette.base08};
+        border-radius: 8px;
       }
     '';
   };
