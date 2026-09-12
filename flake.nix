@@ -16,11 +16,9 @@
 
     stylix.url = "github:danth/stylix/release-24.11";
 
-    sops-nix.url = "github:Mic92/sops-nix";
-
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, nix-colors, stylix, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nix-colors, stylix, ... }:
 
     let
       # theme = "dracula";
@@ -49,48 +47,6 @@
 
       nixosConfigurations = {
 
-        # mini (home server)
-        mantodea = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs pkgs-unstable; };
-          modules = [
-            outputs.nixosModules.homeServer
-            outputs.nixosModules.mainUser
-            ./systems/mini/configuration.nix
-          ];
-        };
-
-        # fabian-laptop-2
-        hymenoptera = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs; };
-          modules = (with outputs.nixosModules; [
-            bluetooth
-            gnome
-            users
-            mainUser
-            salt
-            virtualization
-            steam
-          ])
-          ++
-          ([ ./systems/laptop-2/configuration.nix ]);
-        };
-
-        # fabian-laptop
-        coleoptera = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs theme pkgs-unstable; };
-          modules = (with outputs.nixosModules; [
-            bluetooth
-            gnome
-            users
-            mainUser
-          ])
-          ++
-          ([ ./systems/laptop-1/configuration.nix ]);
-        };
-
         # fabian-desktop ( lepidoptera )
         lepidoptera = lib.nixosSystem {
           inherit system;
@@ -118,24 +74,5 @@
 
       };
 
-      homeConfigurations = {
-
-        "fabian@hymenoptera" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs outputs theme pkgs-unstable; };
-          modules = [
-            ./home-manager/fabian/home.nix
-          ];
-        };
-
-        "fabian@coleoptera" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs outputs theme pkgs-unstable; };
-          modules = [
-            ./home-manager/fabian/home.nix
-          ];
-        };
-
-      };
     };
 }

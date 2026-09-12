@@ -1,16 +1,9 @@
 { inputs, outputs, config, pkgs, pkgs-unstable, theme, ... }:
 
-# Impermanence
-let
-  impermanence = builtins.fetchTarball "https://github.com/nix-community/impermanence/archive/master.tar.gz";
-in
 {
   imports =
     [
       ./hardware-configuration.nix
-      inputs.sops-nix.nixosModules.sops
-      # Impermanence
-      # "${impermanence}/nixos.nix"
     ];
 
   # Enable Flakes
@@ -29,11 +22,6 @@ in
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
-
-  # SOPS
-  sops.defaultSopsFile = ./secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/fabian/.config/sops/age/keys.txt";
 
   # Automatic Updates (check how it works first)
   # system.autoUpgrade = {
