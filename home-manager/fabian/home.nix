@@ -89,7 +89,6 @@
   };
 
   home.packages = (with pkgs; [
-    # mendeley
     # sd
     # swaylock-effects
     # vlc
@@ -100,16 +99,16 @@
     anki-bin
     # ansible
     appimage-run
-    dbeaver-bin
-    whatsapp-for-linux
-    awscli2
+    # dbeaver-bin
+    # whatsapp-for-linux
+    # awscli2
     bat
-    btop
+    # btop
     # wezterm
-    glances
+    # glances
     cargo
     clang
-    code-cursor
+    # code-cursor
     ctags
     # devenv
     discord
@@ -120,38 +119,33 @@
     gearlever
     ghostty
     gifsicle
-    glances
+    # glances
     gnumake
     google-chrome
-    helix
+    # helix
     jq
     kitty
     # kooha
-    kubernetes
+    # kubernetes
     # lazydocker
     lazygit
     libreoffice
     lua
-    evolution
+    # evolution
     # luarocks
     # memos
-    minikube
+    # minikube
     mpd
     mpv
-    mpvpaper
+    # mpvpaper
     ncdu
     nix-tree
     nodejs
-    nushell
-    okular
-    # perl
+    # okular
     python3
     ripgrep
-    rstudio
-    # ruby
+    # rstudio
     rustc
-    # slack
-    # standardnotes
     tcpdump
     teams-for-linux
     # terraform
@@ -163,11 +157,10 @@
     vhs
     # vial
     vscode
-    warp-terminal
     wlroots
     xclip
     # yed
-    yt-dlp
+    # yt-dlp
     zathura
     zip
     zotero
@@ -176,8 +169,8 @@
   ++
   (with pkgs-unstable; [
     brave
-    home-assistant
-    ollama
+    # home-assistant
+    # ollama
     firefox
   ]);
 
