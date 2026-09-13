@@ -87,10 +87,10 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    btop
     git
     gparted
     htop
-    nvtopPackages.full
     tmux
     vim
     wget
