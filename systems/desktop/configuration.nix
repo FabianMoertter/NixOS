@@ -3,8 +3,10 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/system/audio.nix
     ../../modules/system/bluetooth.nix
     ../../modules/system/gnome.nix
+    ../../modules/system/hyprland.nix
     ../../modules/system/mainUser.nix
     ../../modules/system/nvidia.nix
     ../../modules/system/steam.nix
@@ -75,15 +77,6 @@
 
   services.printing.enable = true;
 
-  # Sound
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -104,12 +97,6 @@
   };
 
   xdg.portal.enable = true;
-
-  # Hyprland
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
 
   services.openssh.enable = true;
 
