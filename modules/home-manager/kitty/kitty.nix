@@ -1,8 +1,8 @@
-{ pkgs, config, nix-colors, ... }:
+{ config, ... }:
 {
   programs.kitty = {
     enable = true;
-    font.name = "JetBrainMono Nerd Font";
+    font.name = "JetBrainsMono Nerd Font";
     font.size = 14;
     settings = {
       foreground = "#${config.colorScheme.palette.base05}";

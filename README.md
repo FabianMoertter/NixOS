@@ -6,32 +6,34 @@ Repo under construction!
 
 | Hostname | Machine | Status
 | :--- | :--- | :---
-| lepidoptera | Desktop          | WIP
-| mantodea    | [Mini Homelab](<./docs/home-server.md>)     | WIP
-| coleoptera  | Laptop 1	 | not started
-| hymenoptera | Laptop 2         | WIP
-|             | Raspberry Pi     | not started
+| lepidoptera | Desktop | active
 
 # Overview
 | Program           | Name      |
 | :---              | :---      |
-| Code Editor       | Neovim    |
-| Shell             | zsh/bash  |
-| Terminal Emulator | alacritty |
+| Code Editor       | Neovim         |
+| Shell             | zsh            |
+| Terminal Emulator | kitty/ghostty  |
+| Desktop           | GNOME/Hyprland |
+| nixpkgs           | nixos-26.05    |
 
 # Project Structure
     .
-    ├── systems            # System configuration
-    ├── home-manager       # Home configuration
-    ├── docs               # Documentation files
-    ├── modules            # Modules for system and home configuration
-    ├── shells             # Development shells (independent of this NixOS configuration)
-    ├── ...
+    ├── systems
+    │   └── desktop            # lepidoptera: configuration.nix + hardware-configuration.nix
+    ├── home-manager
+    │   └── fabian             # home.nix
+    ├── modules
+    │   ├── system             # NixOS modules, imported by systems/desktop/configuration.nix
+    │   └── home-manager       # home-manager modules, imported by home-manager/fabian/home.nix
+    ├── assets                 # wallpapers
     ├── LICENSE
     ├── flake.nix
     ├── flake.lock
-    ├── shell.nix
     └── README.md
+
+Modules are wired up with plain `imports = [ ./path.nix ]`; there is no module registry to
+keep in sync.
 
 # Installation
 **Warning: Do not follow this blindly, it will probably not work for you!**
@@ -40,16 +42,13 @@ Repo under construction!
 
 After installing NixOS on your system, run:
 ```
-nix --extra-experimental-features nix-command --extra-experimental-features flakes run nixpkgs#git clone https://github.com/FabianMoertter/NixOS
+nix --extra-experimental-features 'nix-command flakes' run nixpkgs#git -- clone https://github.com/FabianMoertter/NixOS
 cd NixOS
-nix-shell
 ```
-to clone this repo and bootstrap flakes and home-manager. **Note**: The shell provides neovim so you can
-edit configuration files.
 **Copy hardware-configuration.nix**: Depending on what you do you need to copy your `hardware-configuration.nix`
 from `/etc/nixos/` to the desired location. Do not just copy this command!
 ```
-cp /etc/nixos/hardware-configuration.nix system/<system>/hardware-configuration.nix
+cp /etc/nixos/hardware-configuration.nix systems/desktop/hardware-configuration.nix
 ```
 Now you can build the system:
 ```
@@ -57,35 +56,15 @@ sudo nixos-rebuild switch --flake .#<hostname>
 ```
 
 ## Home Manager
-Proceed with this steps after you installed NixOS and after you rebuild the system. You should
-still be in the dev shell from above. Otherwise, try:
-```
-nix shell nixpkgs#home-manager
-```
-Then run home-manager with:
-```
-home-manager switch --flake .#<user>@<hostname>
-```
-If you get an error like this:
-"Could not find suitable profile directory, tried .../profiles and .../user"
-run:
-```
-nix profile list
-```
-to fix the issue and then run home-manager again.
+Home Manager runs as a NixOS module, so `nixos-rebuild switch` applies the home configuration
+too. There is no separate `home-manager switch` step.
 
 # Neovim
 
 Neovim config is based on kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim
 
-The config is located under `modules/home-manager/nvim/`
-
-# [Projects](<./docs/projects.md>)
-
-# Documentation
-
-## [General-nix](<./docs/general_nix.md#Nix Commands>)
-## [Functions](./docs/general_nix.md#Functions)
+The config is located under `modules/home-manager/nvim/` and is symlinked to
+`~/.config/nvim` out of the Nix store, so edits take effect without a rebuild.
 
 # Nix Resources
 
@@ -130,9 +109,6 @@ Here is an incomplete list of great Nix/Nixpkgs/NixOS resources:
 * https://github.com/jakehamilton/neovim
 * https://github.com/jordanisaacs/neovim-flake
 * https://github.com/mrcjkb/kickstart-nix.nvim
-
-**sops-nix:**
-* https://github.com/Mic92/sops-nix
 
 **deploy-rs:**
 * https://github.com/serokell/deploy-rs

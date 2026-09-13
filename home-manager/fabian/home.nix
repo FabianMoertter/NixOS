@@ -1,82 +1,36 @@
-{ inputs, outputs, lib, config, pkgs, pkgs-unstable, theme, ... }:
+{ inputs, config, pkgs, ... }:
+let
+  # The repo is symlinked out of the store so configs stay editable in place.
+  repo = "${config.home.homeDirectory}/Projects/NixOS/nixos-config";
+in
 {
+  imports = [
+    ../../modules/home-manager/cli.nix
+    ../../modules/home-manager/hyprland.nix
+    ../../modules/home-manager/kitty/kitty.nix
+    ../../modules/home-manager/nvim/neovim.nix
+    ../../modules/home-manager/qt.nix
+    ../../modules/home-manager/zathura.nix
+    inputs.nix-colors.homeManagerModules.default
+  ];
+
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-frappe;
+
   home = {
     username = "fabian";
     homeDirectory = "/home/fabian";
     stateVersion = "23.11";
+
     file = {
-
-      # Test file
-      ".config/test/test.yml".text = ''
-        test:
-          test: test
-      '';
-
-      # Wallpaper
-      "Pictures/Wallpaper/dna-stand-left.jpg" = {
-        source = config.lib.file.mkOutOfStoreSymlink ../../assets/wallpaper/dna-strand-left.jpg;
-      };
-
-      # Wallpaper
-      "Pictures/Wallpaper/dna-stand-right.jpg" = {
-        source = config.lib.file.mkOutOfStoreSymlink ../../assets/wallpaper/dna-strand-right.jpg;
-      };
-
-      # My neovim config
-      ".config/nvim" = {
-        source = config.lib.file.mkOutOfStoreSymlink ../../modules/home-manager/nvim;
-      };
-
-      # Copy kickstart-nvim from Github
-      ".config/kickstart/" = {
-        source = builtins.fetchGit {
-          url = "https://github.com/nvim-lua/kickstart.nvim";
-          rev = "76c5b1ec57f40d17ac787feb018817a802e24bb6";
-        };
-      };
-
-      # # Copy NvChad from Github ( does not work because read-only )
-      # ".config/NvChad/" =  {
-      #     source = builtins.fetchGit {
-      #       url = "https://github.com/NvChad/Nvchad";
-      #       rev = "bb87d70fd6dedce65c67a4390c9faecc55b0ed72";
-      #     };
-      # };
-
-      # # Copy LazyVim from Github ( does not work because read-only )
-      # ".config/LazyVim/" =  {
-      #     source = builtins.fetchGit {
-      #       url = "https://github.com/LazyVim/starter";
-      #       rev = "92b2689e6f11004e65376e84912e61b9e6c58827";
-      #     };
-      # };
-
+      # My neovim config, kept writable outside the store
+      ".config/nvim".source =
+        config.lib.file.mkOutOfStoreSymlink "${repo}/modules/home-manager/nvim";
     };
   };
 
-  imports = (with outputs.homeManagerModules; [
-    alacritty
-    kitty
-    git
-    hyprland
-    lf
-    neovim
-    qt
-    shell
-    tmux
-    vim
-    zathura
-  ])
-  ++
-  (with inputs; [
-    nix-colors.homeManagerModules.default
-  ]);
-
   fonts.fontconfig.enable = true;
 
-  colorScheme = inputs.nix-colors.colorSchemes.${theme};
-
-  programs = with pkgs; {
+  programs = {
     home-manager.enable = true;
     direnv = {
       enable = true;
@@ -85,94 +39,57 @@
     };
     fzf.enable = true;
     go.enable = true;
-    # nix-index-database.comma.enable = true;
   };
 
-  home.packages = (with pkgs; [
-    # sd
-    # swaylock-effects
-    # vlc
-    # xh
-    (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
+  home.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.hack
     R
-    alacritty
     anki-bin
-    # ansible
     appimage-run
-    # dbeaver-bin
-    # whatsapp-for-linux
-    # awscli2
     bat
-    # btop
-    # wezterm
-    # glances
+    brave
     cargo
     clang
-    # code-cursor
     ctags
-    # devenv
     discord
     eza
     fd
     fdupes
     ffmpeg
+    firefox
     gearlever
     ghostty
     gifsicle
-    # glances
     gnumake
     google-chrome
-    # helix
     jq
     kitty
-    # kooha
-    # kubernetes
-    # lazydocker
     lazygit
     libreoffice
     lua
-    # evolution
-    # luarocks
-    # memos
-    # minikube
-    mpd
     mpv
-    # mpvpaper
     ncdu
     nix-tree
     nodejs
-    # okular
     python3
     ripgrep
-    # rstudio
     rustc
     tcpdump
     teams-for-linux
-    # terraform
     thunderbird
     tmux-sessionizer
     tree-sitter
-    ueberzug
+    ueberzugpp
     unzip
     vhs
-    # vial
     vscode
-    wlroots
     xclip
-    # yed
-    # yt-dlp
     zathura
     zip
     zotero
     zoxide
-  ])
-  ++
-  (with pkgs-unstable; [
-    brave
-    # home-assistant
-    # ollama
-    firefox
-  ]);
+  ];
 
   # Default Applications
   xdg = {
@@ -181,7 +98,6 @@
       enable = true;
       defaultApplications = {
         "text/html" = "firefox.desktop";
-        #"image/pdf" = "firefox.desktop";
       };
     };
   };
