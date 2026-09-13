@@ -7,7 +7,7 @@ in
   imports = [
     ../../modules/home-manager/cli.nix
     ../../modules/home-manager/hyprland.nix
-    ../../modules/home-manager/kitty/kitty.nix
+    ../../modules/home-manager/kitty.nix
     ../../modules/home-manager/nvim/neovim.nix
     ../../modules/home-manager/zathura.nix
     inputs.nix-colors.homeManagerModules.default
@@ -63,7 +63,6 @@ in
     gnumake
     google-chrome
     jq
-    kitty
     lazygit
     libreoffice
     lua

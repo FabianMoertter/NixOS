@@ -112,7 +112,7 @@ in
       ];
 
       windowrule = [
-        "float, anki"
+        "float, class:anki"
         # "workspace, 1, silent, kitty"
         # Discord
         # Thunderbird

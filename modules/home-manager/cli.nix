@@ -79,11 +79,6 @@ in
     shellAliases = myAliases;
   };
 
-  programs.nushell = {
-    enable = true;
-    shellAliases = myAliases;
-  };
-
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -161,7 +156,7 @@ in
       }
       {
         name = "powerlevel10k-config";
-        src = ./zsh;
+        src = ./.;
         file = "p10k.zsh";
       }
     ];
