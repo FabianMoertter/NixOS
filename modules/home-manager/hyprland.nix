@@ -1,4 +1,5 @@
-# Hyprland desktop: window manager, waybar status bar, rofi launcher
+# Hyprland desktop: window manager, waybar status bar, rofi launcher,
+# and an experimental Quickshell bar (toggle with $mod SHIFT Q)
 { config, lib, pkgs, ... }:
 let
   awww = lib.getExe pkgs.awww;
@@ -32,7 +33,80 @@ in
     hyprlock
     swaynotificationcenter
     pavucontrol
+    quickshell
   ];
+
+  # Experimental Quickshell bar, kept alongside waybar for now.
+  # Toggle with $mod SHIFT Q; not started automatically.
+  home.file.".config/quickshell/shell.qml".text = ''
+    import Quickshell
+    import Quickshell.Hyprland
+    import QtQuick
+    import QtQuick.Layouts
+
+    ShellRoot {
+      Variants {
+        model: Quickshell.screens
+
+        PanelWindow {
+          required property var modelData
+          screen: modelData
+
+          anchors {
+            top: true
+            left: true
+            right: true
+          }
+
+          height: 32
+          color: "#${palette.base00}"
+
+          RowLayout {
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.leftMargin: 12
+            spacing: 10
+
+            Repeater {
+              model: 8
+
+              Text {
+                property var ws: Hyprland.workspaces.values.find(w => w.id === index + 1)
+                property bool isActive: Hyprland.focusedWorkspace?.id === (index + 1)
+                text: (index + 1).toString()
+                color: isActive ? "#${palette.base0E}" : "#${palette.base04}"
+                font.bold: isActive
+                font.pixelSize: 14
+
+                MouseArea {
+                  anchors.fill: parent
+                  onClicked: Hyprland.dispatch("workspace " + (index + 1))
+                }
+              }
+            }
+          }
+
+          Text {
+            id: clockText
+            anchors.centerIn: parent
+            color: "#${palette.base05}"
+            font.bold: true
+            font.pixelSize: 14
+
+            property date now: new Date()
+            text: Qt.formatDateTime(now, "ddd dd MMM  HH:mm")
+
+            Timer {
+              interval: 1000
+              running: true
+              repeat: true
+              onTriggered: clockText.now = new Date()
+            }
+          }
+        }
+      }
+    }
+  '';
 
   # Wallpaper daemon as a user service, bound to graphical-session.target.
   services.awww.enable = true;
@@ -146,6 +220,7 @@ in
         "$mod, M, exit,"
         "$mod, F, exec, firefox"
         "$mod, S, exec, rofi -show drun -show-icons"
+        "$mod SHIFT, Q, exec, pkill quickshell || quickshell"
         "$mod, G, togglegroup"
         "$mod, X, killactive"
         "$mod, A, fullscreen"

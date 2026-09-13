@@ -79,51 +79,6 @@ Here is an incomplete list of great Nix/Nixpkgs/NixOS resources:
 * https://zero-to-nix.com/
 * https://github.com/brainrake/nixos-tutorial
 
-**NixOS example repositories:**
-* https://github.com/jakehamilton/config
-* https://github.com/sioodmy/dotfiles/tree/main
-* https://github.com/tars0x9752/home
-* https://github.com/misterio77/nix-config
-* https://github.com/librephoenix/nixos-config
-* https://github.com/HeinzDev/Hyprland-dotfiles 
-* https://gitlab.com/Zaney/zaneyos
-  * for Hyprland config
-* https://github.com/sweenu/nixfiles
-* https://github.com/Raagh/dotfiles
-* https://github.com/terlar/nix-config
-* https://github.com/colemickens/nixcfg
-* https://github.com/IogaMaster/dotfiles
-* https://github.com/hlissner/dotfiles
-* https://github.com/redyf/nixdots
-* https://github.com/rxyhn/yuki/tree/main
-* https://github.com/LongerHV/nixos-configuration
-
-**Homelab examples:**
-* https://github.com/badele/nix-homelab
-* https://github.com/TUM-DSE/doctor-cluster-config 
-
-**Videos:**
-* https://www.youtube.com/@vimjoyer
-
-**Neovim repositories:**
-* https://github.com/jakehamilton/neovim
-* https://github.com/jordanisaacs/neovim-flake
-* https://github.com/mrcjkb/kickstart-nix.nvim
-
-**deploy-rs:**
-* https://github.com/serokell/deploy-rs
-
-**Blogs and articles:**
-* https://primamateria.github.io/blog/neovim-nix
-* https://nixos-and-flakes.thiscute.world/nixos-with-flakes/introduction-to-flakes#nix-flakes-and-classic-nix
-
-**Companies:**
-* https://determinate.systems 
-* https://www.tweag.io/
-
-**Other:**
-* https://flakehub.com/flakes
-
 # Credits
 
 Flake based on standard template: https://github.com/Misterio77/nix-starter-configs.
