@@ -8,7 +8,7 @@ in
     ../../modules/home-manager/cli.nix
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/kitty.nix
-    ../../modules/home-manager/nvim/neovim.nix
+    ../../nvim/neovim.nix
     ../../modules/home-manager/zathura.nix
     inputs.nix-colors.homeManagerModules.default
   ];
@@ -23,7 +23,7 @@ in
     file = {
       # My neovim config, kept writable outside the store
       ".config/nvim".source =
-        config.lib.file.mkOutOfStoreSymlink "${repo}/modules/home-manager/nvim";
+        config.lib.file.mkOutOfStoreSymlink "${repo}/nvim";
     };
   };
 

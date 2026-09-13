@@ -63,7 +63,7 @@ too. There is no separate `home-manager switch` step.
 
 Neovim config is based on kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim
 
-The config is located under `modules/home-manager/nvim/` and is symlinked to
+The config is located under `nvim/` and is symlinked to
 `~/.config/nvim` out of the Nix store, so edits take effect without a rebuild.
 
 # Nix Resources

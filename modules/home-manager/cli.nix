@@ -24,7 +24,7 @@ let
     # custom aliases for paths
     nixconfig = "cd /home/fabian/Projects/NixOS/nixos-config";
     config = "cd /home/fabian/Projects/NixOS/nixos-config";
-    vimconfig = "cd /home/fabian/Projects/NixOS/nixos-config/modules/home-manager/nvim/";
+    vimconfig = "cd /home/fabian/Projects/NixOS/nixos-config/nvim/";
     wiki = "cd /home/fabian/Projects/Neovim/vimwiki";
     perso = "cd /home/fabian/Projects/personal_repo";
     ops = "cd /home/fabian/Projects/dev-repo";
@@ -93,7 +93,7 @@ in
       "dl" = "$HOME/Downloads";
       "Projects" = "$HOME/Projects";
       "config" = "$HOME/Projects/NixOS/nixos-config";
-      "vim" = "$HOME/Projects/NixOS/nixos-config/modules/home-manager/nvim";
+      "vim" = "$HOME/Projects/NixOS/nixos-config/nvim";
       "perso" = "$HOME/Projects/personal_repo/";
     };
 
