@@ -9,7 +9,6 @@ in
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/kitty/kitty.nix
     ../../modules/home-manager/nvim/neovim.nix
-    ../../modules/home-manager/qt.nix
     ../../modules/home-manager/zathura.nix
     inputs.nix-colors.homeManagerModules.default
   ];
