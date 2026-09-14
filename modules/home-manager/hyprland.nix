@@ -186,7 +186,7 @@ in
       ];
 
       windowrule = [
-        "float, class:anki"
+        # "float, class:anki"
         # "workspace, 1, silent, kitty"
         # Discord
         # Thunderbird
@@ -364,8 +364,8 @@ in
           default = [ "󰕿" "󰖀" "󰕾" ];
         };
         on-click = "pavucontrol";
-        on-scroll-up = "pactl set-sink-volume @DEFAULT_SINK@ +5%";
-        on-scroll-down = "pactl set-sink-volume @DEFAULT_SINK@ -5%";
+        on-scroll-up = "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+";
+        on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
       };
 
       "bluetooth" = {
@@ -687,11 +687,11 @@ in
 
       listener = [
         {
-          timeout = 300;
+          timeout = 600;
           on-timeout = "loginctl lock-session";
         }
         {
-          timeout = 330;
+          timeout = 630;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
