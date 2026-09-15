@@ -7,6 +7,7 @@
     ../../modules/system/bluetooth.nix
     ../../modules/system/hyprland.nix
     # ../../modules/system/mainUser.nix
+    # ../../modules/system/kde.nix
   ];
 
 

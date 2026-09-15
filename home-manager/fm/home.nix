@@ -1,7 +1,7 @@
 { inputs, config, pkgs, ... }:
 let
   # The repo is symlinked out of the store so configs stay editable in place.
-  repo = "${config.home.homeDirectory}/Projects/NixOS/nixos-config";
+  repo = "${config.home.homeDirectory}/Projects/NixOS/";
 in
 {
   imports = [
