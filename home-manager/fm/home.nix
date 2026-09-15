@@ -18,8 +18,8 @@ in
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-frappe;
 
   home = {
-    username = "fabian";
-    homeDirectory = "/home/fabian";
+    username = "fm";
+    homeDirectory = "/home/fm";
     stateVersion = "23.11";
 
     file = {

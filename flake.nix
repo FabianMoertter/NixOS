@@ -34,5 +34,26 @@
         ];
       };
 
+
+      # fabian-server ( mantodea )
+      # TODO
+
+      # fabian-laptop ( hepidoptera )
+      nixosConfigurations.hepidoptera = nixpkgs.lib.nixosSystem {
+        system = "x86_64_linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./systems/laptop/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.fabian = import ./home-manager/fm/home.nix;
+          }
+        ];
+      };
+
     };
 }

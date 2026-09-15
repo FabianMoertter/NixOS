@@ -37,7 +37,6 @@
     nerd-fonts.fira-code
     nerd-fonts.hack
     R
-    anki-bin
     appimage-run
     bat
     brave
@@ -45,8 +44,6 @@
     clang
     ctags
     discord
-    eza
-    fd
     fdupes
     ffmpeg
     firefox
@@ -55,8 +52,6 @@
     gifsicle
     gnumake
     google-chrome
-    jq
-    lazygit
     libreoffice
     lua
     mpv
@@ -64,7 +59,6 @@
     nix-tree
     nodejs
     python3
-    ripgrep
     rustc
     tcpdump
     teams-for-linux

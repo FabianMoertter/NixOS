@@ -1,4 +1,5 @@
-# CLI tools: git, shell (bash/nushell/zsh), tmux, vim
+# CLI tools: git, shell (bash/zsh), tmux, vim, direnv
+
 { config, lib, pkgs, ... }:
 let
   myAliases = {
@@ -190,5 +191,29 @@ in
       pkgs.tmuxPlugins.catppuccin
     ];
   };
+
+  programs.eza.enable = true;
+  programs.bat.enable = true;
+  programs.fzf = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+  programs = {
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
+    };
+  };
+
+  home.packages = with pkgs; [
+    fd
+    jq
+    ripgrep
+    lazygit
+    wget
+    claude-code
+    # codex
+  ];
 
 }
