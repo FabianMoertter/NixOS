@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
     # ../../modules/system/audio.nix
     ../../modules/system/bluetooth.nix
-    # ../../modules/system/hyprland.nix
+    ../../modules/system/hyprland.nix
     # ../../modules/system/mainUser.nix
   ];
 
@@ -96,8 +96,6 @@
       "wheel"
     ];
   };
-
-  programs.hyprland.enable = true;
 
   # Enable the modern Nix CLI and flake support.
   nix.settings.experimental-features = [
