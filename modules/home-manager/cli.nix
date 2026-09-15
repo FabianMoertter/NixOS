@@ -207,13 +207,14 @@ in
   };
 
   home.packages = with pkgs; [
-    fd
-    jq
-    ripgrep
-    lazygit
-    wget
     claude-code
     codex
+    fd
+    jq
+    lazygit
+    luarocks
+    ripgrep
+    wget
   ];
 
 }

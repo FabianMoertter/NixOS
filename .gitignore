@@ -4,3 +4,6 @@ result
 # Direnv
 .direnv
 **/.direnv/
+
+# nvim
+nvim/lazy-lock.json
