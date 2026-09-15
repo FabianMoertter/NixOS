@@ -41,6 +41,7 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
 
+  # Networking
   networking.hostName = "lepidoptera";
   networking.networkmanager.enable = true;
 
@@ -80,7 +81,6 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    btop
     git
     gparted
     htop
