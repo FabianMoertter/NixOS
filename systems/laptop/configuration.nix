@@ -6,8 +6,11 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    # ../../modules/system/audio.nix
+    ../../modules/system/bluetooth.nix
+    # ../../modules/system/hyprland.nix
+    # ../../modules/system/mainUser.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -82,12 +85,6 @@
   # services.libinput.enable = true;
 
   services.hardware.bolt.enable = true;
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-  services.blueman.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."fm" = {
