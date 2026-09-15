@@ -50,7 +50,7 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.fabian = import ./home-manager/fm/home.nix;
+            home-manager.users.fm = import ./home-manager/fm/home.nix;
           }
         ];
       };

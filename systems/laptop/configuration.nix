@@ -93,6 +93,7 @@
   users.users."fm" = {
     isNormalUser = true;
     description = "fm";
+    uid = 1000;
     extraGroups = [
       "networkmanager"
       "wheel"

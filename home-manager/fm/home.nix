@@ -10,7 +10,6 @@ in
     ../../modules/home-manager/kitty.nix
     ../../modules/home-manager/misc.nix
     ../../modules/home-manager/study.nix
-    ../../modules/home-manager/keyboard.nix
     ../../nvim/neovim.nix
     inputs.nix-colors.homeManagerModules.default
   ];
