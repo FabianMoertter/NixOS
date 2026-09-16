@@ -1,4 +1,4 @@
-# CLI tools: git, shell (bash/zsh), tmux, vim, direnv
+# CLI tools: git, shell (bash/zsh), tmux, vim, direnv, devenv
 
 { config, lib, pkgs, ... }:
 let
@@ -209,6 +209,7 @@ in
   home.packages = with pkgs; [
     claude-code
     codex
+    devenv
     fd
     jq
     lazygit
