@@ -7,3 +7,6 @@ result
 
 # nvim
 nvim/lazy-lock.json
+
+# Claude
+CLAUDE.md
