@@ -4,28 +4,6 @@
 let
   awww = lib.getExe pkgs.awww;
 
-  quickshellWithMultimedia = pkgs.symlinkJoin {
-    name = "quickshell-with-multimedia";
-    paths = [ pkgs.quickshell ];
-    nativeBuildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/quickshell \
-        --prefix QML2_IMPORT_PATH : ${pkgs.qt6.qtmultimedia}/lib/qt-6/qml \
-        --prefix QT_PLUGIN_PATH : ${pkgs.qt6.qtmultimedia}/lib/qt-6/plugins
-    '';
-  };
-
-  lockScreenConfig = pkgs.writeText "quickshell-lock.qml" (import ./quickshell-lock.nix {
-    inherit palette;
-    video = ../../306155.qt;
-  });
-
-  lockScreen = pkgs.writeShellScript "lock-screen" ''
-    exec ${quickshellWithMultimedia}/bin/quickshell \
-      --no-duplicate \
-      --path ${lockScreenConfig}
-  '';
-
   # awww-daemon is started by services.awww, but systemd gives us no ordering
   # guarantee against Hyprland's exec-once, so wait for its socket first.
   setWallpaper = pkgs.writeShellScript "set-wallpaper" ''
@@ -248,7 +226,7 @@ in
         "$mod, A, fullscreen"
         ''$mod SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot" "Region copied to clipboard"''
         ''$mod SHIFT, F, exec, grim - | wl-copy && notify-send "Screenshot" "Screen copied to clipboard"''
-        "$mod SHIFT, L, exec, ${lockScreen}"
+        "$mod SHIFT, L, exec, pidof hyprlock || hyprlock"
         # "$mod SHIFT, N, changegroupactive, f"
         # "$mod SHIFT, P, changegroupactive, b"
         # "$mod, R, togglesplit,"
@@ -652,13 +630,57 @@ in
     };
   };
 
+  programs.hyprlock = {
+    enable = true;
+
+    settings = {
+      general = {
+        disable_loading_bar = true;
+        hide_cursor = true;
+      };
+
+      background = [{
+        monitor = "";
+        path = "screenshot";
+        blur_passes = 3;
+        blur_size = 8;
+      }];
+
+      input-field = [{
+        monitor = "";
+        size = "250, 60";
+        outline_thickness = 2;
+        outer_color = "rgba(${palette.base0E}ff)";
+        inner_color = "rgba(${palette.base00}ee)";
+        font_color = "rgba(${palette.base05}ff)";
+        fade_on_empty = false;
+        placeholder_text = "Password...";
+        position = "0, -40";
+        halign = "center";
+        valign = "center";
+      }];
+
+      label = [{
+        monitor = "";
+        text = ''cmd[update:1000] echo "$(date +'%H:%M')"'';
+        color = "rgba(${palette.base05}ff)";
+        font_size = 90;
+        font_family = "JetBrainsMono Nerd Font";
+        position = "0, 200";
+        halign = "center";
+        valign = "center";
+      }];
+    };
+  };
+
   # Locks the session after idle, then blanks the displays shortly after.
+  # `pidof hyprlock ||` guards against stacking multiple lock instances.
   services.hypridle = {
     enable = true;
 
     settings = {
       general = {
-        lock_cmd = "${lockScreen}";
+        lock_cmd = "pidof hyprlock || hyprlock";
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on";
       };
