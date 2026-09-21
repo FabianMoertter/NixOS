@@ -42,6 +42,23 @@
     ];
   };
 
+  # Server /var/hugo
+  fileSystems."/mnt/server" = {
+    device = "fm@192.168.249.28:/var/hugo";
+    fsType = "sshfs";
+    options = [
+      "IdentityFile=/home/fm/.ssh/id_ed25519"
+      "allow_other"
+      "uid=1000"
+      "gid=1000"
+
+      "_netdev"
+      "x-systemd.automount"
+      "reconnect"
+      "ServerAliveInterval=15"
+    ];
+  };
+
   swapDevices = [
     { device = "/dev/mapper/luks-39673797-fbb8-406a-8297-60a07b25479d"; }
   ];
