@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  home.file.".local/bin/chatgpt".source = ../../bin/chatgpt;
+  home.sessionPath = [ "$HOME/.local/bin" ];
+
   fonts.fontconfig.enable = true;
 
   programs = {
