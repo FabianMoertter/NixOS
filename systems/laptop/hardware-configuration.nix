@@ -47,7 +47,7 @@
     device = "fm@192.168.249.28:/var/hugo";
     fsType = "sshfs";
     options = [
-      "IdentityFile=/home/fm/.ssh/id_ed25519"
+      "IdentityFile=/home/fm/.ssh/id_ed25519_pwless"
       "allow_other"
       "uid=1000"
       "gid=1000"
