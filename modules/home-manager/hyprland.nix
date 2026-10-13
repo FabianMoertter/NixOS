@@ -1,8 +1,19 @@
 # Hyprland desktop: window manager, waybar status bar, rofi launcher,
 # and an experimental Quickshell bar (toggle with $mod SHIFT Q)
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, osConfig, ... }:
 let
   awww = lib.getExe pkgs.awww;
+
+  # lepidoptera is the fixed dual-monitor desktop; every other host (currently
+  # just hepidoptera, the laptop) gets a single/occasional-external layout.
+  isLaptop = osConfig.networking.hostName != "lepidoptera";
+
+  wallpaperCmds =
+    if isLaptop then
+      "${awww} img ${../../assets/wallpaper/dna-strand.jpg}"
+    else ''
+      ${awww} img --outputs DP-1 ${../../assets/wallpaper/dna-strand-right.jpg}
+      ${awww} img --outputs DP-2 ${../../assets/wallpaper/dna-strand-left.jpg}'';
 
   # awww-daemon is started by services.awww, but systemd gives us no ordering
   # guarantee against Hyprland's exec-once, so wait for its socket first.
@@ -12,8 +23,7 @@ let
       tries=$((tries + 1))
       ${lib.getExe' pkgs.coreutils "sleep"} 0.2
     done
-    ${awww} img --outputs DP-1 ${../../assets/wallpaper/dna-strand-right.jpg}
-    ${awww} img --outputs DP-2 ${../../assets/wallpaper/dna-strand-left.jpg}
+    ${wallpaperCmds}
   '';
 
   inherit (config.lib.formats.rasi) mkLiteral;
@@ -180,10 +190,15 @@ in
         ];
       };
 
-      monitor = [
-        "DP-2, 1920x1080, 1920x0, 1"
-        "DP-1, 1920x1080, 0x0, 1"
-      ];
+      monitor =
+        if isLaptop then [
+          "eDP-1, preferred, auto, 1"
+          # any other output (e.g. a dock/HDMI monitor) extends to the right
+          ", preferred, auto-right, auto"
+        ] else [
+          "DP-2, 1920x1080, 1920x0, 1"
+          "DP-1, 1920x1080, 0x0, 1"
+        ];
 
       windowrule = [
         # "float, class:anki"
@@ -204,7 +219,9 @@ in
         "$mod ALT, mouse:272, resizewindow"
       ];
 
-      workspace = [
+      # fixed per-monitor workspace layout only makes sense on the desktop's
+      # static dual-monitor setup; the laptop lets workspaces roam freely.
+      workspace = if isLaptop then [ ] else [
         "1, monitor:DP-1"
         "2, monitor:DP-2"
         "3, monitor:DP-1"
@@ -233,14 +250,6 @@ in
         # "$mod, T, togglefloating,"
         # "$mod, P, pseudo,"
         # "$mod ALT, ,resizeactive,"
-        "$mod, 1, focusmonitor, DP-2"
-        "$mod, 2, focusmonitor, DP-1"
-        "$mod, 3, focusmonitor, DP-2"
-        "$mod, 4, focusmonitor, DP-1"
-        "$mod, 5, focusmonitor, DP-2"
-        "$mod, 6, focusmonitor, DP-1"
-        "$mod, 7, focusmonitor, DP-2"
-        "$mod, 8, focusmonitor, DP-1"
         "$mod, K, movefocus, u"
         "$mod, J, movefocus, d"
         "$mod, H, movefocus, l"
@@ -249,6 +258,17 @@ in
         "$mod, down, movefocus, d"
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
+      ]
+      # desktop's static DP-1/DP-2 layout only; not meaningful on the laptop
+      ++ lib.optionals (!isLaptop) [
+        "$mod, 1, focusmonitor, DP-2"
+        "$mod, 2, focusmonitor, DP-1"
+        "$mod, 3, focusmonitor, DP-2"
+        "$mod, 4, focusmonitor, DP-1"
+        "$mod, 5, focusmonitor, DP-2"
+        "$mod, 6, focusmonitor, DP-1"
+        "$mod, 7, focusmonitor, DP-2"
+        "$mod, 8, focusmonitor, DP-1"
       ]
       ++ (
         # workspaces
