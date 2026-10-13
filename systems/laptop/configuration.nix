@@ -79,12 +79,14 @@
   users.users."fm" = {
     isNormalUser = true;
     description = "fm";
+    shell = pkgs.zsh;
     uid = 1000;
     extraGroups = [
       "networkmanager"
       "wheel"
     ];
   };
+  programs.zsh.enable = true; # necessary if zsh default shell
 
   services.printing.enable = true;
 
