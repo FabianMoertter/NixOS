@@ -12,6 +12,13 @@ return {
         end,
         desc = 'Find files',
       },
+      {
+        '<leader>fg',
+        function()
+          require('telescope.builtin').live_grep()
+        end,
+        desc = 'Live grep',
+      },
     },
     opts = {},
   },

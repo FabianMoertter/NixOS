@@ -22,6 +22,7 @@ opt.swapfile = false -- disable swap file
 opt.clipboard = 'unnamedplus'  -- clipboard (install xclip on Linux)
 -- opt.expandtab = true -- Use spaces instead of tabs
 opt.cursorline = true -- Enable highlighting of the current line
+opt.showmode = false -- Lualine displays the current mode
 -- opt.shiftwidth = 2 -- Size of an indent
 -- opt.tabstop = 2 -- Number of spaces tabs count for
 -- opt.smartindent = true -- Insert indents automatically
@@ -45,6 +46,5 @@ opt.cursorline = true -- Enable highlighting of the current line
 -- opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 -- opt.shiftround = true -- Round indent
 -- opt.shortmess:append { W = true, I = true, c = true }
--- opt.showmode = false -- Dont show mode since we have a statusline
 -- opt.winminwidth = 5 -- Minimum window width
 -- opt.ruler = false
