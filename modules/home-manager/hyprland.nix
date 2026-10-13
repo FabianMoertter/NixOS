@@ -707,15 +707,30 @@ in
 
       listener = [
         {
-          timeout = 600;
+          timeout = 1200;
           on-timeout = "loginctl lock-session";
         }
         {
-          timeout = 630;
+          timeout = 1300;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
       ];
     };
   };
+
+  # Plasma registers application shortcuts from desktop entries. Hyprland has
+  # the matching binding above, so Super+S opens the same launcher in either
+  # desktop session.
+  xdg.dataFile."applications/rofi.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=Rofi
+    GenericName=Application Launcher
+    Exec=${lib.getExe pkgs.rofi} -show drun -show-icons
+    Icon=system-search
+    Terminal=false
+    Categories=Utility;
+    X-KDE-Shortcuts=Meta+S
+  '';
 }
