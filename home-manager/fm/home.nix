@@ -19,7 +19,7 @@ in
   home = {
     username = "fm";
     homeDirectory = "/home/fm";
-    stateVersion = "23.11";
+    stateVersion = "26.05";
 
     file = {
       # My neovim config, kept writable outside the store

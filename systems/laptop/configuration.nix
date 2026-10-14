@@ -88,6 +88,19 @@
   };
   programs.zsh.enable = true; # necessary if zsh default shell
 
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users."fabian" = {
+    isNormalUser = true;
+    description = "fabian";
+    shell = pkgs.zsh;
+    uid = 1001;
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+  };
+
+  programs.zsh.enable = true; # necessary if zsh default shell
   services.printing.enable = true;
 
   nixpkgs.config.allowUnfree = true;
