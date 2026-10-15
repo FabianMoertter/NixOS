@@ -100,7 +100,6 @@
     ];
   };
 
-  programs.zsh.enable = true; # necessary if zsh default shell
   services.printing.enable = true;
 
   nixpkgs.config.allowUnfree = true;
