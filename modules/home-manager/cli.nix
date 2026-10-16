@@ -109,8 +109,35 @@ in
     shellAliases = myAliases;
 
     initContent = lib.mkOrder 1000 ''
-      # OpenAI KEY (ChatGPT etc)
-      [ -f $HOME/.config/chatgpt.env ] && source $HOME/.config/chatgpt.env
+      # Load OpenAI credentials only for the lifetime of one command instead
+      # of exporting them into every interactive shell and all its children.
+      with-openai-env() {
+        local env_file="$HOME/.config/chatgpt.env"
+        local env_mode
+
+        if [[ $# -eq 0 ]]; then
+          print -u2 "usage: with-openai-env <command> [args...]"
+          return 2
+        fi
+
+        if [[ ! -r "$env_file" ]]; then
+          print -u2 "with-openai-env: cannot read $env_file"
+          return 1
+        fi
+
+        env_mode="$(${lib.getExe' pkgs.coreutils "stat"} -c '%a' "$env_file")" || return 1
+        if (( (8#$env_mode & 8#077) != 0 )); then
+          print -u2 "with-openai-env: refusing insecure permissions $env_mode on $env_file (expected 600 or stricter)"
+          return 1
+        fi
+
+        (
+          set -a
+          source "$env_file"
+          set +a
+          command "$@"
+        )
+      }
 
       # Add ssh key from .config
       ssh-add $HOME/.config/.ssh/id_ed25519 2> /dev/null
