@@ -183,6 +183,8 @@ in
       input = {
         kb_layout = "us,de";
         kb_variant = ",qwerty";
+        # Alt+Shift uses XKB directly; Super+Alt+K and the Waybar indicator
+        # below switch every connected keyboard together.
         kb_options = "caps:escape,grp:alt_shift_toggle";
       };
 
@@ -282,6 +284,7 @@ in
         "$mod, M, exit,"
         "$mod, F, exec, firefox"
         "$mod, S, exec, rofi -show drun -show-icons"
+        "$mod ALT, K, exec, ${hyprctl} switchxkblayout all next"
         "$mod SHIFT, Q, exec, pkill quickshell || quickshell"
         "$mod, G, togglegroup"
         "$mod, X, killactive"
@@ -342,7 +345,7 @@ in
 
       modules-left = [ "hyprland/workspaces" "cava" ];
       modules-center = [ "clock" ];
-      modules-right = [ "disk" "network" "pulseaudio" "bluetooth" "custom/filemanager" "custom/paperless" "tray" ];
+      modules-right = [ "hyprland/language" "disk" "network" "pulseaudio" "bluetooth" "custom/filemanager" "custom/paperless" "tray" ];
 
       "hyprland/workspaces" = {
         disable-scroll = true;
@@ -363,6 +366,13 @@ in
         input_delay = 1;
         sleep_timer = 5;
         bar_delimiter = 0;
+      };
+
+      "hyprland/language" = {
+        format = "󰌌 {short}";
+        tooltip = true;
+        tooltip-format = "Keyboard: {long}\nClick or Super+Alt+K to switch";
+        on-click = "${hyprctl} switchxkblayout all next";
       };
 
       "clock" = {
@@ -536,6 +546,15 @@ in
         color: #${config.colorScheme.palette.base05};
         padding: 0 16px;
         letter-spacing: 0.5px;
+      }
+
+      #language {
+        color: #${config.colorScheme.palette.base0E};
+        padding: 0 10px;
+        transition: color 0.15s ease;
+      }
+      #language:hover {
+        color: #${config.colorScheme.palette.base05};
       }
 
       /* ── Disk ─────────────────────────────────────────── */
