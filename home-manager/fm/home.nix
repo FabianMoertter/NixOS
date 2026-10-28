@@ -6,6 +6,7 @@ in
 {
   imports = [
     ../../modules/home-manager/cli.nix
+    ../../modules/home-manager/desktop.nix
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/kitty.nix
     ../../modules/home-manager/misc.nix
