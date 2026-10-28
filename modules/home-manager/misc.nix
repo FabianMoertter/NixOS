@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   # home.file.".local/bin/chatgpt".source = ../../bin/chatgpt;
   home.sessionPath = [ "$HOME/.local/bin" ];
@@ -36,7 +36,7 @@
     };
   };
 
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     nerd-fonts.fira-code
     nerd-fonts.hack
     R
@@ -49,7 +49,6 @@
     discord
     fdupes
     ffmpeg
-    firefox
     gearlever
     ghostty
     gifsicle
@@ -76,7 +75,7 @@
     zip
     zotero
     zoxide
-  ];
+  ]) ++ lib.optional (!config.programs.firefox.enable) pkgs.firefox;
 
   # Default Applications
   xdg = {
