@@ -116,9 +116,14 @@
             width: parent.width
             height: 58
             radius: 12
+            opacity: passwordInput.text.length > 0 ? 1 : 0
             color: "#dd${palette.base00}"
             border.width: 2
             border.color: root.authenticationFailed ? "#${palette.base08}" : "#${palette.base0E}"
+
+            Behavior on opacity {
+              NumberAnimation { duration: 150 }
+            }
 
             TextInput {
               id: passwordInput

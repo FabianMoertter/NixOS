@@ -20,7 +20,6 @@ let
 
   hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
   jq = lib.getExe pkgs.jq;
-  voxtype = lib.getExe pkgs.voxtype;
 
   closeLaptopLid = pkgs.writeShellScript "hyprland-close-laptop-lid" ''
     if ${hyprctl} -j monitors \
@@ -285,7 +284,6 @@ in
         "$mod, M, exit,"
         "$mod, F, exec, firefox"
         "$mod, S, exec, rofi -show drun -show-icons"
-        "$mod, V, exec, ${voxtype} record start"
         "$mod ALT, K, exec, ${hyprctl} switchxkblayout all next"
         "$mod SHIFT, Q, exec, pkill quickshell || quickshell"
         "$mod, G, togglegroup"
@@ -329,12 +327,6 @@ in
           )
           workspaceCount)
       );
-
-      # Hold Super+V to dictate into the focused text field. Voxtype uses the
-      # compositor binding, so no access to raw input devices is required.
-      bindr = [
-        "$mod, V, exec, ${voxtype} record stop"
-      ];
     };
 
   };
