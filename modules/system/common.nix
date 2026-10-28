@@ -35,6 +35,17 @@
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
+
+    # Japanese input using rōmaji composition and kana/kanji conversion.
+    inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+      ];
+    };
+
     extraLocaleSettings = {
       LC_ADDRESS = "de_DE.UTF-8";
       LC_IDENTIFICATION = "de_DE.UTF-8";
