@@ -4,9 +4,33 @@
 let
   awww = lib.getExe pkgs.awww;
 
-  # lepidoptera is the fixed dual-monitor desktop; every other host (currently
-  # just hepidoptera, the laptop) gets a single/occasional-external layout.
-  isLaptop = osConfig.networking.hostName != "lepidoptera";
+  # hepidoptera gets a layout and lid handling for its built-in panel and
+  # occasional external monitors.
+  isLaptop = osConfig.networking.hostName == "hepidoptera";
+
+  workspaceCount = 10;
+  workspaceNumbers = lib.range 1 workspaceCount;
+  desktopWorkspaceRules = map
+    (workspace:
+      let
+        monitor = if lib.mod workspace 2 == 1 then "DP-1" else "DP-2";
+      in
+      "${toString workspace}, monitor:${monitor}")
+    workspaceNumbers;
+
+  hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
+  jq = lib.getExe pkgs.jq;
+
+  closeLaptopLid = pkgs.writeShellScript "hyprland-close-laptop-lid" ''
+    if ${hyprctl} -j monitors \
+      | ${jq} -e 'any(.[]; .name != "eDP-1")' > /dev/null; then
+      ${hyprctl} keyword monitor "eDP-1, disable"
+    fi
+  '';
+
+  openLaptopLid = pkgs.writeShellScript "hyprland-open-laptop-lid" ''
+    ${hyprctl} keyword monitor "eDP-1, preferred, auto, 1"
+  '';
 
   wallpaperCmds =
     if isLaptop then
@@ -28,6 +52,28 @@ let
 
   inherit (config.lib.formats.rasi) mkLiteral;
   inherit (config.colorScheme) palette;
+
+  quickshellWithMultimedia = pkgs.symlinkJoin {
+    name = "quickshell-with-multimedia";
+    paths = [ pkgs.quickshell ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/quickshell \
+        --prefix QML2_IMPORT_PATH : ${pkgs.qt6.qtmultimedia}/lib/qt-6/qml \
+        --prefix QT_PLUGIN_PATH : ${pkgs.qt6.qtmultimedia}/lib/qt-6/plugins
+    '';
+  };
+
+  lockScreenConfig = pkgs.writeText "quickshell-lock.qml" (import ./quickshell-lock.nix {
+    inherit palette;
+    video = ../../assets/306155.qt;
+  });
+
+  lockScreen = pkgs.writeShellScript "lock-screen" ''
+    exec ${quickshellWithMultimedia}/bin/quickshell \
+      --no-duplicate \
+      --path ${lockScreenConfig}
+  '';
 in
 {
 
@@ -193,8 +239,8 @@ in
       monitor =
         if isLaptop then [
           "eDP-1, preferred, auto, 1"
-          # any other output (e.g. a dock/HDMI monitor) extends to the right
-          ", preferred, auto-right, auto"
+          # any other output (e.g. a dock/HDMI monitor) extends to the left
+          ", preferred, auto-left, auto"
         ] else [
           "DP-2, 1920x1080, 1920x0, 1"
           "DP-1, 1920x1080, 0x0, 1"
@@ -219,18 +265,17 @@ in
         "$mod ALT, mouse:272, resizewindow"
       ];
 
+      # Keep the built-in panel enabled if it is the only active display. With
+      # an external display active, closing the lid disables the panel and
+      # opening the lid restores it.
+      bindl = lib.optionals isLaptop [
+        ", switch:on:Lid Switch, exec, ${closeLaptopLid}"
+        ", switch:off:Lid Switch, exec, ${openLaptopLid}"
+      ];
+
       # fixed per-monitor workspace layout only makes sense on the desktop's
       # static dual-monitor setup; the laptop lets workspaces roam freely.
-      workspace = if isLaptop then [ ] else [
-        "1, monitor:DP-1"
-        "2, monitor:DP-2"
-        "3, monitor:DP-1"
-        "4, monitor:DP-2"
-        "5, monitor:DP-1"
-        "6, monitor:DP-2"
-        "7, monitor:DP-1"
-        "8, monitor:DP-2"
-      ];
+      workspace = if isLaptop then [ ] else desktopWorkspaceRules;
 
       bind = [
         "$mod, Return, exec, ghostty"
@@ -243,7 +288,7 @@ in
         "$mod, A, fullscreen"
         ''$mod SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot" "Region copied to clipboard"''
         ''$mod SHIFT, F, exec, grim - | wl-copy && notify-send "Screenshot" "Screen copied to clipboard"''
-        "$mod SHIFT, L, exec, pidof hyprlock || hyprlock"
+        "$mod SHIFT, L, exec, ${lockScreen}"
         # "$mod SHIFT, N, changegroupactive, f"
         # "$mod SHIFT, P, changegroupactive, b"
         # "$mod, R, togglesplit,"
@@ -277,7 +322,7 @@ in
               "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
             ]
           )
-          10)
+          workspaceCount)
       );
     };
 
@@ -306,7 +351,7 @@ in
         on-click = "activate";
         format = "{name}";
         persistent-workspaces = {
-          "*" = [ 1 2 3 4 5 6 7 8 ];
+          "*" = workspaceNumbers;
         };
       };
 
@@ -683,13 +728,12 @@ in
   };
 
   # Locks the session after idle, then blanks the displays shortly after.
-  # `pidof hyprlock ||` guards against stacking multiple lock instances.
   services.hypridle = {
     enable = true;
 
     settings = {
       general = {
-        lock_cmd = "pidof hyprlock || hyprlock";
+        lock_cmd = "${lockScreen}";
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on";
       };
