@@ -259,17 +259,6 @@ in
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
       ]
-      # desktop's static DP-1/DP-2 layout only; not meaningful on the laptop
-      ++ lib.optionals (!isLaptop) [
-        "$mod, 1, focusmonitor, DP-2"
-        "$mod, 2, focusmonitor, DP-1"
-        "$mod, 3, focusmonitor, DP-2"
-        "$mod, 4, focusmonitor, DP-1"
-        "$mod, 5, focusmonitor, DP-2"
-        "$mod, 6, focusmonitor, DP-1"
-        "$mod, 7, focusmonitor, DP-2"
-        "$mod, 8, focusmonitor, DP-1"
-      ]
       ++ (
         # workspaces
         # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
