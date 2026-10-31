@@ -66,7 +66,7 @@ let
 
   lockScreenConfig = pkgs.writeText "quickshell-lock.qml" (import ./quickshell-lock.nix {
     inherit palette;
-    video = ../../assets/306155.qt;
+    video = ../../assets/animated_wallpaper/mystic-forest-glow.1920x1080.mp4;
   });
 
   lockScreen = pkgs.writeShellScript "lock-screen" ''

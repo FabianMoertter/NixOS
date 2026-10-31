@@ -1,7 +1,11 @@
 # CLI tools: git, shell (bash/zsh), tmux, vim, direnv, devenv
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs) system;
+    config.allowUnfree = true;
+  };
   myAliases = {
     ".." = "cd ../";
     "..." = "cd ../../";
@@ -233,8 +237,7 @@ in
     };
   };
 
-  home.packages = with pkgs; [
-    claude-code
+  home.packages = (with pkgs; [
     codex
     devenv
     fd
@@ -243,6 +246,8 @@ in
     luarocks
     ripgrep
     wget
+  ]) ++ [
+    pkgs-unstable.claude-code
   ];
 
 }
