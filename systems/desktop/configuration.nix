@@ -23,6 +23,11 @@
 
   # Networking
   networking.hostName = "lepidoptera";
+  # Two Wi-Fi cards joined to the same network broke IPv4 (router replies got
+  # lost); keep NetworkManager on wlp86s0 only.
+  networking.networkmanager.unmanaged = [ "wlp90s0" ];
+  # To use the other card (wlp90s0, AX210) instead, swap the line above for:
+  # networking.networkmanager.unmanaged = [ "wlp86s0" ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.hack
