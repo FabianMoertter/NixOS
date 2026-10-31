@@ -66,10 +66,16 @@ let
 
   lockScreenConfig = pkgs.writeText "quickshell-lock.qml" (import ./quickshell-lock.nix {
     inherit palette;
-    video = ../../assets/animated_wallpaper/mystic-forest-glow.1920x1080.mp4;
   });
 
+  # Videos live outside the store (see xdg.dataFile."animated-wallpapers" in
+  # home.nix); with none present the lock screen falls back to a plain colour.
   lockScreen = pkgs.writeShellScript "lock-screen" ''
+    dir="${config.xdg.dataHome}/animated-wallpapers"
+    LOCK_VIDEO=$(${lib.getExe' pkgs.findutils "find"} -L "$dir" -maxdepth 1 -type f \
+      \( -name '*.mp4' -o -name '*.webm' -o -name '*.mkv' \) 2>/dev/null \
+      | ${lib.getExe' pkgs.coreutils "shuf"} -n 1)
+    export LOCK_VIDEO
     exec ${quickshellWithMultimedia}/bin/quickshell \
       --no-duplicate \
       --path ${lockScreenConfig}

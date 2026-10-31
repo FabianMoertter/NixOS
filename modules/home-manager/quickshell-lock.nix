@@ -1,4 +1,4 @@
-{ palette, video }:
+{ palette }:
 
 ''
   import Quickshell
@@ -10,6 +10,8 @@
   ShellRoot {
     id: root
 
+    // Chosen at random by the lock-screen script; empty if no videos exist.
+    property string video: Quickshell.env("LOCK_VIDEO") ?? ""
     property string password: ""
     property string statusText: ""
     property bool authenticationFailed: false
@@ -73,7 +75,7 @@
 
         MediaPlayer {
           id: player
-          source: "file://${video}"
+          source: root.video.length > 0 ? "file://" + root.video : ""
           videoOutput: videoOutput
           audioOutput: AudioOutput { muted: true }
           loops: MediaPlayer.Infinite
@@ -84,6 +86,7 @@
           id: videoOutput
           anchors.fill: parent
           fillMode: VideoOutput.PreserveAspectCrop
+          visible: root.video.length > 0
         }
 
         Rectangle {

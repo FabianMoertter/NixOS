@@ -28,5 +28,10 @@ in
     };
   };
 
+  # Lock screen videos, picked at random at lock time; gitignored, so they
+  # never enter the store.
+  xdg.dataFile."animated-wallpapers".source =
+    config.lib.file.mkOutOfStoreSymlink "${repo}/assets/animated_wallpaper";
+
   programs.home-manager.enable = true;
 }
