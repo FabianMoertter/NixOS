@@ -60,9 +60,10 @@
       id: lock
       locked: true
 
-      // Wait for the compositor to acknowledge the unlock before exiting.
-      onSecureChanged: {
-        if (!secure && !locked)
+      // secureChanged fires while `locked` still reads true, so a combined
+      // !secure && !locked check never passes; exit once the lock is released.
+      onLockedChanged: {
+        if (!locked)
           Qt.quit()
       }
 
