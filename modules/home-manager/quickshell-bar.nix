@@ -1,7 +1,9 @@
 { lib, pkgs, palette }:
 
 let
+  anki = lib.getExe pkgs.anki;
   cava = lib.getExe pkgs.cava;
+  curl = lib.getExe pkgs.curl;
   df = lib.getExe' pkgs.coreutils "df";
   hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
   ip = lib.getExe' pkgs.iproute2 "ip";
@@ -53,6 +55,10 @@ in
 
     property string keymapShort: ""
     property string keymapLong: ""
+
+    // AnkiConnect is only available while Anki is running. A negative value
+    // keeps the launcher useful without displaying a stale review count.
+    property int ankiDue: -1
 
     readonly property var wifiNetwork: {
       for (const dev of Networking.devices.values) {
@@ -114,6 +120,35 @@ in
       running: true
       repeat: true
       onTriggered: diskProc.running = true
+    }
+
+    Process {
+      id: ankiProc
+      command: [
+        "${curl}", "--silent", "--show-error", "--max-time", "2",
+        "--header", "Content-Type: application/json",
+        "--data-binary", '{"action":"findCards","version":6,"params":{"query":"is:due"}}',
+        "http://127.0.0.1:8765"
+      ]
+      stdout: StdioCollector {
+        onStreamFinished: {
+          try {
+            const reply = JSON.parse(text)
+            root.ankiDue = reply.error === null && Array.isArray(reply.result)
+              ? reply.result.length : -1
+          } catch (e) {
+            root.ankiDue = -1
+          }
+        }
+      }
+    }
+
+    Timer {
+      interval: 60000
+      running: true
+      repeat: true
+      triggeredOnStart: true
+      onTriggered: ankiProc.running = true
     }
 
     // Networking does not expose IP addresses, so ask the kernel which
@@ -582,6 +617,19 @@ in
             hoverColor: "#${palette.base05}"
             tooltip: "Paperless"
             onClicked: root.run("brave --app=http://mantodea:8026")
+          }
+
+          Module {
+            text: root.ankiDue >= 0 ? "󰘸 " + root.ankiDue : "󰘸"
+            pixelSize: 15
+            textColor: root.ankiDue > 0 ? "#${palette.base08}"
+              : root.ankiDue === 0 ? "#${palette.base0B}"
+              : "#${palette.base0D}"
+            hoverColor: "#${palette.base05}"
+            tooltip: root.ankiDue < 0
+              ? "Anki\nReview count available while Anki is running"
+              : root.ankiDue + (root.ankiDue === 1 ? " review due" : " reviews due")
+            onClicked: root.run("${anki}")
           }
 
           Row {
