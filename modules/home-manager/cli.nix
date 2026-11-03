@@ -6,6 +6,7 @@ let
     inherit (pkgs) system;
     config.allowUnfree = true;
   };
+  repo = config.workstation.repoDirectory;
   myAliases = {
     ".." = "cd ../";
     "..." = "cd ../../";
@@ -27,25 +28,25 @@ let
     cal = "cal -3";
 
     # custom aliases for paths
-    nixconfig = "cd /home/fabian/Projects/NixOS/nixos-config";
-    config = "cd /home/fabian/Projects/NixOS/nixos-config";
-    vimconfig = "cd /home/fabian/Projects/NixOS/nixos-config/nvim/";
-    wiki = "cd /home/fabian/Projects/Neovim/vimwiki";
-    perso = "cd /home/fabian/Projects/personal_repo";
-    ops = "cd /home/fabian/Projects/dev-repo";
-    learn = "cd /home/fabian/Projects/learning";
-    data = "cd /data/home/fabian/";
-    web = "cd /data/home/fabian/Projects/fabian-moertter.github.io";
+    nixconfig = "cd ${repo}";
+    config = "cd ${repo}";
+    vimconfig = "cd ${repo}/nvim/";
+    wiki = "cd ${config.home.homeDirectory}/Projects/Neovim/vimwiki";
+    perso = "cd ${config.home.homeDirectory}/Projects/personal_repo";
+    ops = "cd ${config.home.homeDirectory}/Projects/dev-repo";
+    learn = "cd ${config.home.homeDirectory}/Projects/learning";
+    data = "cd /data${config.home.homeDirectory}/";
+    web = "cd /data${config.home.homeDirectory}/Projects/fabian-moertter.github.io";
 
     # NixOS
-    update = "sudo nixos-rebuild switch --flake /home/fabian/Projects/NixOS/nixos-config/ .#";
-    hm-update = "home-manager switch --flake /home/fabian/Projects/NixOS/nixos-config/";
+    update = "sudo nixos-rebuild switch --flake ${repo}";
+    hm-update = "sudo nixos-rebuild switch --flake ${repo}";
     list-generations = "nix profile history --profile /nix/var/nix/profiles/system";
     delete-generations = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 30d";
 
     # dev shells
-    go_init = "nix flake init --template 'https://flakehub.com/f/the-nix-way/dev-templates/*#go'";
-    python_init = "nix flake init --template 'https://flakehub.com/f/the-nix-way/dev-templates/*#python'";
+    go_init = "nix flake init -t ${repo}#go";
+    python_init = "nix flake init -t ${repo}#python";
 
     # Neovim config switcher
     nvim-kick = "NVIM_APPNAME=kickstart nvim";
@@ -97,8 +98,8 @@ in
       "Videos" = "$HOME/Videos";
       "dl" = "$HOME/Downloads";
       "Projects" = "$HOME/Projects";
-      "config" = "$HOME/Projects/NixOS/nixos-config";
-      "vim" = "$HOME/Projects/NixOS/nixos-config/nvim";
+      "config" = "${repo}";
+      "vim" = "${repo}/nvim";
       "perso" = "$HOME/Projects/personal_repo/";
     };
 
@@ -199,7 +200,8 @@ in
     enable = true;
     prefix = "C-a";
     baseIndex = 1;
-    escapeTime = 100;
+    escapeTime = 10;
+    terminal = "tmux-256color";
     tmuxinator.enable = true;
     extraConfig = ''
       bind h select-pane -L
@@ -210,17 +212,24 @@ in
       bind _ split-window -v
       set -g mouse on
       set -g history-limit 10000
-      set -g default-terminal "xterm-256color"
       set -ga terminal-overrides ",*256col*:Tc"
+      set -as terminal-features ",xterm-ghostty:RGB"
 
       set-option -g status-position top
 
-      set -g @catppuccin_flavor 'frappe'
+      set -g status-style "bg=#${config.colorScheme.palette.base01},fg=#${config.colorScheme.palette.base05}"
+      set -g pane-active-border-style "fg=#${config.colorScheme.palette.base0D}"
+      set -g message-style "bg=#${config.colorScheme.palette.base02},fg=#${config.colorScheme.palette.base05}"
     '';
     plugins = [
       pkgs.tmuxPlugins.vim-tmux-navigator
-      pkgs.tmuxPlugins.catppuccin
     ];
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
   };
 
   programs.eza.enable = true;
@@ -228,11 +237,13 @@ in
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;
+    enableZshIntegration = true;
   };
   programs = {
     direnv = {
       enable = true;
       enableBashIntegration = true;
+      enableZshIntegration = true;
       nix-direnv.enable = true;
     };
   };

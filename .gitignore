@@ -4,6 +4,8 @@ result
 # Direnv
 .direnv
 **/.direnv/
+__pycache__/
+*.pyc
 
 # nvim
 nvim/lazy-lock.json

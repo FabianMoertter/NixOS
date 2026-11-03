@@ -25,4 +25,5 @@ require('lazy').setup('plugins')
 -- [[ Additional plugin setup ]]
 -- require(...)
 require 'custom.keymaps'
+require 'custom.development'
 

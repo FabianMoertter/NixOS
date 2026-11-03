@@ -4,6 +4,7 @@ let
   isLaptop = osConfig.networking.hostName == "hepidoptera";
   stateDir = "\${XDG_STATE_HOME:-$HOME/.local/state}/desktop-theme";
   managedWallpapers = "${config.xdg.dataHome}/wallpapers/nixos";
+  wallpaperTransition = if config.workstation.reducedMotion then "none" else "fade";
 
   applyAppearance = pkgs.writeShellApplication {
     name = "desktop-theme-apply";
@@ -67,13 +68,13 @@ let
 
       if [[ "$wallpaper" == dna ]]; then
         ${if isLaptop then ''
-          awww img "${managedWallpapers}/dna-strand.jpg" --transition-type fade
+          awww img "${managedWallpapers}/dna-strand.jpg" --transition-type ${wallpaperTransition}
         '' else ''
-          awww img --outputs DP-1 "${managedWallpapers}/dna-strand-right.jpg" --transition-type fade
-          awww img --outputs DP-2 "${managedWallpapers}/dna-strand-left.jpg" --transition-type fade
+          awww img --outputs DP-1 "${managedWallpapers}/dna-strand-right.jpg" --transition-type ${wallpaperTransition}
+          awww img --outputs DP-2 "${managedWallpapers}/dna-strand-left.jpg" --transition-type ${wallpaperTransition}
         ''}
       elif [[ -f "$wallpaper" ]]; then
-        awww img "$wallpaper" --transition-type fade
+        awww img "$wallpaper" --transition-type ${wallpaperTransition}
       else
         notify-send -u critical "Wallpaper" "The saved image no longer exists: $wallpaper"
         exit 1

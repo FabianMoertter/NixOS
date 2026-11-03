@@ -83,6 +83,7 @@ in
   home.file.".config/quickshell/shell.qml".text = import ./quickshell-bar.nix {
     inherit lib pkgs palette;
     fontFamily = fonts.monospace.family;
+    reducedMotion = config.workstation.reducedMotion;
   };
 
   # Wallpaper daemon as a user service, bound to graphical-session.target.
@@ -122,6 +123,14 @@ in
 
       xwayland = { };
 
+      general = {
+        gaps_in = 5;
+        gaps_out = 10;
+        border_size = 2;
+        "col.active_border" = "rgb(${palette.base0E})";
+        "col.inactive_border" = "rgb(${palette.base02})";
+      };
+
       decoration = {
         rounding = 10;
         inactive_opacity = 1.00;
@@ -141,7 +150,7 @@ in
       };
 
       animations = {
-        enabled = "yes";
+        enabled = !config.workstation.reducedMotion;
         bezier = [
           "wind, 0.05, 0.9, 0.1, 1.05"
           "winIn, 0.1, 1.1, 0.1, 1.1"
@@ -207,6 +216,8 @@ in
         "$mod, F, exec, firefox"
         "$mod, N, exec, iotas"
         "$mod, S, exec, rofi -show drun -show-icons"
+        "$mod, SPACE, exec, workstation-menu"
+        "$mod, F1, exec, config-help"
         "$mod SHIFT, T, exec, ${config.desktopTheme.commands.picker}"
         "$mod ALT, K, exec, ${hyprctl} switchxkblayout all next"
         "$mod SHIFT, Q, exec, quickshell kill; quickshell -d --no-duplicate"
@@ -280,7 +291,7 @@ in
         transparency = "real";
         orientation = mkLiteral "vertical";
         border = mkLiteral "2px";
-        border-color = mkLiteral "#${palette.base0B}";
+        border-color = mkLiteral "#${palette.base0E}";
         border-radius = mkLiteral "10px";
       };
 
@@ -335,6 +346,32 @@ in
       };
     };
   };
+
+  xdg.configFile."swaync/style.css".text = ''
+    * {
+      font-family: "${fonts.ui.family}";
+      font-size: ${toString fonts.ui.size}pt;
+      ${lib.optionalString config.workstation.reducedMotion "transition-duration: 0s;"}
+    }
+    .control-center, .notification {
+      background: #${palette.base00};
+      color: #${palette.base05};
+      border: 2px solid #${palette.base0E};
+      border-radius: 10px;
+    }
+    .notification-content { background: transparent; }
+    .summary { color: #${palette.base05}; }
+    .body, .time { color: #${palette.base04}; }
+    .notification-action, .close-button, .widget-buttons-grid > flowbox > flowboxchild > button {
+      background: #${palette.base02};
+      color: #${palette.base05};
+      border-radius: 5px;
+    }
+    .notification-action:hover, .close-button:hover {
+      background: #${palette.base0E};
+      color: #${palette.base00};
+    }
+  '';
 
   programs.hyprlock = {
     enable = true;

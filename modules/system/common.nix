@@ -3,6 +3,8 @@
 {
   # Shared workstation baseline. Server hosts should compose a smaller profile
   # instead of importing desktop services such as Hyprland and Flatpak.
+  services.upower.enable = true;
+
   imports = [
     ./audio.nix
     ./bluetooth.nix

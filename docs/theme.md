@@ -19,6 +19,8 @@ application launcher. The picker can:
 - select a random image from those locations.
 
 The appearance choice updates GTK and libadwaita applications immediately.
+Ghostty, tmux, Neovim, Rofi, Quickshell, Hyprland borders, and notifications
+retain the declarative Catppuccin Frappe palette in either mode.
 Qt uses the GTK platform integration so new Qt applications use the same
 appearance. Some already-running applications may need to be restarted.
 
@@ -37,3 +39,7 @@ desktop-wallpaper-apply /path/to/image.jpg
 
 To add personal wallpapers without changing this repository, put JPEG, PNG,
 or WebP files in `~/Pictures/Wallpapers`.
+
+Set `workstation.reducedMotion = true` in your Home Manager configuration to
+disable the configured window/widget animations and cursor blink and apply
+wallpapers without animated transitions.

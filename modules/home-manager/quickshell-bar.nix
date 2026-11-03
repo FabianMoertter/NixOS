@@ -1,4 +1,4 @@
-{ lib, pkgs, palette, fontFamily }:
+{ lib, pkgs, palette, fontFamily, reducedMotion ? false }:
 
 let
   anki = lib.getExe pkgs.anki;
@@ -7,6 +7,8 @@ let
   df = lib.getExe' pkgs.coreutils "df";
   hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
   ip = lib.getExe' pkgs.iproute2 "ip";
+  ghostty = lib.getExe pkgs.ghostty;
+  networkEditor = lib.getExe' pkgs.networkmanagerapplet "nm-connection-editor";
 
   # 8 bars as semicolon-separated 0-7 levels, one frame per line.
   cavaConfig = pkgs.writeText "quickshell-bar-cava.conf" ''
@@ -32,6 +34,7 @@ in
   import Quickshell.Networking
   import Quickshell.Services.Pipewire
   import Quickshell.Services.SystemTray
+  import Quickshell.Services.UPower
   import Quickshell.Widgets
   import QtQuick
   import QtQuick.Controls
@@ -59,6 +62,7 @@ in
     // AnkiConnect is only available while Anki is running. A negative value
     // keeps the launcher useful without displaying a stale review count.
     property int ankiDue: -1
+    property string studyMode: ""
 
     readonly property var wifiNetwork: {
       for (const dev of Networking.devices.values) {
@@ -85,6 +89,25 @@ in
 
     PwObjectTracker {
       objects: root.sink ? [root.sink] : []
+    }
+
+    Process {
+      id: studyProc
+      command: ["study", "status"]
+      stdout: StdioCollector {
+        onStreamFinished: {
+          const mode = text.trim().replace("Active study mode: ", "")
+          root.studyMode = ["japanese", "programming", "reading", "general"].includes(mode) ? mode : ""
+        }
+      }
+    }
+
+    Timer {
+      interval: 10000
+      running: true
+      repeat: true
+      triggeredOnStart: true
+      onTriggered: studyProc.running = true
     }
 
     Process {
@@ -265,7 +288,7 @@ in
         font.pixelSize: mod.pixelSize
 
         Behavior on color {
-          ColorAnimation { duration: 150 }
+          ColorAnimation { duration: ${if reducedMotion then "0" else "150"} }
         }
       }
 
@@ -363,10 +386,10 @@ in
                   : "transparent"
 
                 Behavior on color {
-                  ColorAnimation { duration: 150 }
+                  ColorAnimation { duration: ${if reducedMotion then "0" else "150"} }
                 }
                 Behavior on width {
-                  NumberAnimation { duration: 150 }
+                  NumberAnimation { duration: ${if reducedMotion then "0" else "150"} }
                 }
 
                 Text {
@@ -533,6 +556,23 @@ in
           anchors.bottomMargin: 4
 
           Module {
+            visible: root.studyMode !== ""
+            text: "󰑴 " + root.studyMode
+            textColor: "#${palette.base0D}"
+            tooltip: "Active study mode; click for actions"
+            onClicked: root.run("workstation-menu")
+          }
+
+          Module {
+            readonly property var battery: UPower.displayDevice
+            readonly property int charge: Math.round(battery.percentage * 100)
+            visible: battery.ready && battery.isLaptopBattery
+            text: (UPower.onBattery ? "󰁹 " : "󰂄 ") + charge + "%"
+            textColor: UPower.onBattery && charge <= 20 ? "#${palette.base08}" : "#${palette.base0B}"
+            tooltip: UPower.onBattery ? "Running on battery" : "Connected to power"
+          }
+
+          Module {
             text: "󰌌 " + root.keymapShort
             textColor: "#${palette.base0E}"
             hoverColor: "#${palette.base05}"
@@ -544,7 +584,7 @@ in
             text: "󰋊 " + root.diskPercent
             textColor: "#${palette.base0A}"
             tooltip: root.diskTooltip
-            onClicked: root.run("kitty -e btop")
+            onClicked: root.run("${ghostty} -e ${lib.getExe pkgs.btop}")
           }
 
           Module {
@@ -559,7 +599,7 @@ in
                 + root.netAddress + " on " + root.netDevice
               : root.wiredConnected ? "󰈀 " + root.netDevice + "\n" + root.netAddress
               : "Disconnected"
-            onClicked: root.run("wifimenu")
+            onClicked: root.run("${networkEditor}")
           }
 
           Module {

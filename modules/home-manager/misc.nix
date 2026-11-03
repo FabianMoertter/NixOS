@@ -1,16 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 {
   # home.file.".local/bin/chatgpt".source = ../../bin/chatgpt;
   home.sessionPath = [ "$HOME/.local/bin" ];
 
   programs = {
-    direnv = {
-      enable = true;
-      enableZshIntegration = true;
-      nix-direnv.enable = true;
-    };
-    fzf.enable = true;
-    go.enable = true;
 
     zathura = {
       enable = true;
@@ -46,7 +39,6 @@
     fdupes
     ffmpeg
     gearlever
-    ghostty
     gifsicle
     gnumake
     google-chrome
@@ -61,7 +53,6 @@
     tcpdump
     teams-for-linux
     thunderbird
-    tmux-sessionizer
     tree-sitter
     ueberzugpp
     unzip
@@ -70,8 +61,10 @@
     xclip
     zip
     zotero
-    zoxide
-  ]) ++ lib.optional (!config.programs.firefox.enable) pkgs.firefox;
+  ]) ++ [
+    # The FHS wrapper supports local MCP servers on NixOS.
+    inputs.claude-desktop.packages.${pkgs.stdenv.hostPlatform.system}.claude-desktop-fhs
+  ] ++ lib.optional (!config.programs.firefox.enable) pkgs.firefox;
 
   # Default Applications
   xdg = {

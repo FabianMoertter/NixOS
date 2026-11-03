@@ -1,20 +1,34 @@
 # nixos-config: Nix-Flake for my systems
 
-Repo under construction!
+Personal Hyprland workstation with Ghostty, Zsh, tmux, Neovim, development
+shell templates, and learning sessions.
+
+- [Quickstart and recovery](docs/quickstart.md)
+- [Development shells and templates](docs/development.md)
+- [Learning modes and Japanese setup](docs/learning.md)
+- [Architecture and customization](docs/architecture.md)
+- Cheatsheets: [Hyprland](docs/cheatsheets/hyprland.md),
+  [terminal](docs/cheatsheets/terminal.md), [Neovim](docs/cheatsheets/nvim.md),
+  [learning](docs/cheatsheets/learning.md)
+
+In Hyprland, press **Super+Space** for actions and **Super+F1** for searchable
+personal help. `project` opens a project session; `project new` initializes a
+development template. `study start japanese` starts a learning session.
 
 # Systems
 
 | Hostname | Machine | Status
 | :--- | :--- | :---
-| lepidoptera | Desktop | active
+| lepidoptera | Desktop (`fabian`) | active
+| hepidoptera | Laptop (`fm`) | active
 
 # Overview
 | Program           | Name      |
 | :---              | :---      |
 | Code Editor       | Neovim         |
 | Shell             | zsh            |
-| Terminal Emulator | kitty/ghostty  |
-| Desktop           | GNOME/Hyprland |
+| Terminal Emulator | Ghostty (Kitty also available) |
+| Desktop           | Hyprland + Quickshell; GNOME/Plasma fallback |
 | nixpkgs           | nixos-26.05    |
 
 # Project Structure
@@ -26,6 +40,9 @@ Repo under construction!
     ├── modules
     │   ├── system             # NixOS modules, imported by systems/desktop/configuration.nix
     │   └── home-manager       # home-manager modules, imported by home-manager/fabian/home.nix
+    ├── templates              # minimal, nix, python, go, rust, node devshells
+    ├── scripts                # shared command palette and project helper
+    ├── docs                   # usage, architecture, cheatsheets
     ├── assets                 # wallpapers
     ├── LICENSE
     ├── flake.nix
@@ -83,7 +100,7 @@ Here is an incomplete list of great Nix/Nixpkgs/NixOS resources:
 
 Flake based on standard template: https://github.com/Misterio77/nix-starter-configs.
 
-[Neovim](Neovim) config based on kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim.
+[Neovim](nvim) config based on kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim.
 
 Hyprland config inspired by: https://gitlab.com/stephan-raabe/dotfiles
 

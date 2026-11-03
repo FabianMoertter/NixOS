@@ -1,10 +1,11 @@
 { inputs, config, pkgs, ... }:
 let
   # The repo is symlinked out of the store so configs stay editable in place.
-  repo = "${config.home.homeDirectory}/Projects/NixOS/nixos-config";
+  repo = config.workstation.repoDirectory;
 in
 {
   imports = [
+    ../../modules/home-manager/workstation.nix
     ../../modules/home-manager/cli.nix
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/kitty.nix
@@ -14,6 +15,8 @@ in
     ../../nvim/neovim.nix
     inputs.nix-colors.homeManagerModules.default
   ];
+
+  workstation.repoDirectory = "${config.home.homeDirectory}/Projects/NixOS/nixos-config";
 
   home = {
     username = "fabian";

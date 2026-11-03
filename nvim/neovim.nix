@@ -9,6 +9,7 @@
     withPython3 = false;
     withNodeJs = false;
     withRuby = false;
+    extraPackages = with pkgs; [ nixd nixfmt ];
 
     # Use the same nix-colors palette as the terminal. Keeping the palette here
     # avoids duplicating the Catppuccin flavour in the editable Lua config and

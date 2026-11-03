@@ -32,8 +32,8 @@ order reflects dependencies between features, not fixed release dates.
 
 - [x] Configure Hyprland input, key bindings, workspaces, screenshots, portals,
   and host-specific monitor layouts.
-- [x] Configure Waybar, Rofi, SwayNotificationCenter, wallpaper management,
-  Hyprlock, and automatic idle locking.
+- [x] Configure Quickshell, Rofi, SwayNotificationCenter, wallpaper management,
+  PAM-backed Quickshell locking, and automatic idle locking.
 - [x] Retain a full desktop fallback: GNOME on `lepidoptera` and Plasma on
   `hepidoptera`.
 - [x] Use a shared nix-colors palette for Kitty, Neovim, Waybar, Rofi, and lock
@@ -42,7 +42,7 @@ order reflects dependencies between features, not fixed release dates.
   and document its use.
 - [x] Add Iotas as a lightweight, theme-aware notes app and bind it to
   `Super+N` in Hyprland.
-- [x] Add an experimental Quickshell bar that can be toggled alongside Waybar.
+- [x] Use Quickshell as the primary status bar, with laptop battery status.
 
 ## Next milestones
 
@@ -54,21 +54,21 @@ order reflects dependencies between features, not fixed release dates.
   suspend/resume behaviour on both active hosts.
 - [ ] Refactor and expose `mantodea` as a flake configuration when its server
   role and storage layout are ready.
-- [ ] Remove host-specific paths from shared Home Manager aliases and derive
-  them from the active user's home directory.
+- [x] Derive shared aliases and editable paths from per-user checkout options.
 
 ### 2. Finish the theme contract and Quickshell shell
 
 - [x] Centralize fonts, icons, cursor, wallpaper, and GTK/Qt settings alongside
   the existing nix-colors palette.
 - [x] Add explicit, reproducible theme variants and a switching workflow.
-- [ ] Expand the Quickshell bar to cover the workspace, system status, tray,
-  audio, network, Bluetooth, and calendar features currently provided by
-  Waybar.
-- [ ] Add Quickshell launcher, notification, lock, and power surfaces and wire
-  the existing Quickshell lock prototype into the session.
-- [ ] Remove Waybar only after the Quickshell replacement reaches feature
-  parity and is reliable on both hosts.
+- [x] Use Quickshell for workspace, system status, tray, audio, network,
+  Bluetooth, calendar, and battery surfaces.
+- [x] Add a shared Rofi command palette for projects, study, utilities, and help.
+- [x] Configure Ghostty, tmux, borders, and notifications with the shared palette.
+- [x] Add a reduced-motion option.
+- [ ] Verify bar and lock behavior across hotplug, suspend, and both hosts.
+- [ ] Decide whether complete light/dark palette switching is useful beyond
+  the existing runtime GTK appearance preference.
 
 ### 3. Secrets and AI tooling
 
@@ -82,21 +82,20 @@ order reflects dependencies between features, not fixed release dates.
 
 ### 4. Reproducible development environments
 
-- [ ] Add a repository development shell and formatter output to `flake.nix`.
-- [ ] Add reusable language-specific shells or templates.
+- [x] Add a repository development shell and formatter output to `flake.nix`.
+- [x] Add minimal, Nix, Python, Go, Rust, and Node templates.
 - [ ] Standardize formatter, language-server, test, and pre-commit workflows.
 - [ ] Move project-specific compilers and runtimes out of the global Home
   Manager profile and into project development shells.
 
 ### 5. Validation and documentation
 
-- [ ] Add flake checks that evaluate every supported host and Home Manager
+- [x] Add flake checks that evaluate every supported host and Home Manager
   configuration.
 - [ ] Run those checks in CI.
 - [ ] Update the README host list and project tree to match the desktop,
   laptop, and shared-module layout.
-- [ ] Add focused usage and architecture documentation as the configuration
-  stabilizes.
+- [x] Add quickstart, development, learning, architecture, and personal cheatsheets.
 
 ## Ongoing principles
 
@@ -110,3 +109,11 @@ order reflects dependencies between features, not fixed release dates.
 
 - Impermanence is intentionally out of scope; system and home data use the
   conventional persistent filesystem layout.
+
+## Learning workflow
+
+- [x] Add Japanese, programming, reading, and general study sessions.
+- [x] Reuse persistent tmux sessions and writable journals through CLI and Rofi.
+- [x] Add a separate Firefox learning profile and Japanese CJK font.
+- [ ] Configure personal Yomitan dictionaries and Anki field mappings.
+- [ ] Verify IME composition in Firefox, Anki, Ghostty, and Neovim on both hosts.
