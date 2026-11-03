@@ -251,6 +251,7 @@ in
   home.packages = (with pkgs; [
     devenv
     fd
+    glow
     jq
     lazygit
     luarocks
