@@ -89,6 +89,7 @@ in
     font-awesome
     grim
     hyprpicker
+    iotas
     networkmanagerapplet
     slurp
     swaynotificationcenter
@@ -221,6 +222,7 @@ in
         "$mod, Return, exec, ghostty"
         "$mod, M, exit,"
         "$mod, F, exec, firefox"
+        "$mod, N, exec, iotas"
         "$mod, S, exec, rofi -show drun -show-icons"
         "$mod ALT, K, exec, ${hyprctl} switchxkblayout all next"
         "$mod SHIFT, Q, exec, quickshell kill; quickshell -d --no-duplicate"
