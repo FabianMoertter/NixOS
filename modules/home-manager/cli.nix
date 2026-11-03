@@ -238,7 +238,6 @@ in
   };
 
   home.packages = (with pkgs; [
-    codex
     devenv
     fd
     jq
@@ -248,6 +247,7 @@ in
     wget
   ]) ++ [
     pkgs-unstable.claude-code
+    pkgs-unstable.codex
   ];
 
 }

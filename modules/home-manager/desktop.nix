@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     awww
-    codex
     github-copilot-cli
     kdePackages.kate
     kitty
