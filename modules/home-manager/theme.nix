@@ -201,6 +201,8 @@ in
 
     gtk = {
       enable = true;
+      # Desktop settings tools can replace this file between activations.
+      gtk2.force = true;
       colorScheme = cfg.defaultAppearance;
       font = {
         name = cfg.fonts.ui.family;
