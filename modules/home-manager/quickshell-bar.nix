@@ -1,4 +1,4 @@
-{ lib, pkgs, palette }:
+{ lib, pkgs, palette, fontFamily }:
 
 let
   anki = lib.getExe pkgs.anki;
@@ -40,7 +40,7 @@ in
   ShellRoot {
     id: root
 
-    readonly property string fontFamily: "JetBrainsMono Nerd Font"
+    readonly property string fontFamily: "${fontFamily}"
 
     // ── Shared state (one source for every bar) ──────────────────
 
@@ -234,7 +234,7 @@ in
           id: tipLabel
           anchors.centerIn: parent
           color: "#${palette.base05}"
-          font.family: "JetBrainsMono Nerd Font"
+          font.family: "${fontFamily}"
           font.pixelSize: 13
           text: tip.text
         }
@@ -260,7 +260,7 @@ in
         anchors.centerIn: parent
         text: mod.text
         color: area.containsMouse ? mod.hoverColor : mod.textColor
-        font.family: "JetBrainsMono Nerd Font"
+        font.family: "${fontFamily}"
         font.bold: true
         font.pixelSize: mod.pixelSize
 

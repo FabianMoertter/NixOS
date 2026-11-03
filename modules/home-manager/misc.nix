@@ -3,8 +3,6 @@
   # home.file.".local/bin/chatgpt".source = ../../bin/chatgpt;
   home.sessionPath = [ "$HOME/.local/bin" ];
 
-  fonts.fontconfig.enable = true;
-
   programs = {
     direnv = {
       enable = true;
@@ -37,8 +35,6 @@
   };
 
   home.packages = (with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.hack
     R
     appimage-run
     bat
@@ -88,10 +84,4 @@
     };
   };
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 24;
-  };
 }

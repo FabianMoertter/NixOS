@@ -1,7 +1,8 @@
 # Roadmap
 
 [Back to README](../README.md) ·
-[Japanese input](japanese-input.md)
+[Japanese input](japanese-input.md) ·
+[Desktop theme](theme.md)
 
 This roadmap describes the state of the configuration in the repository. The
 order reflects dependencies between features, not fixed release dates.
@@ -39,6 +40,8 @@ order reflects dependencies between features, not fixed release dates.
   surfaces.
 - [x] Add Japanese input with Fcitx5 and Mozc to the shared workstation module
   and document its use.
+- [x] Add Iotas as a lightweight, theme-aware notes app and bind it to
+  `Super+N` in Hyprland.
 - [x] Add an experimental Quickshell bar that can be toggled alongside Waybar.
 
 ## Next milestones
@@ -56,9 +59,9 @@ order reflects dependencies between features, not fixed release dates.
 
 ### 2. Finish the theme contract and Quickshell shell
 
-- [ ] Centralize fonts, icons, cursor, wallpaper, and GTK/Qt settings alongside
+- [x] Centralize fonts, icons, cursor, wallpaper, and GTK/Qt settings alongside
   the existing nix-colors palette.
-- [ ] Add explicit, reproducible theme variants and a switching workflow.
+- [x] Add explicit, reproducible theme variants and a switching workflow.
 - [ ] Expand the Quickshell bar to cover the workspace, system status, tray,
   audio, network, Bluetooth, and calendar features currently provided by
   Waybar.

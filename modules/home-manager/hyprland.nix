@@ -1,8 +1,6 @@
 # Hyprland desktop: window manager, Quickshell status bar, rofi launcher
 { config, lib, pkgs, osConfig, ... }:
 let
-  awww = lib.getExe pkgs.awww;
-
   # hepidoptera gets a layout and lid handling for its built-in panel and
   # occasional external monitors.
   isLaptop = osConfig.networking.hostName == "hepidoptera";
@@ -31,26 +29,9 @@ let
     ${hyprctl} keyword monitor "eDP-1, preferred, auto, 1"
   '';
 
-  wallpaperCmds =
-    if isLaptop then
-      "${awww} img ${../../assets/wallpaper/dna-strand.jpg}"
-    else ''
-      ${awww} img --outputs DP-1 ${../../assets/wallpaper/dna-strand-right.jpg}
-      ${awww} img --outputs DP-2 ${../../assets/wallpaper/dna-strand-left.jpg}'';
-
-  # awww-daemon is started by services.awww, but systemd gives us no ordering
-  # guarantee against Hyprland's exec-once, so wait for its socket first.
-  setWallpaper = pkgs.writeShellScript "set-wallpaper" ''
-    tries=0
-    until ${awww} query > /dev/null 2>&1 || [ "$tries" -ge 50 ]; do
-      tries=$((tries + 1))
-      ${lib.getExe' pkgs.coreutils "sleep"} 0.2
-    done
-    ${wallpaperCmds}
-  '';
-
   inherit (config.lib.formats.rasi) mkLiteral;
   inherit (config.colorScheme) palette;
+  inherit (config.desktopTheme) fonts;
 
   quickshellWithMultimedia = pkgs.symlinkJoin {
     name = "quickshell-with-multimedia";
@@ -65,6 +46,7 @@ let
 
   lockScreenConfig = pkgs.writeText "quickshell-lock.qml" (import ./quickshell-lock.nix {
     inherit palette;
+    fontFamily = fonts.monospace.family;
   });
 
   # Videos live outside the store (see xdg.dataFile."animated-wallpapers" in
@@ -86,7 +68,6 @@ in
     libnotify
     mpvpaper
     cava
-    font-awesome
     grim
     hyprpicker
     iotas
@@ -101,6 +82,7 @@ in
   # Status bar (replaces waybar); started by exec-once, restart with $mod SHIFT Q.
   home.file.".config/quickshell/shell.qml".text = import ./quickshell-bar.nix {
     inherit lib pkgs palette;
+    fontFamily = fonts.monospace.family;
   };
 
   # Wallpaper daemon as a user service, bound to graphical-session.target.
@@ -130,7 +112,8 @@ in
       exec-once = [
         "quickshell --no-duplicate"
         "swaync"
-        "${setWallpaper}"
+        "DESKTOP_THEME_SILENT=1 ${config.desktopTheme.commands.applyAppearance}"
+        "DESKTOP_THEME_SILENT=1 ${config.desktopTheme.commands.applyWallpaper}"
       ];
 
       misc = {
@@ -224,6 +207,7 @@ in
         "$mod, F, exec, firefox"
         "$mod, N, exec, iotas"
         "$mod, S, exec, rofi -show drun -show-icons"
+        "$mod SHIFT, T, exec, ${config.desktopTheme.commands.picker}"
         "$mod ALT, K, exec, ${hyprctl} switchxkblayout all next"
         "$mod SHIFT, Q, exec, quickshell kill; quickshell -d --no-duplicate"
         "$mod, G, togglegroup"
@@ -275,7 +259,7 @@ in
     enable = true;
     # `rofi-wayland` was merged back into `rofi`, which now speaks both.
     package = pkgs.rofi;
-    font = "JetBrainsMono Nerd Font 12";
+    font = "${fonts.monospace.family} 12";
     terminal = lib.getExe pkgs.ghostty;
     location = "center";
 
@@ -387,7 +371,7 @@ in
         text = ''cmd[update:1000] echo "$(date +'%H:%M')"'';
         color = "rgba(${palette.base05}ff)";
         font_size = 90;
-        font_family = "JetBrainsMono Nerd Font";
+        font_family = fonts.monospace.family;
         position = "0, 200";
         halign = "center";
         valign = "center";

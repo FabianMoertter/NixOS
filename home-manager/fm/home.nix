@@ -11,11 +11,10 @@ in
     ../../modules/home-manager/kitty.nix
     ../../modules/home-manager/misc.nix
     ../../modules/home-manager/study.nix
+    ../../modules/home-manager/theme.nix
     ../../nvim/neovim.nix
     inputs.nix-colors.homeManagerModules.default
   ];
-
-  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-frappe;
 
   home = {
     username = "fm";

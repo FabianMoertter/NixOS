@@ -1,4 +1,4 @@
-{ palette }:
+{ palette, fontFamily }:
 
 ''
   import Quickshell
@@ -103,7 +103,7 @@
             id: clock
             anchors.horizontalCenter: parent.horizontalCenter
             color: "#${palette.base05}"
-            font.family: "JetBrainsMono Nerd Font"
+            font.family: "${fontFamily}"
             font.pixelSize: 86
             font.weight: Font.Light
             text: Qt.formatTime(new Date(), "HH:mm")
@@ -137,7 +137,7 @@
               color: "#${palette.base05}"
               selectionColor: "#${palette.base0E}"
               selectedTextColor: "#${palette.base00}"
-              font.family: "JetBrainsMono Nerd Font"
+              font.family: "${fontFamily}"
               font.pixelSize: 20
               echoMode: TextInput.Password
               passwordCharacter: "●"
@@ -166,7 +166,7 @@
               anchors.fill: parent
               anchors.leftMargin: 18
               color: "#${palette.base04}"
-              font.family: "JetBrainsMono Nerd Font"
+              font.family: "${fontFamily}"
               font.pixelSize: 18
               text: "Password…"
               verticalAlignment: Text.AlignVCenter
@@ -177,7 +177,7 @@
           Text {
             anchors.horizontalCenter: parent.horizontalCenter
             color: root.authenticationFailed ? "#${palette.base08}" : "#${palette.base05}"
-            font.family: "JetBrainsMono Nerd Font"
+            font.family: "${fontFamily}"
             font.pixelSize: 15
             text: root.statusText
             visible: text.length > 0

@@ -29,12 +29,6 @@
   # To use the other card (wlp90s0, AX210) instead, swap the line above for:
   # networking.networkmanager.unmanaged = [ "wlp86s0" ];
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.hack
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
-  ];
-
   virtualisation.docker.enable = true;
 
   # Configure keymap in X11

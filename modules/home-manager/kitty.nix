@@ -2,8 +2,8 @@
 {
   programs.kitty = {
     enable = true;
-    font.name = "JetBrainsMono Nerd Font";
-    font.size = 14;
+    font.name = config.desktopTheme.fonts.monospace.family;
+    font.size = config.desktopTheme.fonts.monospace.size;
     settings = {
       foreground = "#${config.colorScheme.palette.base05}";
       background = "#${config.colorScheme.palette.base00}";
