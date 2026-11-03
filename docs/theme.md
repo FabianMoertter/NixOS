@@ -43,3 +43,21 @@ or WebP files in `~/Pictures/Wallpapers`.
 Set `workstation.reducedMotion = true` in your Home Manager configuration to
 disable the configured window/widget animations and cursor blink and apply
 wallpapers without animated transitions.
+
+## Animated login screen
+
+The laptop's SDDM login screen uses the
+[Astronaut theme](https://github.com/Keyitdev/sddm-astronaut-theme) with the
+desktop palette and a muted, looping video. Each time the greeter starts, it
+randomly selects an MP4, WebM, or MKV from `assets/animated_wallpaper` in the
+configured `workstation.repoDirectory`, the same collection as the Quickshell
+lock screen. The two screens select independently.
+
+Before SDDM starts, the selected video is copied to `/run/sddm-wallpaper`, so
+the greeter does not need access to your home directory. Videos remain
+gitignored and outside the Nix store. Missing or unreadable videos fall back
+to the DNA image. `workstation.reducedMotion = true` also uses the static image.
+Add or remove videos before the next boot to change the selection.
+
+Apply the configuration with `sudo nixos-rebuild boot --flake .#hepidoptera`
+and reboot. The desktop still uses GDM; this theme applies to the laptop only.

@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./login-screen.nix
     ../../modules/system/common.nix
   ];
 
