@@ -1,4 +1,4 @@
-{ lib, pkgs, palette, fontFamily, reducedMotion ? false }:
+{ lib, pkgs, palette, fontFamily, workspaceCount, reducedMotion ? false }:
 
 let
   anki = lib.getExe pkgs.anki;
@@ -364,7 +364,7 @@ in
             spacing: 2
 
             Repeater {
-              model: 10
+              model: ${toString workspaceCount}
 
               Rectangle {
                 id: wsButton

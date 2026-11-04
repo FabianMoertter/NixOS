@@ -11,8 +11,8 @@
 | Super+F | Firefox |
 | Super+N | Iotas notes |
 | Super+H/J/K/L or arrows | Focus window |
-| Super+1…9 / 0 | Workspace 1…9 / 10 |
-| Super+Shift+1…9 / 0 | Move window to workspace |
+| Super+1…6 | Workspace 1…6 |
+| Super+Shift+1…6 | Move window to workspace |
 | Super+X | Close active window |
 | Super+A | Toggle fullscreen |
 | Super+G | Toggle window group |
@@ -26,6 +26,9 @@
 | Super+Shift+Q | Restart Quickshell bar |
 | Super+M | Exit Hyprland |
 
-The desktop pins odd workspaces to DP-1 and even workspaces to DP-2. Laptop
-workspaces can move across displays. Clipboard history is available through
+There are six workspaces: 1, 3, 5 on the left display and 2, 4, 6 on
+the right. The desktop uses DP-1 (left) and DP-2 (right). The laptop assigns
+workspaces by display position when docking, preferring the external pair when
+two external monitors are connected. Undocked, all six use the laptop panel.
+Clipboard history is available through
 Actions → Utilities; entries remain until cleared with `cliphist wipe`.

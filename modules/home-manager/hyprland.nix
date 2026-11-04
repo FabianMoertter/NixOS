@@ -5,7 +5,7 @@ let
   # occasional external monitors.
   isLaptop = osConfig.networking.hostName == "hepidoptera";
 
-  workspaceCount = 10;
+  workspaceCount = 6;
   workspaceNumbers = lib.range 1 workspaceCount;
   desktopWorkspaceRules = map
     (workspace:
@@ -17,6 +17,11 @@ let
 
   hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
   jq = lib.getExe pkgs.jq;
+
+  laptopWorkspaceLayout = pkgs.writeShellScript "hyprland-workspace-layout" ''
+    exec ${lib.getExe pkgs.python3} ${../../scripts/hyprland-workspaces.py} \
+      ${hyprctl} ${toString workspaceCount}
+  '';
 
   closeLaptopLid = pkgs.writeShellScript "hyprland-close-laptop-lid" ''
     if ${hyprctl} -j monitors \
@@ -81,7 +86,7 @@ in
 
   # Status bar (replaces waybar); started by exec-once, restart with $mod SHIFT Q.
   home.file.".config/quickshell/shell.qml".text = import ./quickshell-bar.nix {
-    inherit lib pkgs palette;
+    inherit lib pkgs palette workspaceCount;
     fontFamily = fonts.monospace.family;
     reducedMotion = config.workstation.reducedMotion;
   };
@@ -115,7 +120,7 @@ in
         "swaync"
         "DESKTOP_THEME_SILENT=1 ${config.desktopTheme.commands.applyAppearance}"
         "DESKTOP_THEME_SILENT=1 ${config.desktopTheme.commands.applyWallpaper}"
-      ];
+      ] ++ lib.optional isLaptop "${laptopWorkspaceLayout}";
 
       misc = {
         enable_swallow = true;
@@ -206,8 +211,7 @@ in
         ", switch:off:Lid Switch, exec, ${openLaptopLid}"
       ];
 
-      # fixed per-monitor workspace layout only makes sense on the desktop's
-      # static dual-monitor setup; the laptop lets workspaces roam freely.
+      # The laptop assigns workspaces dynamically as dock displays come and go.
       workspace = if isLaptop then [ ] else desktopWorkspaceRules;
 
       bind = [
@@ -243,24 +247,19 @@ in
         "$mod, right, movefocus, r"
       ]
       ++ (
-        # workspaces
-        # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
-        builtins.concatLists (builtins.genList
+        # Super switches workspace; Shift moves the focused window there.
+        builtins.concatLists (map
           (
-            x:
+            workspace:
             let
-              ws =
-                let
-                  c = (x + 1) / 10;
-                in
-                builtins.toString (x + 1 - (c * 10));
+              ws = toString workspace;
             in
             [
-              "$mod, ${ws}, workspace, ${toString (x + 1)}"
-              "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+              "$mod, ${ws}, workspace, ${ws}"
+              "$mod SHIFT, ${ws}, movetoworkspace, ${ws}"
             ]
           )
-          workspaceCount)
+          workspaceNumbers)
       );
     };
 
