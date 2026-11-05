@@ -15,6 +15,7 @@
 | Super+Shift+1…6 | Move window to workspace |
 | Super+X | Close active window |
 | Super+A | Toggle fullscreen |
+| Super+Shift+A | Toggle Hyprland animations |
 | Super+G | Toggle window group |
 | Super+left mouse drag | Move window |
 | Super+right mouse drag | Resize window |
@@ -32,3 +33,8 @@ workspaces by display position when docking, preferring the external pair when
 two external monitors are connected. Undocked, all six use the laptop panel.
 Clipboard history is available through
 Actions → Utilities; entries remain until cleared with `cliphist wipe`.
+
+Toggle window and workspace animations with `Super+Shift+A`,
+Actions → Desktop → Toggle Hyprland animations, or `hyprland-toggle-animations`.
+A notification shows whether animations are on or off. A config reload or new
+session restores the default set by `workstation.reducedMotion`.

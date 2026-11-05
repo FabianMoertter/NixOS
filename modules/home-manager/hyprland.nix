@@ -18,6 +18,25 @@ let
   hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
   jq = lib.getExe pkgs.jq;
 
+  toggleAnimations = pkgs.writeShellApplication {
+    name = "hyprland-toggle-animations";
+    runtimeInputs = [ pkgs.hyprland pkgs.jq pkgs.libnotify ];
+    text = ''
+      next=$(hyprctl -j getoption animations:enabled | jq -er '
+        if .int == 1 then 0
+        elif .int == 0 then 1
+        else error("Unexpected animation state") end
+      ')
+      hyprctl keyword animations:enabled "$next" > /dev/null
+      if [ "$next" = 1 ]; then
+        state=on
+      else
+        state=off
+      fi
+      notify-send -a Hyprland -t 1500 "Hyprland animations: $state"
+    '';
+  };
+
   laptopWorkspaceLayout = pkgs.writeShellScript "hyprland-workspace-layout" ''
     exec ${lib.getExe pkgs.python3} ${../../scripts/hyprland-workspaces.py} \
       ${hyprctl} ${toString workspaceCount}
@@ -70,6 +89,7 @@ in
 {
 
   home.packages = with pkgs; [
+    toggleAnimations
     libnotify
     mpvpaper
     cava
@@ -83,6 +103,14 @@ in
     quickshell
     wl-clipboard
   ];
+
+  workstation.actions.hyprland-animations = {
+    label = "Toggle Hyprland animations";
+    category = "Desktop";
+    description = "Switch window and workspace animations on or off until config reload";
+    argv = [ (lib.getExe toggleAnimations) ];
+    shortcut = "Super+Shift+A";
+  };
 
   # Status bar (replaces waybar); started by exec-once, restart with $mod SHIFT Q.
   home.file.".config/quickshell/shell.qml".text = import ./quickshell-bar.nix {
@@ -228,6 +256,7 @@ in
         "$mod, G, togglegroup"
         "$mod, X, killactive"
         "$mod, A, fullscreen"
+        "$mod SHIFT, A, exec, ${lib.getExe toggleAnimations}"
         ''$mod SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot" "Region copied to clipboard"''
         ''$mod SHIFT, F, exec, grim - | wl-copy && notify-send "Screenshot" "Screen copied to clipboard"''
         "$mod SHIFT, L, exec, ${lockScreen}"
