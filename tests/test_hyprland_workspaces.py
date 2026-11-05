@@ -12,6 +12,54 @@ spec.loader.exec_module(layout)
 
 
 class WorkspaceLayoutTests(unittest.TestCase):
+    def test_select_pairs_on_both_displays_and_restore_focus(self):
+        for focused in ["DP-1", "DP-2"]:
+            monitors = [
+                {"name": "DP-2", "x": 1920, "y": 0, "focused": focused == "DP-2"},
+                {"name": "DP-1", "x": 0, "y": 0, "focused": focused == "DP-1"},
+            ]
+            for pair, odd, even in [(1, 1, 2), (2, 3, 4), (3, 5, 6)]:
+                with self.subTest(focused=focused, pair=pair):
+                    self.assertEqual(layout.pair_commands(monitors, pair, 6), [
+                        "dispatch focusmonitor DP-1",
+                        f"dispatch workspace {odd}",
+                        "dispatch focusmonitor DP-2",
+                        f"dispatch workspace {even}",
+                        f"dispatch focusmonitor {focused}",
+                    ])
+
+    def test_select_pair_uses_external_displays_with_open_panel(self):
+        monitors = [
+            {"name": "eDP-1", "x": 0, "y": 0, "focused": True},
+            {"name": "DP-3", "x": -1920, "y": 0},
+            {"name": "DP-4", "x": -3840, "y": 0},
+        ]
+        self.assertEqual(layout.pair_commands(monitors, 2, 6), [
+            "dispatch focusmonitor DP-4",
+            "dispatch workspace 3",
+            "dispatch focusmonitor DP-3",
+            "dispatch workspace 4",
+            "dispatch focusmonitor eDP-1",
+        ])
+
+    def test_select_pair_on_single_panel_shows_odd_workspace(self):
+        monitors = [{"name": "eDP-1", "x": 0, "y": 0}]
+        for pair, workspace in [(1, 1), (2, 3), (3, 5)]:
+            self.assertEqual(layout.pair_commands(monitors, pair, 6),
+                             [f"dispatch workspace {workspace}"])
+
+    def test_select_pair_with_no_active_displays_is_a_noop(self):
+        monitors = [
+            {"name": "eDP-1", "x": 0, "y": 0, "disabled": True},
+            {"name": "DP-1", "x": 0, "y": 0, "mirrorOf": "eDP-1"},
+        ]
+        self.assertEqual(layout.pair_commands(monitors, 1, 6), [])
+
+    def test_select_pair_rejects_out_of_range_pairs(self):
+        for pair in [0, -1, 4]:
+            with self.assertRaises(ValueError):
+                layout.pair_commands([], pair, 6)
+
     def test_dock_uses_position_instead_of_connector_order(self):
         monitors = [
             {"name": "DP-6", "x": -1920, "y": 0},

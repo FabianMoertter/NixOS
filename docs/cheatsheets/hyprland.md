@@ -13,6 +13,9 @@
 | Super+H/J/K/L or arrows | Focus window |
 | Super+1…6 | Workspace 1…6 |
 | Super+Shift+1…6 | Move window to workspace |
+| Super+Alt+1 | Show workspace pair (1, 2) |
+| Super+Alt+2 | Show workspace pair (3, 4) |
+| Super+Alt+3 | Show workspace pair (5, 6) |
 | Super+X | Close active window |
 | Super+A | Toggle fullscreen |
 | Super+Shift+A | Toggle Hyprland animations |
@@ -31,6 +34,8 @@ There are six workspaces: 1, 3, 5 on the left display and 2, 4, 6 on
 the right. The desktop uses DP-1 (left) and DP-2 (right). The laptop assigns
 workspaces by display position when docking, preferring the external pair when
 two external monitors are connected. Undocked, all six use the laptop panel.
+The pair shortcuts switch both displays together and keep focus on the current
+display. With a single display, they select workspace 1, 3, or 5 respectively.
 Clipboard history is available through
 Actions → Utilities; entries remain until cleared with `cliphist wipe`.
 

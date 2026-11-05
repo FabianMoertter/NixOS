@@ -42,6 +42,11 @@ let
       ${hyprctl} ${toString workspaceCount}
   '';
 
+  selectWorkspacePair = pkgs.writeShellScript "hyprland-workspace-pair" ''
+    exec ${lib.getExe pkgs.python3} ${../../scripts/hyprland-workspaces.py} \
+      ${hyprctl} ${toString workspaceCount} --pair "$1"
+  '';
+
   closeLaptopLid = pkgs.writeShellScript "hyprland-close-laptop-lid" ''
     if ${hyprctl} -j monitors \
       | ${jq} -e 'any(.[]; .name != "eDP-1")' > /dev/null; then
@@ -289,7 +294,10 @@ in
             ]
           )
           workspaceNumbers)
-      );
+      )
+      ++ map (pair:
+        "$mod ALT, ${toString pair}, exec, ${selectWorkspacePair} ${toString pair}")
+        (lib.range 1 (workspaceCount / 2));
     };
 
   };
