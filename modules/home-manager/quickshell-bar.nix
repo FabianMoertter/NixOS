@@ -434,7 +434,6 @@ in
           Item {
             id: clock
             property date now: new Date()
-            property bool alt: false
             property int monthOffset: 0
 
             Layout.fillHeight: true
@@ -454,22 +453,15 @@ in
               font.family: root.fontFamily
               font.bold: true
               font.pixelSize: 14
-              text: clock.alt
-                ? Qt.formatDateTime(clock.now, "hh:mm AP")
-                : "󰃭  " + Qt.formatDateTime(clock.now, "ddd dd MMM  HH:mm")
+              text: "󰃭  " + Qt.formatDateTime(clock.now, "ddd dd MMM  HH:mm")
             }
 
             MouseArea {
               id: clockArea
               anchors.fill: parent
               hoverEnabled: true
-              acceptedButtons: Qt.LeftButton | Qt.RightButton
-              onClicked: mouse => {
-                if (mouse.button === Qt.LeftButton)
-                  clock.alt = !clock.alt
-                else
-                  clock.monthOffset = 0
-              }
+              acceptedButtons: Qt.RightButton
+              onClicked: clock.monthOffset = 0
               onWheel: wheel => clock.monthOffset += wheel.angleDelta.y > 0 ? -1 : 1
               onContainsMouseChanged: if (!containsMouse) clock.monthOffset = 0
             }
